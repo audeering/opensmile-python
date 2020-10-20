@@ -6,7 +6,8 @@ import warnings
 import numpy as np
 import pandas as pd
 
-import opensmile.core.audeer as audeer
+import audeer
+
 import opensmile.core.audinterface as audinterface
 
 from opensmile.core.SMILEapi import (

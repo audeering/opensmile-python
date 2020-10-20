@@ -4,13 +4,14 @@ import typing
 import numpy as np
 import pandas as pd
 
-import opensmile.core.audeer as audeer
+import audeer
+
 import audiofile as af
 
 
 def check_index(
         index: pd.MultiIndex
-):
+):  # pragma: no cover
     if len(index.levels) == 2:
         if not index.empty:
             if not pd.core.dtypes.common.is_datetime_or_timedelta_dtype(
@@ -51,7 +52,7 @@ def read_audio(
         start: pd.Timedelta = None,
         end: pd.Timedelta = None,
         channel: int = None,
-) -> typing.Tuple[np.ndarray, int]:
+) -> typing.Tuple[np.ndarray, int]:  # pragma: no cover
     """Reads (segment of an) audio file.
 
     Args:
@@ -100,7 +101,7 @@ def segment_to_indices(
         sampling_rate: int,
         start: pd.Timedelta,
         end: pd.Timedelta,
-) -> typing.Tuple[int, int]:
+) -> typing.Tuple[int, int]:  # pragma: no cover
     if pd.isna(end):
         end = pd.to_timedelta(
             signal.shape[-1] / sampling_rate, unit='sec'
@@ -117,7 +118,9 @@ def segments_to_indices(
         signal: np.ndarray,
         sampling_rate: int,
         index: pd.MultiIndex,
-) -> typing.Tuple[typing.Sequence[int], typing.Sequence[int]]:
+) -> typing.Tuple[
+    typing.Sequence[int], typing.Sequence[int]
+]:  # pragma: no cover
     starts_i = [0] * len(index)
     ends_i = [0] * len(index)
     for idx, (start, end) in enumerate(index):

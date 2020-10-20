@@ -4,11 +4,12 @@ import typing
 import numpy as np
 import pandas as pd
 
-import opensmile.core.audeer as audeer
+import audeer
+
 import opensmile.core.utils as utils
 
 
-class Process:
+class Process:  # pragma: no cover
     r"""Processing interface.
 
     Args:
@@ -252,7 +253,7 @@ class Process:
         return utils.read_audio(path, start, end, channel)
 
 
-class Feature:
+class Feature:  # pragma: no cover
     r"""Feature extraction interface.
 
     The features are returned as a :class:`pd.DataFrame`.

@@ -5,24 +5,9 @@ import pandas as pd
 import pytest
 
 import audiofile
+import audeer
 
 import opensmile
-
-
-def basename_wo_ext(path):
-    path = safe_path(path)
-    path = os.path.basename(path)
-    path = os.path.splitext(path)[0]
-    return path
-
-
-def safe_path(path):
-    if path:
-        path = os.path.realpath(os.path.expanduser(path))
-        # Convert bytes to str, see https://stackoverflow.com/a/606199
-        if type(path) == bytes:
-            path = path.decode('utf-8').strip('\x00')
-    return path
 
 
 deprecated_feature_sets = [  # deprecated: recommended
@@ -111,8 +96,8 @@ def test_custom(config, level):
 
     # assertions
 
-    assert fex.config_name == basename_wo_ext(config)
-    assert fex.config_path == safe_path(config)
+    assert fex.config_name == audeer.basename_wo_ext(config)
+    assert fex.config_path == audeer.safe_path(config)
     assert fex.num_features == len(fex.feature_names)
     assert fex.feature_names == y_file.columns.to_list()
     pd.testing.assert_frame_equal(y_file, y_array)
