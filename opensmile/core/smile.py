@@ -50,20 +50,6 @@ class Smile(audinterface.Feature):
            ;;; default sink
            \{\cm[sink{?}:include external sink]}
 
-    .. note:: The following arguments are not serialized:
-
-        * ``keep_nat``
-        * ``loglevel``
-        * ``logfile``
-        * ``num_channels``
-        * ``num_workers``
-        * ``sampling_rate``
-        * ``resample``
-        * ``segment``
-        * ``verbose``
-
-        For more information see section on `hidden arguments`_.
-
     Args:
         feature_set: default feature set or path to a custom config file
         feature_level: default feature level or level name if a custom
@@ -72,14 +58,7 @@ class Smile(audinterface.Feature):
         loglevel: log level (0-5), the higher the number the more log
             messages are given
         logfile: if not ``None`` log messages will be stored to this file
-        sampling_rate: sampling rate in Hz.
-            If ``None`` it will call ``process_func`` with the actual
-            sampling rate of the signal.
         num_channels: the expected number of channels
-        resample: if ``True`` enforces given sampling rate by resampling
-        segment: when a :class:`audinterface.Segment` object is provided,
-            it will be used to find a segmentation of the input signal.
-            Afterwards processing is applied to each segment
         keep_nat: if the end of segment is set to ``NaT`` do not replace
             with file duration in the result
         num_workers: number of parallel jobs or 1 for sequential

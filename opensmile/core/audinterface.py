@@ -27,9 +27,6 @@ class Process:
         verbose: show debug messages
         kwargs: additional keyword arguments to the processing function
 
-    Raises:
-        ValueError: if ``resample = True``, but ``sampling_rate = None``
-
     """
     def __init__(
             self,
@@ -98,10 +95,7 @@ class Process:
             channel: channel number
 
         Returns:
-            Series with processed file in the Unified Format
-
-        Raises:
-            RuntimeError: if sampling rates of model and signal do not match
+            Series with processed file
 
         """
         return self._process_file(
@@ -125,10 +119,7 @@ class Process:
             ends: list with end positions
 
         Returns:
-            Series with processed files in the Unified Format
-
-        Raises:
-            RuntimeError: if sampling rates of model and signal do not match
+            Series with processed files
 
         """
         if starts is None:
@@ -169,10 +160,7 @@ class Process:
             filetype: file extension
 
         Returns:
-            Series with processed files in the Unified Format
-
-        Raises:
-            RuntimeError: if sampling rates of model and signal do not match
+            Series with processed files
 
         """
         files = audeer.list_file_names(root, filetype=filetype)
@@ -247,10 +235,7 @@ class Process:
             end: end processing at this position
 
         Returns:
-            Series with processed signal in the Unified Format
-
-        Raises:
-            RuntimeError: if sampling rates of model and signal do not match
+            Series with processed signal
 
         """
         return self._process_signal(
@@ -305,11 +290,6 @@ class Feature:
         verbose: show debug messages
         kwargs: additional keyword arguments to the processing function
 
-    Raises:
-        ValueError: if ``unit == 'samples'``, ``sampling_rate is None``
-            and ``win_dur is not None``
-        ValueError: if ``hop_dur`` is specified, but not ``win_dur``
-
     """
     def __init__(
             self,
@@ -361,8 +341,6 @@ class Feature:
             end: end processing at this position
 
         Raises:
-            RuntimeError: if sampling rates of feature extracted
-                and signal do not match
             RuntimeError: if number of channels do not match
 
         """
@@ -388,8 +366,6 @@ class Feature:
             channel: channel number
 
         Raises:
-            RuntimeError: if sampling rates of feature extracted
-                and signal do not match
             RuntimeError: if number of channels do not match
 
         """
@@ -415,8 +391,6 @@ class Feature:
             channel: channel number
 
         Raises:
-            RuntimeError: if sampling rates of feature extracted
-                and signal do not match
             RuntimeError: if number of channels do not match
 
         """
@@ -447,14 +421,6 @@ class Feature:
             end: end processing at this position
 
         Raises:
-            RuntimeError: if sampling rates of feature extractor
-                and signal do not match
-            RuntimeError: if dimension of extracted features
-                is greater than three
-            RuntimeError: if feature extractor uses sliding window,
-                but ``self.win_dur`` is not specified
-            RuntimeError: ifnumber of features does not match
-                number of feature names
             RuntimeError: if number of channels do not match
 
         """

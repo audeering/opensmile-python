@@ -89,12 +89,6 @@ def list_file_names(
     Returns:
         list of path(s) to file(s)
 
-    Example:
-        >>> path = mkdir('path1')
-        >>> open(os.path.join(path, 'file1'), 'a').close()
-        >>> [os.path.basename(p) for p in list_file_names(path)]
-        ['file1']
-
     """
     path = safe_path(path)
     if os.path.isfile(path):
@@ -245,4 +239,3 @@ def safe_path(
         if type(path) == bytes:
             path = path.decode('utf-8').strip('\x00')
     return path
-
