@@ -139,10 +139,6 @@ smileapi.smile_initialize.argtypes = [c_void_p, c_char_p, c_int, c_void_p,
 smileapi.smile_initialize.restype = c_int
 smileapi.smile_run.argtypes = [c_void_p]
 smileapi.smile_run.restype = c_int
-# smileapi.smile_pause.argtypes = [c_void_p]
-# smileapi.smile_pause.restype = c_int
-# smileapi.smile_resume.argtypes = [c_void_p]
-# smileapi.smile_resume.restype = c_int
 smileapi.smile_abort.argtypes = [c_void_p]
 smileapi.smile_abort.restype = c_int
 smileapi.smile_reset.argtypes = [c_void_p]
@@ -440,18 +436,6 @@ class OpenSMILE(object):  # pragma: no cover
         Starts processing and blocks until finished.
         """
         self._check_smile_result(smileapi.smile_run(self._smileobj))
-
-    # def pause(self):
-    #    """
-    #    Pauses the current run.
-    #    """
-    #    self._check_smile_result(smileapi.smile_pause(self._smileobj))
-
-    # def resume(self):
-    #    """
-    #    Resumes the current run.
-    #    """
-    #    self._check_smile_result(smileapi.smile_resume(self._smileobj))
 
     def abort(self):
         """
