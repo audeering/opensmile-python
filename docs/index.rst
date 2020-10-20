@@ -1,7 +1,6 @@
-.. pyopensmile documentation master file
+.. documentation master file
 
 .. include:: ../README.rst
-    :end-line: 8
 
 .. toctree::
     :caption: Getting started
