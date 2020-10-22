@@ -79,8 +79,6 @@ class Smile(audinterface.Feature):
     0 days  0 days 00:00:01    0.0
     Name: audspec_lengthL1norm_sma_range, dtype: float32
 
-    .. _`hidden arguments`: http://tools.pp.audeering.com/audobject/usage.html#hidden-arguments
-
     """  # noqa: E501
     def __init__(
             self,
