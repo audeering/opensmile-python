@@ -105,7 +105,7 @@ we can create a log file.
 Custom config
 -------------
 
-We can create a custom config.
+We can also use custom config files.
 
 .. jupyter-execute::
 
@@ -202,6 +202,9 @@ And...
         sampling_rate
     )
 
+More information about config files
+can be found in the `openSMILE documentation`_.
+
 Multi-channel
 -------------
 
@@ -244,3 +247,4 @@ and distribute work across two processes.
     )
 
 .. _openSMILE: https://github.com/audeering/opensmile
+.. _openSMILE documentation: https://audeering.github.io/opensmile/
