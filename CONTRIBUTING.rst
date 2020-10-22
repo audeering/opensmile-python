@@ -80,8 +80,3 @@ New releases are made using the following steps:
 #. Commit those changes as "Release X.Y.Z"
 #. Create an (annotated) tag with ``git tag -a X.Y.Z``
 #. Push the commit and the tag to Github
-
-
-.. _twine: https://twine.readthedocs.io/
-.. _add release notes: https://github.com/audeering/opensmile-python/releases/
-.. _Read The Docs: https://readthedocs.org/projects/opensmile-python/builds/
