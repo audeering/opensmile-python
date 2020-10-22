@@ -1,6 +1,10 @@
 name: Test
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
@@ -30,4 +34,4 @@ jobs:
     - name: Test building documentation
       run: |
         python -m sphinx docs/ docs/_build/ -b html -W
-        python -m sphinx docs/ docs/_build/ -b linkcheck -W
+        # python -m sphinx docs/ docs/_build/ -b linkcheck -W
