@@ -19,4 +19,4 @@ that extracts `ComParE 2016`_  functionals from an audio file:
 
 
 .. _openSMILE: https://github.com/audeering/opensmile
-.. _`ComParE 2016`: http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf
+.. _ComParE 2016: http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf
