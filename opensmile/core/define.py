@@ -21,8 +21,6 @@ class FeatureSet(enum.Enum):
     * GeMAPS_
     * eGeMAPS_
 
-      .. note:: `GeMAPSplus` is for internal and commercial use only!
-
     .. _ComParE 2016:
         http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf
     .. _GeMAPS:
