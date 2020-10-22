@@ -43,7 +43,7 @@ intersphinx_mapping = {
 }
 
 # Do not copy prompot output
-copybutton_prompt_text = r'>>> |\.\.\. '
+copybutton_prompt_text = r'>>> |\.\.\. |\$ '
 copybutton_prompt_is_regexp = True
 
 # HTML --------------------------------------------------------------------
