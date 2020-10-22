@@ -1,5 +1,6 @@
-import os
 import glob
+import os
+import sys
 
 import pytest
 import pandas as pd
@@ -25,8 +26,18 @@ pytest.WAV_ARRAY, pytest.WAV_SR = audiofile.read(
 pytest.FRAME_LIST_STARTS = pd.to_timedelta(['1.0s', '3.0s', '4.0s'])
 pytest.FRAME_LIST_ENDS = pd.to_timedelta(['1.5s', '3.5s', '5.0s'])
 pytest.CONFIG_FILE = os.path.join(pytest.ROOT, 'test.conf')
+
+if sys.platform == "win32":
+    platform = 'win'  # pragma: no cover
+elif sys.platform == "darwin":
+    platform = 'oxs'  # pragma: no cover
+else:
+    platform = 'linux'  # pragma: no cover
+
 pytest.SMILEXTRACT = audeer.safe_path(
-    os.path.join(pytest.ROOT, '..', 'opensmile', 'core', 'bin', 'SMILExtract')
+    os.path.join(
+        pytest.ROOT, '..', 'opensmile', 'core', 'bin', platform, 'SMILExtract'
+    )
 )
 
 

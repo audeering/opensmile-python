@@ -4,15 +4,22 @@ from typing import Any, Callable, Dict, List, Optional
 import json
 import os
 import numpy as np
+import sys
 
 root = os.path.dirname(os.path.realpath(__file__))
 
-if os.name == 'nt':
-    smileapi_path = os.path.join(root, 'bin',
-                                 'SMILEapi.dll')  # pragma: no cover
+if sys.platform == "win32":
+    smileapi_path = os.path.join(
+        root, 'bin', 'win', 'SMILEapi.dll'
+    )  # pragma: no cover
+elif sys.platform == "darwin":
+    smileapi_path = os.path.join(
+        root, 'bin', 'osx', 'libSMILEapi.dylib'
+    )  # pragma: no cover
 else:
-    smileapi_path = os.path.join(root, 'bin',
-                                 'libSMILEapi.so')  # pragma: no cover
+    smileapi_path = os.path.join(
+        root, 'bin', 'linux', 'libSMILEapi.so',
+    )  # pragma: no cover
 smileapi = cdll.LoadLibrary(smileapi_path)
 
 # definitions from smileComponent.hpp
