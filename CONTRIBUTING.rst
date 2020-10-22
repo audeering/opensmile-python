@@ -77,17 +77,10 @@ Creating a New Release
 New releases are made using the following steps:
 
 #. Update ``CHANGELOG.rst``
-#. Commit those changes as "Release x.y.z"
-#. Create an (annotated) tag with ``git tag -a x.y.z``
-#. Clear the ``dist/`` directory
-#. Create a source distribution with ``python setup.py sdist``
-#. Create a wheel distribution with ``python setup.py bdist_wheel``
-#. Check that both files have the correct content
-#. Upload them to PyPI_ with twine_: ``python -m twine upload dist/*``
-#. Push the commit and the tag to Github and `add release notes`_
-   containing the bullet points from ``CHANGELOG.rst``
-#. Check that the new release was built correctly on `Read The Docs`_,
-   and select the new release as default version
+#. Commit those changes as "Release X.Y.Z"
+#. Create an (annotated) tag with ``git tag -a X.Y.Z``
+#. Push the commit and the tag to Github
+
 
 .. _twine: https://twine.readthedocs.io/
 .. _add release notes: https://github.com/audeering/opensmile-python/releases/
