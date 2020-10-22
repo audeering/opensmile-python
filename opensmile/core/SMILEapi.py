@@ -8,18 +8,18 @@ import sys
 
 root = os.path.dirname(os.path.realpath(__file__))
 
-if sys.platform == "win32":
+if sys.platform == "win32":  # pragma: no cover
     smileapi_path = os.path.join(
         root, 'bin', 'win', 'SMILEapi.dll'
-    )  # pragma: no cover
-elif sys.platform == "darwin":
+    )
+elif sys.platform == "darwin":  # pragma: no cover
     smileapi_path = os.path.join(
         root, 'bin', 'osx', 'libSMILEapi.dylib'
-    )  # pragma: no cover
-else:
+    )
+else:  # pragma: no cover
     smileapi_path = os.path.join(
         root, 'bin', 'linux', 'libSMILEapi.so',
-    )  # pragma: no cover
+    )
 smileapi = cdll.LoadLibrary(smileapi_path)
 
 # definitions from smileComponent.hpp
