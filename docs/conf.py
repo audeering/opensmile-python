@@ -1,11 +1,17 @@
+import configparser
+from datetime import date
+import os
 from subprocess import check_output
 
 
+config = configparser.ConfigParser()
+config.read(os.path.join('..', 'setup.cfg'))
+
 # Project -----------------------------------------------------------------
 
-project = 'opensmile'
-copyright = '2020 audEERING GmbH'
-author = 'Johannes Wagner, Christoph Hausner'
+author = config['metadata']['author']
+copyright = f'2020-{date.today().year} audEERING GmbH'
+project = config['metadata']['name']
 # The x.y.z version read from tags
 try:
     version = check_output(['git', 'describe', '--tags', '--always'])
