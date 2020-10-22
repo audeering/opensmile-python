@@ -1,13 +1,10 @@
-
   openSMILE 
    - open-source Speech and Music Interpretation by Large-space Extraction -
 
-  Main authors: Florian Eyben, Felix Weninger, Martin Woellmer, Bjoern Schuller
-
   Copyright (c) audEERING GmbH, Gilching, Germany. All rights reserved. 
-  http://www.audeeering.com/
+  http://www.audeering.com/
 
-  Copyright (c) 2016,      audEERING GmbH
+  Copyright (c) 2016-2020, audEERING GmbH
   Copyright (c) 2013-2015, audEERING UG (haftungsbeschraenkt)
   Copyright (c) 2008-2013, Institute for Human-Machine Communication, 
                            Technische Universitaet Muenchen, Germany
@@ -18,7 +15,7 @@ Licensing terms & your rights
 ********************************************************************** 
  If you use openSMILE or any code from openSMILE in your research work,
  you are kindly asked to acknowledge the use of openSMILE in your 
- publications. See the file CITING.txt for details.
+ publications. See the file CITING for details.
 **********************************************************************
 
 This audEERING Research License Agreement (license, license agreement, 
@@ -81,7 +78,7 @@ C. If the software includes source code or data, you may create
    (i) that you have altered the software; 
    and (ii) the date of any changes as well as your name.
 
-In return for the above rights, you agree to:
+In return for the above rights, you agree:
 1. That you will not remove any copyright or other notices (authors 
    and citing information, for example) from the software.
 2. That if any of the software is in binary format, you will not attempt 
@@ -144,104 +141,17 @@ In return for the above rights, you agree to:
 Commerical license options
 ==========================
  
-For commercial and other licensing options, 
-please contact us at audEERING via e-mail: 
+For commercial and other licensing options, please contact us at audEERING 
+via e-mail: 
+
    info@audeering.com 
 
 
 Third-party contributions and dependencies
 ==========================================
 
-openSMILE contains third-party contributions from the Speex codec package 
-(in the cLsp component) which are distributed unter the following terms:
------------------------------------------------------------------------
-Copyright 2002-2008     Xiph.org Foundation
-Copyright 2002-2008     Jean-Marc Valin
-Copyright 2005-2007     Analog Devices Inc.
-Copyright 2005-2008     Commonwealth Scientific and Industrial Research
-                        Organisation (CSIRO)
-Copyright 1993, 2002, 2006 David Rowe
-Copyright 2003          EpicGames
-Copyright 1992-1994     Jutta Degener, Carsten Bormann
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions
-are met:
-
-- Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-
-- Redistributions in binary form must reproduce the above copyright
-notice, this list of conditions and the following disclaimer in the
-documentation and/or other materials provided with the distribution.
-
-- Neither the name of the Xiph.org Foundation nor the names of its
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
-CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
------------------------------------------------------------------------
-
-openSMILE uses rapidjson to read RNN files in json format.
-Rapidjson can be obtained from: https://code.google.com/p/rapidjson/
-It is distributed under the MIT license and included with openSMILE
-in src/include/rapidjson
-It is distributed under these terms:
------------------------------------------
-Copyright (C) 2011 Milo Yip
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
------------------------------------------
-
-
-openSMILE uses LibSVM (by Chih-Chung Chang and Chih-Jen Lin) for 
-classification tasks. It is distributed with openSMILE and is
- included in the src/classifiers/libsvm/ directory.
-See the COPYRIGHT file in that directory for details on license terms
- of LivSVM.
-
-PortAudio is required for live recording from sound card and for 
-the SEMAINE components.
-You can get the latest version from: http://www.portaudio.com
-However, we cannot guarantee compatibility with the latest versions.
-
-Optionally, openSMILE can be linked against the SEMAINE API 
-and the Julius LVCSR engine, enabling an interface to the 
-SEMAINE system and a keyword spotter component. 
-See http://www.semaine-project.eu/ for details on running the 
-SEMAINE system.
-Only the older versions of openSMILE (1.0.1) are officially 
-supported to be built with the SEMAINE system.
-For recent developments, check out the status of the ARIA VALUSPA
-EU-project: http://aria-agent.eu/
------------------------------------------
+openSMILE uses a number of third-party components for which you can 
+find the licensing terms in the folder "licenses".
 
 As part of the build process, a number of third-party CMake modules
-are used. Please see the license notices in the files in the 
-cmake directory.
-
+are used. Please see the license notices in the folder "cmake".
