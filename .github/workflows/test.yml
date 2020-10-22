@@ -22,7 +22,9 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Setup Ubuntu
-      run: sudo apt-get -y install libsndfile1 sox
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install libsndfile1 sox
       if: matrix.os == 'ubuntu-latest'
     - name: Install dependencies
       run: |
@@ -37,3 +39,4 @@ jobs:
       run: |
         python -m sphinx docs/ docs/_build/ -b html -W
         # python -m sphinx docs/ docs/_build/ -b linkcheck -W
+      if: matrix.os == 'ubuntu-latest'
