@@ -23,12 +23,13 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        if [ matrix.os == 'ubuntu-latest' ]; then
+        if [ "$RUNNER_OS" == "Linux" ]; then
           sudo apt-get update
           sudo apt-get -y install libsndfile1 sox
         else
-          echo "$RUNNER_OS not supported"
+          echo "matrix.os not supported"
           exit 1
+        fi
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r docs/requirements.txt
