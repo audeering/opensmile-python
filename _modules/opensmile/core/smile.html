@@ -1,0 +1,595 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>opensmile.core.smile &mdash; opensmile Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/audeering.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    
+      
+    
+  
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          <a href="../../../index.html">
+          
+            <img src="../../../_static/images/audeering.png" class="logo" alt="audEERING"/>
+          
+          
+            <span> opensmile</span>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v1.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api-smile.html">opensmile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">opensmile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>opensmile.core.smile</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for opensmile.core.smile</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">errno</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">audeer</span>
+
+<span class="kn">import</span> <span class="nn">opensmile.core.audinterface</span> <span class="k">as</span> <span class="nn">audinterface</span>
+
+<span class="kn">from</span> <span class="nn">opensmile.core.SMILEapi</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">OpenSMILE</span><span class="p">,</span>
+    <span class="n">FrameMetaData</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">opensmile.core.config</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">opensmile.core.define</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">FeatureLevel</span><span class="p">,</span>
+    <span class="n">FeatureSet</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="Smile"><a class="viewcode-back" href="../../../api-smile.html#opensmile.Smile">[docs]</a><span class="k">class</span> <span class="nc">Smile</span><span class="p">(</span><span class="n">audinterface</span><span class="o">.</span><span class="n">Feature</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;OpenSMILE feature extractor.</span>
+
+<span class="sd">    1. You can choose a pre-defined feature set by passing one of</span>
+<span class="sd">       :class:`opensmile.FeatureSet`</span>
+
+<span class="sd">    2. You can also provide a custom config file using the following</span>
+<span class="sd">       template:</span>
+
+<span class="sd">       .. code-block::</span>
+
+<span class="sd">           [componentInstances:cComponentManager]</span>
+<span class="sd">           instance[dataMemory].type=cDataMemory</span>
+
+<span class="sd">           ;;; default source</span>
+<span class="sd">           \{\cm[source{?}:source include config]}</span>
+
+<span class="sd">           ;;; add components reading from reader.dmLevel=wave</span>
+
+<span class="sd">           ;;; combine features</span>
+<span class="sd">           [componentInstances:cComponentManager]</span>
+<span class="sd">           instance[funcconcat].type=cVectorConcat</span>
+<span class="sd">           [funcconcat:cVectorConcat]</span>
+<span class="sd">           reader.dmLevel = &lt;feat-1&gt;;&lt;feat-2&gt;;...</span>
+<span class="sd">           writer.dmLevel = features</span>
+<span class="sd">           includeSingleElementFields = 1</span>
+
+<span class="sd">           ;;; default sink</span>
+<span class="sd">           \{\cm[sink{?}:include external sink]}</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        feature_set: default feature set or path to a custom config file</span>
+<span class="sd">        feature_level: default feature level or level name if a custom</span>
+<span class="sd">            config file is used</span>
+<span class="sd">        options: dictionary with optional script parameters</span>
+<span class="sd">        loglevel: log level (0-5), the higher the number the more log</span>
+<span class="sd">            messages are given</span>
+<span class="sd">        logfile: if not ``None`` log messages will be stored to this file</span>
+<span class="sd">        num_channels: the expected number of channels</span>
+<span class="sd">        keep_nat: if the end of segment is set to ``NaT`` do not replace</span>
+<span class="sd">            with file duration in the result</span>
+<span class="sd">        num_workers: number of parallel jobs or 1 for sequential</span>
+<span class="sd">            processing</span>
+<span class="sd">        verbose: show debug messages</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; sampling_rate = 16000</span>
+<span class="sd">    &gt;&gt;&gt; signal = np.zeros(sampling_rate)</span>
+<span class="sd">    &gt;&gt;&gt; smile = Smile(</span>
+<span class="sd">    ...     feature_set=FeatureSet.ComParE_2016,</span>
+<span class="sd">    ...     feature_level=FeatureLevel.Functionals,</span>
+<span class="sd">    ... )</span>
+<span class="sd">    &gt;&gt;&gt; smile.process_signal(signal, sampling_rate).audspec_lengthL1norm_sma_range</span>
+<span class="sd">    start   end</span>
+<span class="sd">    0 days  0 days 00:00:01    0.0</span>
+<span class="sd">    Name: audspec_lengthL1norm_sma_range, dtype: float32</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">feature_set</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span>
+                <span class="nb">str</span><span class="p">,</span> <span class="n">FeatureSet</span>
+            <span class="p">]</span> <span class="o">=</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">ComParE_2016</span><span class="p">,</span>
+            <span class="n">feature_level</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span>
+                <span class="nb">str</span><span class="p">,</span> <span class="n">FeatureLevel</span>
+            <span class="p">]</span> <span class="o">=</span> <span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
+            <span class="o">*</span><span class="p">,</span>
+            <span class="n">options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">loglevel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="n">logfile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">num_channels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="n">keep_nat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="n">num_workers</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_level</span> <span class="o">=</span> <span class="n">feature_level</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Standard feature level or sink level in custom config file.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span> <span class="o">=</span> <span class="n">feature_set</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Standard feature set or path to custom config file&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Dictionary with options&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">audeer</span><span class="o">.</span><span class="n">safe_path</span><span class="p">(</span><span class="n">logfile</span><span class="p">)</span> <span class="k">if</span> <span class="n">logfile</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Log file&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loglevel</span> <span class="o">=</span> <span class="n">loglevel</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Log level&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_feature_names</span><span class="p">(),</span>
+            <span class="n">process_func</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_extract</span><span class="p">,</span>
+            <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span>
+            <span class="n">num_channels</span><span class="o">=</span><span class="n">num_channels</span><span class="p">,</span>
+            <span class="n">keep_nat</span><span class="o">=</span><span class="n">keep_nat</span><span class="p">,</span>
+            <span class="n">multiprocessing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_starts</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ends</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_deprecated</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">default_config_root</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return root directory with standard config files.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">CONFIG_ROOT</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">config_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return name of config file (without file extension).&quot;&quot;&quot;</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_path</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">config_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return file path of config file.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span><span class="p">)</span> <span class="ow">is</span> <span class="n">FeatureSet</span><span class="p">:</span>
+            <span class="n">config_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">default_config_root</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="n">config</span><span class="o">.</span><span class="n">CONFIG_EXT</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">config_path</span> <span class="o">=</span> <span class="n">audeer</span><span class="o">.</span><span class="n">safe_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
+                <span class="n">errno</span><span class="o">.</span><span class="n">ENOENT</span><span class="p">,</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="o">.</span><span class="n">ENOENT</span><span class="p">),</span>
+                <span class="n">config_path</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">config_path</span>
+
+    <span class="k">def</span> <span class="nf">_check_deprecated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Check if feature set is deprecated&quot;&quot;&quot;</span>
+        <span class="n">deprecated_feature_sets</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># deprecated: recommended</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPS</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01b</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01a</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01b</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPS</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01a</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span><span class="p">)</span> <span class="ow">is</span> <span class="n">FeatureSet</span> <span class="ow">and</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span> <span class="ow">in</span> <span class="n">deprecated_feature_sets</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Feature set &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span><span class="si">}</span><span class="s2">&#39; is &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;deprecated, consider switching to &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">deprecated_feature_sets</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">,</span>
+                <span class="ne">UserWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_extract</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">signal</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+            <span class="n">sampling_rate</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">TimedeltaIndex</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">TimedeltaIndex</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Run feature extraction.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_channels</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Input signal has </span><span class="si">{</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> channels, &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;but &#39;num_channels&#39; to set to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_channels</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">signal</span> <span class="o">*=</span> <span class="mi">32768</span>
+        <span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+
+        <span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">starts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">ends</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">signal</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_starts</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ends</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">()</span>
+            <span class="n">options</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">default_config_root</span><span class="p">,</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">EXTERNAL_INPUT_CONFIG</span>
+            <span class="p">)</span>
+            <span class="n">options</span><span class="p">[</span><span class="s1">&#39;sampleRate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling_rate</span>
+            <span class="n">options</span><span class="p">[</span><span class="s1">&#39;nBits&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+
+            <span class="n">smile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_smile</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+            <span class="n">smile</span><span class="o">.</span><span class="n">external_audio_source_write_data</span><span class="p">(</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">EXTERNAL_SOURCE_COMPONENT</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">smile</span><span class="o">.</span><span class="n">external_audio_source_set_eoi</span><span class="p">(</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">EXTERNAL_SOURCE_COMPONENT</span>
+            <span class="p">)</span>
+            <span class="n">smile</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+            <span class="n">smile</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="ne">UserWarning</span><span class="p">(</span><span class="s2">&quot;Segment too short, filling with NaN.&quot;</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_starts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="n">sampling_rate</span><span class="p">)</span>
+
+            <span class="n">starts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_starts</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+            <span class="n">ends</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ends</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">starts</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+                <span class="n">starts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">starts</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
+                <span class="n">ends</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">ends</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">starts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">TimedeltaIndex</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">starts</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)])</span>
+                <span class="n">ends</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">TimedeltaIndex</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">ends</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)])</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">)</span>
+            <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">starts</span><span class="p">,</span> <span class="n">ends</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_feature_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Read feature names from config file.&quot;&quot;&quot;</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">()</span>
+        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">default_config_root</span><span class="p">,</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">EXTERNAL_INPUT_CONFIG</span>
+        <span class="p">)</span>
+        <span class="n">smile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_smile</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">num_elements</span> <span class="o">=</span> <span class="n">smile</span><span class="o">.</span><span class="n">external_sink_get_num_elements</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">EXTERNAL_OUTPUT_COMPONENT</span>
+        <span class="p">)</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">smile</span><span class="o">.</span><span class="n">external_sink_get_element_name</span><span class="p">(</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">EXTERNAL_OUTPUT_COMPONENT</span><span class="p">,</span>
+                <span class="n">idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_elements</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="n">smile</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">names</span>
+
+    <span class="k">def</span> <span class="nf">_options</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Fill options dictionary.&quot;&quot;&quot;</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;sink&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">default_config_root</span><span class="p">,</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">EXTERNAL_OUTPUT_SINGLE_CONFIG</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_level</span><span class="p">)</span> <span class="ow">is</span> <span class="n">FeatureLevel</span><span class="p">:</span>
+            <span class="n">options</span><span class="p">[</span><span class="s1">&#39;sinkLevel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_level</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">options</span><span class="p">[</span><span class="s1">&#39;sinkLevel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_level</span>
+        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;bufferModeRbConf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">default_config_root</span><span class="p">,</span>
+            <span class="s1">&#39;shared/BufferModeRb.conf.inc&#39;</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;frameModeFunctionalsConf&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+            <span class="n">options</span><span class="p">[</span><span class="s1">&#39;frameModeFunctionalsConf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">default_config_root</span><span class="p">,</span>
+                <span class="s1">&#39;shared/FrameModeFunctionals.conf.inc&#39;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">options</span>
+
+    <span class="k">def</span> <span class="nf">_series_to_frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">series</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Usually, we need to figure out start and end times from</span>
+<span class="sd">        ``win_dur`` and ``hop_dur``. But since openSMILE provides segment</span>
+<span class="sd">        times, we can skip this step and use them directly.&quot;&quot;&quot;</span>
+
+        <span class="n">frames</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">levels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">((</span><span class="n">file</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">),</span> <span class="n">values</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+                <span class="n">num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span><span class="p">]</span> <span class="o">*</span> <span class="n">num</span>
+                <span class="n">starts</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">start</span>
+                <span class="n">ends</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">start</span>
+                <span class="c1"># override first and last timestamp</span>
+                <span class="n">starts</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">start</span>
+                <span class="n">ends</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">end</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">files</span><span class="p">,</span>
+                        <span class="n">starts</span><span class="p">,</span>
+                        <span class="n">ends</span><span class="p">,</span>
+                    <span class="p">],</span>
+                    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">],</span>
+                <span class="p">)</span>
+                <span class="n">frames</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+                    <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span>
+                    <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span>
+                    <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">column_names</span><span class="p">,</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">((</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">),</span> <span class="n">values</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+                <span class="n">starts</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">start</span>
+                <span class="n">ends</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">start</span>
+                <span class="c1"># override first and last timestamp</span>
+                <span class="n">starts</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">start</span>
+                <span class="n">ends</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">end</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">starts</span><span class="p">,</span>
+                        <span class="n">ends</span><span class="p">,</span>
+                    <span class="p">],</span>
+                    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">],</span>
+                <span class="p">)</span>
+                <span class="n">frames</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+                    <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span>
+                    <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span>
+                    <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">column_names</span><span class="p">,</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_smile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OpenSMILE</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Set up smile instance.&quot;&quot;&quot;</span>
+        <span class="n">smile</span> <span class="o">=</span> <span class="n">OpenSMILE</span><span class="p">()</span>
+        <span class="n">smile</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span>
+            <span class="n">config_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config_path</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">loglevel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">loglevel</span><span class="p">,</span>
+            <span class="n">log_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span>
+            <span class="n">debug</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="n">smile</span><span class="o">.</span><span class="n">external_sink_set_callback_ex</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">EXTERNAL_OUTPUT_COMPONENT</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sink_callback</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">smile</span>
+
+    <span class="k">def</span> <span class="nf">_sink_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">meta</span><span class="p">:</span> <span class="n">FrameMetaData</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Callback where features are collected.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_starts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">time</span> <span class="o">+</span> <span class="n">meta</span><span class="o">.</span><span class="n">lengthSec</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div>
+    <p>
+        
+        
+        
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2020/10/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+        
+    </p>
+  </div>
+
+  <div role="contentinfo">
+    <p>
+        
+      &copy; 2020-2020 audEERING GmbH
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/thebelab-helper.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

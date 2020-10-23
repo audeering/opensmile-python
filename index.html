@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>openSMILE Python &mdash; opensmile Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/audeering.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+    
+      
+    
+  
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          <a href="#">
+          
+            <img src="_static/images/audeering.png" class="logo" alt="audEERING"/>
+          
+          
+            <span> opensmile</span>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v1.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api-smile.html">opensmile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">opensmile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>openSMILE Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/audeering/opensmile-python/blob/v1.0.1/docs/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="opensmile-python">
+<h1>openSMILE Python<a class="headerlink" href="#opensmile-python" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/audeering/opensmile-python/actions?query=workflow%3ATest"><img alt="Test status" src="https://github.com/audeering/opensmile-python/workflows/Test/badge.svg" /></a> <a class="reference external" href="https://codecov.io/gh/audeering/opensmile-python"><img alt="code coverage" src="https://codecov.io/gh/audeering/opensmile-python/branch/master/graph/badge.svg?token=PUA9P2UJW1" /></a> <a class="reference external" href="https://audeering.github.io/opensmile-python/"><img alt="opensmile's documentation" src="https://img.shields.io/pypi/v/opensmile?label=docs" /></a> <a class="reference external" href="https://pypi.org/project/opensmile/"><img alt="opensmile's supported Python versions" src="https://img.shields.io/pypi/pyversions/opensmile.svg" /></a> <a class="reference external" href="https://github.com/audeering/opensmile-python/blob/master/LICENSE"><img alt="opensmile's audEERING license" src="https://img.shields.io/badge/license-audEERING-red.svg" /></a></p>
+<p>Python interface for extracting <a class="reference external" href="https://github.com/audeering/opensmile">openSMILE</a> features.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install opensmile
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only 64-bit Python is supported.</p>
+</div>
+<div class="section" id="feature-sets">
+<h2>Feature sets<a class="headerlink" href="#feature-sets" title="Permalink to this headline">¶</a></h2>
+<p>Currently, three standard sets are supported.
+<a class="reference external" href="http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf">ComParE 2016</a> is the largest with more than 6k features.
+The smaller sets <a class="reference external" href="https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf">GeMAPS</a> and  <a class="reference external" href="https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf">eGeMAPS</a>
+come in two variants <code class="docutils literal notranslate"><span class="pre">v01a</span></code> and <code class="docutils literal notranslate"><span class="pre">v01b</span></code>.
+We suggest to use the newer version
+unless backward compatibility with
+the original papers is desired.</p>
+<p>Each feature set can be extracted on three levels:</p>
+<ul class="simple">
+<li><p>Low-level descriptors (LDD)</p></li>
+<li><p>LLDs with deltas</p></li>
+<li><p>Functionals</p></li>
+</ul>
+<p>The following table lists the number of features
+for each set and level.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>#features</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ComParE_2016</p></td>
+<td><p>65 / 65 / 6373</p></td>
+</tr>
+<tr class="row-odd"><td><p>GeMAPSv01a</p></td>
+<td><p>5 / 13 / 62</p></td>
+</tr>
+<tr class="row-even"><td><p>GeMAPSv01b</p></td>
+<td><p>62 / 13 / 62</p></td>
+</tr>
+<tr class="row-odd"><td><p>eGeMAPSv01a</p></td>
+<td><p>10 / 13 / 88</p></td>
+</tr>
+<tr class="row-even"><td><p>eGeMAPSv01b</p></td>
+<td><p>10 / 13 / 88</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="code-example">
+<h2>Code example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
+<p>Code example,
+that extracts <a class="reference external" href="http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf">ComParE 2016</a>  functionals from an audio file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">opensmile</span>
+
+<span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
+    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">ComParE_2016</span><span class="p">,</span>
+    <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">smile</span><span class="o">.</span><span class="n">process_file</span><span class="p">(</span><span class="s1">&#39;audio.wav&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>openSMILE follows a dual-licensing model. Since the main goal of the project
+is a widespread use of the software to facilitate research in the field of
+machine learning from audio-visual signals, the source code and binaries are
+freely available for private, research, and educational use under an open-source license
+(see LICENSE).
+It is not allowed to use the open-source version of openSMILE for any sort of commercial product.
+Fundamental research in companies, for example, is permitted, but if a product is the result of
+the research, we require you to buy a commercial development license.
+Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;audeering&#46;com">info<span>&#64;</span>audeering<span>&#46;</span>com</a> (or visit us at <a class="reference external" href="https://www.audeering.com">https://www.audeering.com</a>) for more information.</p>
+<p>Original authors: Florian Eyben, Felix Weninger, Martin Wöllmer, Björn Schuller</p>
+<p>Copyright © 2008-2013, Institute for Human-Machine Communication, Technische Universität München, Germany</p>
+<p>Copyright © 2013-2015, audEERING UG (haftungsbeschränkt)</p>
+<p>Copyright © 2016-2020, audEERING GmbH</p>
+</div>
+<div class="section" id="citing">
+<h2>Citing<a class="headerlink" href="#citing" title="Permalink to this headline">¶</a></h2>
+<p>Please cite openSMILE in your publications by citing the following paper:</p>
+<blockquote>
+<div><p>Florian Eyben, Martin Wöllmer, Björn Schuller: “openSMILE - The Munich Versatile and Fast Open-Source Audio Feature Extractor”, Proc. ACM Multimedia (MM), ACM, Florence, Italy, ISBN 978-1-60558-933-6, pp. 1459-1462, 25.-29.10.2010.</p>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div>
+    <p>
+        
+        
+        
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2020/10/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+        
+    </p>
+  </div>
+
+  <div role="contentinfo">
+    <p>
+        
+      &copy; 2020-2020 audEERING GmbH
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/thebelab-helper.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

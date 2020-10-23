@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>opensmile &mdash; opensmile Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/audeering.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Index" href="genindex.html" />
+    <link rel="prev" title="Changelog" href="changelog.html" />
+    
+      
+    
+  
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          <a href="index.html">
+          
+            <img src="_static/images/audeering.png" class="logo" alt="audEERING"/>
+          
+          
+            <span> opensmile</span>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v1.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">opensmile</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#config">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smile">Smile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">opensmile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>opensmile</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/audeering/opensmile-python/blob/v1.0.1/docs/api-smile.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="opensmile">
+<h1>opensmile<a class="headerlink" href="#opensmile" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="config">
+<h2>config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="opensmile.config">
+<em class="property">class </em><code class="sig-prename descclassname">opensmile.</code><code class="sig-name descname">config</code><a class="reference internal" href="_modules/opensmile/core/config.html#config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opensmile.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get/set defaults for the <code class="xref py py-mod docutils literal notranslate"><span class="pre">opensmile</span></code> module.</p>
+<dl class="py attribute">
+<dt id="opensmile.config.CONFIG_EXT">
+<code class="sig-name descname">CONFIG_EXT</code><em class="property"> = '.conf'</em><a class="headerlink" href="#opensmile.config.CONFIG_EXT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extension of config files.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.config.CONFIG_ROOT">
+<code class="sig-name descname">CONFIG_ROOT</code><em class="property"> = 'config'</em><a class="headerlink" href="#opensmile.config.CONFIG_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Root directory of config files.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.config.EXTERNAL_INPUT_CONFIG">
+<code class="sig-name descname">EXTERNAL_INPUT_CONFIG</code><em class="property"> = 'shared/standard_external_wave_input.conf.inc'</em><a class="headerlink" href="#opensmile.config.EXTERNAL_INPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for external wave input.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.config.EXTERNAL_OUTPUT_COMPONENT">
+<code class="sig-name descname">EXTERNAL_OUTPUT_COMPONENT</code><em class="property"> = 'extsink'</em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_COMPONENT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard component name for external data output.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.config.EXTERNAL_OUTPUT_MULTI_CONFIG">
+<code class="sig-name descname">EXTERNAL_OUTPUT_MULTI_CONFIG</code><em class="property"> = 'shared/standard_external_data_output_multi.conf.inc'</em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_MULTI_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for external data output from multiple levels.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.config.EXTERNAL_OUTPUT_SINGLE_CONFIG">
+<code class="sig-name descname">EXTERNAL_OUTPUT_SINGLE_CONFIG</code><em class="property"> = 'shared/standard_external_data_output_single.conf.inc'</em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_SINGLE_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for external data output from a single level.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.config.EXTERNAL_SOURCE_COMPONENT">
+<code class="sig-name descname">EXTERNAL_SOURCE_COMPONENT</code><em class="property"> = 'extsource'</em><a class="headerlink" href="#opensmile.config.EXTERNAL_SOURCE_COMPONENT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard component name for external input.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.config.FILE_INPUT_CONFIG">
+<code class="sig-name descname">FILE_INPUT_CONFIG</code><em class="property"> = 'shared/standard_wave_input.conf.inc'</em><a class="headerlink" href="#opensmile.config.FILE_INPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for wave input from file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.config.FILE_OUTPUT_CONFIG">
+<code class="sig-name descname">FILE_OUTPUT_CONFIG</code><em class="property"> = 'shared/standard_data_output.conf.inc'</em><a class="headerlink" href="#opensmile.config.FILE_OUTPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for external data output.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="smile">
+<h2>Smile<a class="headerlink" href="#smile" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="opensmile.Smile">
+<em class="property">class </em><code class="sig-prename descclassname">opensmile.</code><code class="sig-name descname">Smile</code><span class="sig-paren">(</span><em class="sig-param">feature_set=&lt;FeatureSet.ComParE_2016: 'compare/ComParE_2016'&gt;</em>, <em class="sig-param">feature_level=&lt;FeatureLevel.Functionals: 'func'&gt;</em>, <em class="sig-param">*</em>, <em class="sig-param">options=None</em>, <em class="sig-param">loglevel=2</em>, <em class="sig-param">logfile=None</em>, <em class="sig-param">num_channels=1</em>, <em class="sig-param">keep_nat=False</em>, <em class="sig-param">num_workers=1</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opensmile/core/smile.html#Smile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opensmile.Smile" title="Permalink to this definition">¶</a></dt>
+<dd><p>OpenSMILE feature extractor.</p>
+<ol class="arabic">
+<li><p>You can choose a pre-defined feature set by passing one of
+<code class="xref py py-class docutils literal notranslate"><span class="pre">opensmile.FeatureSet</span></code></p></li>
+<li><p>You can also provide a custom config file using the following
+template:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[componentInstances:cComponentManager]
+instance[dataMemory].type=cDataMemory
+
+;;; default source
+\{\cm[source{?}:source include config]}
+
+;;; add components reading from reader.dmLevel=wave
+
+;;; combine features
+[componentInstances:cComponentManager]
+instance[funcconcat].type=cVectorConcat
+[funcconcat:cVectorConcat]
+reader.dmLevel = &lt;feat-1&gt;;&lt;feat-2&gt;;...
+writer.dmLevel = features
+includeSingleElementFields = 1
+
+;;; default sink
+\{\cm[sink{?}:include external sink]}
+</pre></div>
+</div>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature_set</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureSet</span></code>]) – default feature set or path to a custom config file</p></li>
+<li><p><strong>feature_level</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureLevel</span></code>]) – default feature level or level name if a custom
+config file is used</p></li>
+<li><p><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>]) – dictionary with optional script parameters</p></li>
+<li><p><strong>loglevel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – log level (0-5), the higher the number the more log
+messages are given</p></li>
+<li><p><strong>logfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code> log messages will be stored to this file</p></li>
+<li><p><strong>num_channels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – the expected number of channels</p></li>
+<li><p><strong>keep_nat</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – if the end of segment is set to <code class="docutils literal notranslate"><span class="pre">NaT</span></code> do not replace
+with file duration in the result</p></li>
+<li><p><strong>num_workers</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – number of parallel jobs or 1 for sequential
+processing</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – show debug messages</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="mi">16000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sampling_rate</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">smile</span> <span class="o">=</span> <span class="n">Smile</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">feature_set</span><span class="o">=</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">ComParE_2016</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">feature_level</span><span class="o">=</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">smile</span><span class="o">.</span><span class="n">process_signal</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span><span class="o">.</span><span class="n">audspec_lengthL1norm_sma_range</span>
+<span class="go">start   end</span>
+<span class="go">0 days  0 days 00:00:01    0.0</span>
+<span class="go">Name: audspec_lengthL1norm_sma_range, dtype: float32</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="opensmile.Smile.__call__">
+<code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call self as a function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="opensmile.Smile.config_name">
+<em class="property">property </em><code class="sig-name descname">config_name</code><a class="headerlink" href="#opensmile.Smile.config_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return name of config file (without file extension).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="opensmile.Smile.config_path">
+<em class="property">property </em><code class="sig-name descname">config_path</code><a class="headerlink" href="#opensmile.Smile.config_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return file path of config file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="opensmile.Smile.default_config_root">
+<em class="property">property </em><code class="sig-name descname">default_config_root</code><a class="headerlink" href="#opensmile.Smile.default_config_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return root directory with standard config files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.Smile.feature_level">
+<code class="sig-name descname">feature_level</code><a class="headerlink" href="#opensmile.Smile.feature_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard feature level or sink level in custom config file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.Smile.feature_set">
+<code class="sig-name descname">feature_set</code><a class="headerlink" href="#opensmile.Smile.feature_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard feature set or path to custom config file</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.Smile.logfile">
+<code class="sig-name descname">logfile</code><a class="headerlink" href="#opensmile.Smile.logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log file</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.Smile.loglevel">
+<code class="sig-name descname">loglevel</code><a class="headerlink" href="#opensmile.Smile.loglevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log level</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.Smile.options">
+<code class="sig-name descname">options</code><a class="headerlink" href="#opensmile.Smile.options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary with options</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="opensmile.Smile.process_file">
+<code class="sig-name descname">process_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">channel</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract features from an audio file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – file path</p></li>
+<li><p><strong>channel</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – channel number</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]) – start processing at this position</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]) – end processing at this position</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if number of channels do not match</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="opensmile.Smile.process_files">
+<code class="sig-name descname">process_files</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">files</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">starts</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ends</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">channel</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract features for a list of files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>files</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – list of file paths</p></li>
+<li><p><strong>starts</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]]) – list with start positions</p></li>
+<li><p><strong>ends</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]]) – list with end positions</p></li>
+<li><p><strong>channel</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – channel number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if number of channels do not match</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="opensmile.Smile.process_folder">
+<code class="sig-name descname">process_folder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">filetype</span><span class="o">=</span><span class="default_value">'wav'</span></em>, <em class="sig-param"><span class="n">channel</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract features from files in a folder.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At the moment does not scan in sub-folders!</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – root folder</p></li>
+<li><p><strong>filetype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – file extension</p></li>
+<li><p><strong>channel</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – channel number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if number of channels do not match</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="opensmile.Smile.process_signal">
+<code class="sig-name descname">process_signal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span></em>, <em class="sig-param"><span class="n">sampling_rate</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">file</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract features for an audio signal.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a <code class="docutils literal notranslate"><span class="pre">file</span></code> is given, the index of the returned frame
+has levels <code class="docutils literal notranslate"><span class="pre">file</span></code>, <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code>. Otherwise,
+it consists only of <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>) – signal values</p></li>
+<li><p><strong>sampling_rate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – sampling rate in Hz</p></li>
+<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – file path</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]) – start processing at this position</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]) – end processing at this position</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if number of channels do not match</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="genindex.html" class="btn btn-neutral float-right" title="Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="changelog.html" class="btn btn-neutral float-left" title="Changelog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div>
+    <p>
+        
+        
+        
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2020/10/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+        
+    </p>
+  </div>
+
+  <div role="contentinfo">
+    <p>
+        
+      &copy; 2020-2020 audEERING GmbH
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/thebelab-helper.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

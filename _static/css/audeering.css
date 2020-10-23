@@ -1,0 +1,217 @@
+/* audEERING colors */
+
+a {
+    color: #e03c46;
+}
+a:visited {
+    color: #e03c46;
+}
+a:hover {
+    color: #f0989b;
+}
+.wy-menu-vertical a {
+    color: #d9d9d9;
+}
+.wy-side-nav-search>a, .wy-side-nav-search .wy-dropdown>a {
+    color: #ffffff;
+}
+.wy-side-nav-search {
+    background-color: #ab2328;
+}
+.wy-side-nav-search input[type=text] {
+    border-color: #ab2328;
+}
+.wy-nav-top {
+    background-color: #ab2328;
+}
+.wy-menu-vertical a:active {
+    background-color: #ab2328;
+}
+.wy-nav-side {
+    background-color: #3f4444;
+}
+.wy-menu-vertical p.caption {
+    color: rgb(155, 155, 155);
+}
+.rst-content dl:not(.docutils) dt {
+    /* color: #bc0008; */
+    color: #db3940;
+    border-left: solid 3px #db3940;
+    border-top: none;
+    background: #efeff0;
+}
+/* Color of notes */
+.rst-content .note .admonition-title {
+    background: #db3940;
+}
+.rst-content .note {
+    background: #efeff0;
+}
+/* Code blocks */
+.rst-content .highlight {
+    background: #efeff0;
+}
+.rst-content .highlight .gp {
+    color: #db3940;
+}
+/* Link to code and back */
+.rst-content .viewcode-link, .rst-content .viewcode-back {
+    color: #db3940;
+}
+content .viewcode-back {
+    color: #db3940;
+}
+/* Main text color */
+body {
+    color: #393939;
+}
+/* Download box for Jupyter notebooks */
+.notebook {
+    background: #efeff0;
+}
+.notebook a {
+    padding: 12px;
+    padding-bottom: 9px;
+    line-height: 24px;
+    margin-bottom: 24px;
+    display: block;
+    font-size: 1.125rem;
+    color: #393939;
+    font-weight: bold;
+    border-bottom: 3px solid transparent;
+}
+.notebook a::before {
+    content: "\2193 ";
+    color: #e03c46;
+}
+.notebook a:hover {
+    border-bottom: 3px solid #e03c46;
+}
+/*** Tables ***/
+/* Allow for line breaks in Tables.
+ * See: https://stackoverflow.com/a/40650120 */
+.wy-table-responsive table td {
+    white-space: normal;
+}
+/* Fix vertical placement in tables */
+.wy-table-responsive table td ol.arabic {
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+/* Fix border lines in table headers */
+.wy-table-responsive thead th {
+    border: solid 1px #e1e4e5;
+    border-bottom: solid 2px #e1e4e5;
+}
+/* Fix table headers margin */
+.wy-table-responsive thead th p {
+    margin-bottom: 0;
+}
+/* Fix table row headers margin */
+.wy-table-responsive tbody tr th p {
+    margin-bottom: 0;
+}
+/* Fix borders for row headers */
+.wy-table-responsive tbody tr th.stub {
+    border-right: solid 2px #e1e4e5;
+    border-bottom: solid 1px #e1e4e5;
+}
+.wy-table-responsive thead tr th.stub {
+    border-right: solid 2px #e1e4e5;
+}
+/*** Figure and table captions ***/
+.wy-table caption, .rst-content table.docutils caption,
+.rst-content table.field-list caption, .rst-content div.figure p.caption {
+    font-style: italic;
+    font-size: 100%;
+    font-weight: 100;
+    font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
+    color: #393939;
+}
+
+/* Adjust appearance of jupyter-sphinx code cells */
+/* !important prevents jupyter-sphinx from overwriting them */
+div.jupyter_container {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+.jupyter_container div.code_cell {
+    background: #efeff0 !important;
+    border: 1px solid #e1e4e5 !important;
+}
+.jupyter_container div.code_cell pre {
+    padding: 12px !important;
+}
+.jupyter_container div.cell_output {
+    padding: 0 !important;
+}
+.jupyter_container div.highlight-default {
+    padding: 0 !important;
+}
+.jupyter_container div.output pre {
+    padding: 12px !important;
+}
+.jupyter_container div.text_html {
+    padding: 12px !important;
+    padding-top: 6px !important;
+}
+.rst-content .jupyter_container div[class^='highlight'],
+.document .jupyter_container div[class^='highlight'] {
+    padding: 0 !important;
+}
+
+/* Disable copy-button in nbsphinx */
+.prompt a.copybtn {
+    display: none !important;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.text_html table {
+  border: none !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  color: black !important;
+  font-size: 12px !important;
+  table-layout: fixed !important;
+}
+div.text_html thead {
+  border-bottom: 1px solid black !important;
+  vertical-align: bottom !important;
+}
+div.text_html tr, 
+div.text_html th, 
+div.text_html td {
+  text-align: right !important;
+  vertical-align: middle !important;
+  padding: 0.5em 0.5em !important;
+  line-height: normal !important;
+  white-space: normal !important;
+  max-width: none !important;
+  border: none !important;
+}
+div.text_html th {
+  font-weight: bold !important;
+}
+div.text_html tbody tr:nth-child(odd) {
+  background: #f5f5f5 !important;
+}
+div.text_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2) !important;
+}
+
+/* Footer */
+footer ul {
+  overflow: hidden;
+  margin-bottom: 10px;
+  padding-top: 2px;
+}
+footer li {
+  margin-right: 20px;
+  font-weight: 700;
+  float: left;
+}
+footer p {
+  margin-bottom: 10px;
+}
