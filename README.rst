@@ -6,6 +6,12 @@ openSMILE Python
 
 Python interface for extracting openSMILE_ features.
 
+.. code-block::
+
+    $ pip install opensmile
+
+.. note:: Only 64-bit Python is supported.
+
 Feature sets
 ------------
 
@@ -52,15 +58,6 @@ that extracts `ComParE 2016`_  functionals from an audio file:
     )
     y = smile.process_file('audio.wav')
 
-Installation
-------------
-
-.. code-block::
-
-    $ pip install opensmile
-
-Please note that only 64-bit Python is supported.
-
 License
 -------
 
@@ -68,15 +65,18 @@ openSMILE follows a dual-licensing model. Since the main goal of the project
 is a widespread use of the software to facilitate research in the field of
 machine learning from audio-visual signals, the source code and binaries are
 freely available for private, research, and educational use under an open-source license
-(see [LICENSE](LICENSE)).
+(see LICENSE).
 It is not allowed to use the open-source version of openSMILE for any sort of commercial product.
 Fundamental research in companies, for example, is permitted, but if a product is the result of
 the research, we require you to buy a commercial development license.
 Contact us at info@audeering.com (or visit us at https://www.audeering.com) for more information.
 
 Original authors: Florian Eyben, Felix Weninger, Martin Wöllmer, Björn Schuller
+
 Copyright © 2008-2013, Institute for Human-Machine Communication, Technische Universität München, Germany
+
 Copyright © 2013-2015, audEERING UG (haftungsbeschränkt)
+
 Copyright © 2016-2020, audEERING GmbH
 
 Citing
