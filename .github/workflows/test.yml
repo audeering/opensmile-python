@@ -35,6 +35,12 @@ jobs:
     - name: Test with pytest
       run: |
         python -m pytest
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+      if: matrix.os == 'ubuntu-latest'
     - name: Test building documentation
       run: |
         python -m sphinx docs/ docs/_build/ -b html -W
