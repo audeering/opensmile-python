@@ -4,7 +4,9 @@ from setuptools import setup
 
 package_data = {
     'opensmile': [
-        'core/bin/*',
+        'core/bin/linux/*',
+        'core/bin/osx/*',
+        'core/bin/win/*',
         'core/config/shared/*',
         'core/config/compare/*',
         'core/config/gemaps/v01a/*',
