@@ -29,7 +29,11 @@ jobs:
       run: |
         python setup.py sdist bdist_wheel
         python -m twine upload dist/*
-    # Docuemntation
+    # Documentation
+    - name: Setup Ubuntu
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install libsndfile1 sox
     - name: Install doc dependencies
       run: |
         pip install -r requirements.txt
