@@ -61,6 +61,9 @@ html_theme_options = {
     'logo_only': False,
     'wide_pages': ['usage'],
 }
+html_context = {
+    'display_github': True,
+}
 html_title = title
 html_static_path = ['_static']
 
