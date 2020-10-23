@@ -100,7 +100,7 @@ Please cite openSMILE in your publications by citing the following paper:
     :target: https://codecov.io/gh/audeering/opensmile-python
     :alt: code coverage
 .. |docs| image:: https://img.shields.io/pypi/v/opensmile?label=docs
-    :target: https://audeering.github.io/opensmile/
+    :target: https://audeering.github.io/opensmile-python/
     :alt: opensmile's documentation
 .. |license| image:: https://img.shields.io/badge/license-audEERING-red.svg
     :target: https://github.com/audeering/opensmile-python/blob/master/LICENSE
