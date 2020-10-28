@@ -52,7 +52,7 @@ jobs:
       id: changelog
       run: |
         # Get bullet points from last CHANGELOG entry
-        CHANGELOG=$(git diff -U0 HEAD^ HEAD | grep '^[+]\*' | sed 's/\+//')
+        CHANGELOG=$(git diff -U0 HEAD^ HEAD | grep '^[+][\* ]' | sed 's/\+//')
         # Support for multiline, see
         # https://github.com/actions/create-release/pull/11#issuecomment-640071918
         CHANGELOG="${CHANGELOG//'%'/'%25'}"
