@@ -37,7 +37,7 @@ Name          #features
 ============  ==============
 ComParE_2016  65 / 65 / 6373
 GeMAPSv01a    5 / 13 / 62
-GeMAPSv01b    62 / 13 / 62
+GeMAPSv01b    5 / 13 / 62
 eGeMAPSv01a   10 / 13 / 88
 eGeMAPSv01b   10 / 13 / 88
 ============  ==============
