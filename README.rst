@@ -18,19 +18,42 @@ Feature sets
 Currently, three standard sets are supported.
 `ComParE 2016`_ is the largest with more than 6k features.
 The smaller sets GeMAPS_ and  eGeMAPS_
-come in two variants ``v01a`` and ``v01b``.
-We suggest to use the newer version
+come in variants ``v01a``, ``v01b`` and ``v02`` (only eGeMAPS_).
+We suggest to use the latest version
 unless backward compatibility with
 the original papers is desired.
 
-Each feature set can be extracted on three levels:
+Each feature set can be extracted on two levels:
 
 * Low-level descriptors (LDD)
-* LLDs with deltas
 * Functionals
+
+For `ComParE 2016`_ a third level is available:
+
+* LLD deltas
+
+.. note:: With v2.0.0 LLD deltas were removed from all sets of the
+    GeMAPS family.
 
 The following table lists the number of features
 for each set and level.
+
+With v2.0.0
+~~~~~~~~~~~
+
+============  ==============
+Name          #features
+============  ==============
+ComParE_2016  65 / 65 / 6373
+GeMAPSv01a    18 / - / 62
+GeMAPSv01b    18 / - / 62
+eGeMAPSv01a   23 / - / 88
+eGeMAPSv01b   23 / - / 88
+eGeMAPSv02    25 / - / 88
+============  ==============
+
+Pre v2.0.0
+~~~~~~~~~~
 
 ============  ==============
 Name          #features
