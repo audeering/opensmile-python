@@ -7,13 +7,13 @@
 
 
 [componentInstances:cComponentManager]
-instance[egemapsv01b_leqLin].type= cFunctionals
-instance[egemapsv01b_leq].type = cVectorOperation
+instance[egemapsv02_leqLin].type= cFunctionals
+instance[egemapsv02_leq].type = cVectorOperation
 
 ;; LEq
-[egemapsv01b_leqLin:cFunctionals]
-reader.dmLevel = egemapsv01b_energyRMS
-writer.dmLevel = egemapsv01b_leqLin
+[egemapsv02_leqLin:cFunctionals]
+reader.dmLevel = egemapsv02_energyRMS
+writer.dmLevel = egemapsv02_leqLin
 // nameAppend =
 preserveFields = 1
 \{\cm[bufferModeRbConf]}
@@ -31,9 +31,9 @@ Means.nzqmean = 0
 Means.nzgmean = 0
 Means.nnz = 0
 
-[egemapsv01b_leq:cVectorOperation]
-reader.dmLevel = egemapsv01b_leqLin
-writer.dmLevel = egemapsv01b_leq
+[egemapsv02_leq:cVectorOperation]
+reader.dmLevel = egemapsv02_leqLin
+writer.dmLevel = egemapsv02_leq
 nameBase = equivalentSoundLevel
 copyInputName = 1
 processArrayFields = 0
@@ -45,13 +45,13 @@ appendOperationToName = 1
 ;;;;;;;;;;;;;;;;;;;;; functionals / summaries ;;;;;;;;;;;;;;;
 
 [componentInstances:cComponentManager]
-instance[egemapsv01b_functionalsMVR].type=cFunctionals
-instance[egemapsv01b_functionalsMeanUV].type=cFunctionals
-instance[egemapsv01b_functionalsMVRVoiced].type = cFunctionals
+instance[egemapsv02_functionalsMVR].type=cFunctionals
+instance[egemapsv02_functionalsMeanUV].type=cFunctionals
+instance[egemapsv02_functionalsMVRVoiced].type = cFunctionals
 
-[egemapsv01b_functionalsMVR:cFunctionals]
-reader.dmLevel = egemapsv01b_lldSetNoF0AndLoudnessZ_smo
-writer.dmLevel = egemapsv01b_functionalsMeanStddevZ
+[egemapsv02_functionalsMVR:cFunctionals]
+reader.dmLevel = egemapsv02_lldSetNoF0AndLoudnessZ_smo
+writer.dmLevel = egemapsv02_functionalsMeanStddevZ
 \{\cm[bufferModeRbConf]}
 copyInputName = 1
 \{\cm[frameModeFunctionalsConf]}
@@ -65,9 +65,9 @@ Moments.amean = 1
 nonZeroFuncts = 0
 masterTimeNorm = segment
 
-[egemapsv01b_functionalsMeanUV:cFunctionals]
-reader.dmLevel = egemapsv01b_lldSetSpectralZ_smo
-writer.dmLevel = egemapsv01b_functionalsMeanUnvoiced
+[egemapsv02_functionalsMeanUV:cFunctionals]
+reader.dmLevel = egemapsv02_lldSetSpectralZ_smo
+writer.dmLevel = egemapsv02_functionalsMeanUnvoiced
 \{\cm[bufferModeRbConf]}
 copyInputName = 1
 \{\cm[frameModeFunctionalsConf]}
@@ -81,9 +81,9 @@ Moments.amean = 1
 nonZeroFuncts = 1
 masterTimeNorm = segment
 
-[egemapsv01b_functionalsMVRVoiced:cFunctionals]
-reader.dmLevel = egemapsv01b_lldSetNoF0AndLoudnessNz_smo;egemapsv01b_lldSetSpectralNz_smo
-writer.dmLevel = egemapsv01b_functionalsMeanStddevVoiced
+[egemapsv02_functionalsMVRVoiced:cFunctionals]
+reader.dmLevel = egemapsv02_lldSetNoF0AndLoudnessNz_smo;egemapsv02_lldSetSpectralNz_smo
+writer.dmLevel = egemapsv02_functionalsMeanStddevVoiced
 \{\cm[bufferModeRbConf]}
 copyInputName = 1
 \{\cm[frameModeFunctionalsConf]}
@@ -96,3 +96,5 @@ Moments.kurtosis = 0
 Moments.amean = 1
 nonZeroFuncts = 1
 masterTimeNorm = segment
+
+

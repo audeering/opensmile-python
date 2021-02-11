@@ -42,7 +42,7 @@ of a pre-defined feature set.
 .. jupyter-execute::
 
     smile = opensmile.Smile(
-        feature_set=opensmile.FeatureSet.eGeMAPSv01b,
+        feature_set=opensmile.FeatureSet.eGeMAPSv02,
         feature_level=opensmile.FeatureLevel.Functionals,
     )
     smile.feature_names
@@ -62,7 +62,7 @@ for low-level descriptors (LLDs).
 .. jupyter-execute::
 
     smile = opensmile.Smile(
-        feature_set=opensmile.FeatureSet.eGeMAPSv01b,
+        feature_set=opensmile.FeatureSet.eGeMAPSv02,
         feature_level=opensmile.FeatureLevel.LowLevelDescriptors,
     )
     smile.feature_names
@@ -72,7 +72,7 @@ And re-run feature extraction.
 .. jupyter-execute::
 
     smile = opensmile.Smile(
-        feature_set=opensmile.FeatureSet.eGeMAPSv01b,
+        feature_set=opensmile.FeatureSet.eGeMAPSv02,
         feature_level=opensmile.FeatureLevel.LowLevelDescriptors,
     )
     smile.process_signal(
@@ -89,7 +89,7 @@ we can create a log file.
 .. jupyter-execute::
 
     smile = opensmile.Smile(
-        feature_set=opensmile.FeatureSet.eGeMAPSv01b,
+        feature_set=opensmile.FeatureSet.eGeMAPSv02,
         feature_level=opensmile.FeatureLevel.Functionals,
         loglevel=2,
         logfile='smile.log',
@@ -215,7 +215,7 @@ of channels when we create the feature extractor.
 .. jupyter-execute::
 
     smile = opensmile.Smile(
-        feature_set=opensmile.FeatureSet.eGeMAPSv01b,
+        feature_set=opensmile.FeatureSet.eGeMAPSv02,
         feature_level=opensmile.FeatureLevel.Functionals,
         num_channels=3,  # expected number of channels
     )
@@ -237,7 +237,7 @@ and distribute work across two processes.
 
     files = [file] * 3
     smile = opensmile.Smile(
-        feature_set=opensmile.FeatureSet.eGeMAPSv01b,
+        feature_set=opensmile.FeatureSet.eGeMAPSv02,
         feature_level=opensmile.FeatureLevel.Functionals,
         num_workers=2,
     )

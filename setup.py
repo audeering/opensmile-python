@@ -1,4 +1,3 @@
-import os
 from setuptools import setup
 
 
@@ -13,6 +12,7 @@ package_data = {
         'core/config/gemaps/v01b/*',
         'core/config/egemaps/v01a/*',
         'core/config/egemaps/v01b/*',
+        'core/config/egemaps/v02/*',
     ]
 }
 

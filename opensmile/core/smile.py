@@ -108,8 +108,10 @@ class Smile(audinterface.Feature):
         r"""Log file"""
         self.loglevel = loglevel
         r"""Log level"""
-
         self.verbose = verbose
+
+        self._check_deltas_available()
+
         super().__init__(
             self._feature_names(),
             process_func=self._extract,
@@ -161,13 +163,31 @@ class Smile(audinterface.Feature):
 
         return config_path
 
+    def _check_deltas_available(self):
+        r"""Raise error if deltas are requested for GeMAPS family."""
+        if self.feature_set in [
+            FeatureSet.GeMAPS,
+            FeatureSet.GeMAPSv01a,
+            FeatureSet.GeMAPSv01b,
+            FeatureSet.eGeMAPS,
+            FeatureSet.eGeMAPSv01a,
+            FeatureSet.eGeMAPSv01b,
+            FeatureSet.eGeMAPSv02,
+        ]:
+            if self.feature_level == FeatureLevel.LowLevelDescriptors_Deltas:
+                raise ValueError(
+                    f"Feature level '{self.feature_level.name}' is not "
+                    f"available for feature set '{self.feature_set.name}'."
+                )
+
     def _check_deprecated(self):
         r"""Check if feature set is deprecated"""
         deprecated_feature_sets = {  # deprecated: recommended
             FeatureSet.GeMAPS: FeatureSet.GeMAPSv01b,
             FeatureSet.GeMAPSv01a: FeatureSet.GeMAPSv01b,
-            FeatureSet.eGeMAPS: FeatureSet.eGeMAPSv01b,
-            FeatureSet.eGeMAPSv01a: FeatureSet.eGeMAPSv01b,
+            FeatureSet.eGeMAPS: FeatureSet.eGeMAPSv02,
+            FeatureSet.eGeMAPSv01a: FeatureSet.eGeMAPSv02,
+            FeatureSet.eGeMAPSv01b: FeatureSet.eGeMAPSv02,
         }
         if type(self.feature_set) is FeatureSet and \
                 self.feature_set in deprecated_feature_sets:
