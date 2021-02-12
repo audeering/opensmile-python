@@ -14,6 +14,7 @@ class FeatureSet(enum.Enum):
     * :attr:`eGeMAPS`, deprecated alias for :attr:`eGeMAPSv01a`
     * :attr:`eGeMAPSv01a`
     * :attr:`eGeMAPSv01b`
+    * :attr:`eGeMAPSv02`
 
     For references, see the papers on:
 
@@ -36,6 +37,7 @@ class FeatureSet(enum.Enum):
     eGeMAPS = 'egemaps/v01a/eGeMAPSv01a'   # legacy
     eGeMAPSv01a = 'egemaps/v01a/eGeMAPSv01a'
     eGeMAPSv01b = 'egemaps/v01b/eGeMAPSv01b'
+    eGeMAPSv02 = 'egemaps/v02/eGeMAPSv02'
 
 
 class FeatureLevel(enum.Enum):

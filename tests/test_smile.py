@@ -15,6 +15,17 @@ deprecated_feature_sets = [  # deprecated: recommended
     opensmile.FeatureSet.GeMAPSv01a,
     opensmile.FeatureSet.eGeMAPS,
     opensmile.FeatureSet.eGeMAPSv01a,
+    opensmile.FeatureSet.eGeMAPSv01b,
+]
+
+gemaps_family = [  # no deltas
+    opensmile.FeatureSet.GeMAPS,
+    opensmile.FeatureSet.GeMAPSv01a,
+    opensmile.FeatureSet.GeMAPSv01b,
+    opensmile.FeatureSet.eGeMAPS,
+    opensmile.FeatureSet.eGeMAPSv01a,
+    opensmile.FeatureSet.eGeMAPSv01b,
+    opensmile.FeatureSet.eGeMAPSv02,
 ]
 
 
@@ -117,46 +128,63 @@ def test_custom(config, level):
 )
 def test_default(tmpdir, feature_set, feature_level):
 
-    # create feature extractor
+    deltas = feature_level == opensmile.FeatureLevel.LowLevelDescriptors_Deltas
 
-    if feature_set in deprecated_feature_sets:
-        with pytest.warns(UserWarning):
-            fex = opensmile.Smile(feature_set, feature_level)
+    if (feature_set in gemaps_family) and deltas:
+
+        # deltas not available
+
+        with pytest.raises(ValueError):
+            opensmile.Smile(feature_set, feature_level)
+
     else:
-        fex = opensmile.Smile(feature_set, feature_level)
 
-    # extract features from file
+        # create feature extractor
 
-    y = fex.process_file(pytest.WAV_FILE)
+        if feature_set in deprecated_feature_sets:
+            with pytest.warns(UserWarning):
+                fex = opensmile.Smile(feature_set, feature_level)
+        else:
+            fex = opensmile.Smile(feature_set, feature_level)
 
-    # run SMILExtract from same file
+        # extract features from file
 
-    source_config_file = os.path.join(
-        fex.default_config_root,
-        opensmile.config.FILE_INPUT_CONFIG,
-    )
-    sink_config_file = os.path.join(
-        fex.default_config_root,
-        opensmile.config.FILE_OUTPUT_CONFIG,
-    )
-    output_file = os.path.join(tmpdir, f'{feature_level.value}.csv')
-    command = f'{pytest.SMILEXTRACT} ' \
-              f'-C {fex.config_path} ' \
-              f'-source {source_config_file} ' \
-              f'-I {pytest.WAV_FILE} ' \
-              f'-sink {sink_config_file} ' \
-              f'-{feature_level.value}_csv_output {output_file}'
-    os.system(command)
+        y = fex.process_file(pytest.WAV_FILE)
 
-    # read output of SMILExtract and compare
+        # run SMILExtract from same file
 
-    df = pd.read_csv(output_file, sep=';')
-    np.testing.assert_allclose(df.values[:, 1:],
-                               y.values,
-                               rtol=1e-6,
-                               atol=0)
-    assert fex.num_features == len(df.columns) - 1
-    assert fex.feature_names == list(df.columns[1:])
+        source_config_file = os.path.join(
+            fex.default_config_root,
+            opensmile.config.FILE_INPUT_CONFIG,
+        )
+        if feature_set in gemaps_family:
+            sink_config_file = os.path.join(
+                fex.default_config_root,
+                opensmile.config.FILE_OUTPUT_CONFIG_NO_LLD_DE,
+            )
+        else:
+            sink_config_file = os.path.join(
+                fex.default_config_root,
+                opensmile.config.FILE_OUTPUT_CONFIG,
+            )
+        output_file = os.path.join(tmpdir, f'{feature_level.value}.csv')
+        command = f'{pytest.SMILEXTRACT} ' \
+                  f'-C {fex.config_path} ' \
+                  f'-source {source_config_file} ' \
+                  f'-I {pytest.WAV_FILE} ' \
+                  f'-sink {sink_config_file} ' \
+                  f'-{feature_level.value}_csv_output {output_file}'
+        os.system(command)
+
+        # read output of SMILExtract and compare
+
+        df = pd.read_csv(output_file, sep=';')
+        np.testing.assert_allclose(df.values[:, 1:],
+                                   y.values,
+                                   rtol=1e-6,
+                                   atol=0)
+        assert fex.num_features == len(df.columns) - 1
+        assert fex.feature_names == list(df.columns[1:])
 
 
 @pytest.mark.parametrize('num_files', [

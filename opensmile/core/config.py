@@ -31,3 +31,7 @@ class config:
     FILE_OUTPUT_CONFIG = \
         'shared/standard_data_output.conf.inc'
     """Standard config name for external data output."""
+
+    FILE_OUTPUT_CONFIG_NO_LLD_DE = \
+        'shared/standard_data_output_no_lld_de.conf.inc'
+    """Standard config name for external data output without lld_de level."""
