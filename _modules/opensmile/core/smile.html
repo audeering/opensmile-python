@@ -58,7 +58,7 @@
 
           <a href="../../../index.html">
           
-            <img src="../../../_static/images/audeering.png" class="logo" alt="audEERING"/>
+            <img src="../../../_static/images/audeering.svg" class="logo" alt="audEERING"/>
           
           
             <span> opensmile</span>
@@ -69,7 +69,7 @@
             
             
               <div class="version">
-                v1.0.1
+                v2.0.0
               </div>
             
           
@@ -147,7 +147,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
@@ -277,8 +277,10 @@
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Log file&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">loglevel</span> <span class="o">=</span> <span class="n">loglevel</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Log level&quot;&quot;&quot;</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_deltas_available</span><span class="p">()</span>
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_feature_names</span><span class="p">(),</span>
             <span class="n">process_func</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_extract</span><span class="p">,</span>
@@ -330,13 +332,31 @@
 
         <span class="k">return</span> <span class="n">config_path</span>
 
+    <span class="k">def</span> <span class="nf">_check_deltas_available</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Raise error if deltas are requested for GeMAPS family.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPS</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01a</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01b</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPS</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01a</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
+        <span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_level</span> <span class="o">==</span> <span class="n">FeatureLevel</span><span class="o">.</span><span class="n">LowLevelDescriptors_Deltas</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Feature level &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_level</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; is not &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;available for feature set &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+                <span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">_check_deprecated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Check if feature set is deprecated&quot;&quot;&quot;</span>
         <span class="n">deprecated_feature_sets</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># deprecated: recommended</span>
             <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPS</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01b</span><span class="p">,</span>
             <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01a</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01b</span><span class="p">,</span>
-            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPS</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
-            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01a</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPS</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01a</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span><span class="p">)</span> <span class="ow">is</span> <span class="n">FeatureSet</span> <span class="ow">and</span> \
                 <span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span> <span class="ow">in</span> <span class="n">deprecated_feature_sets</span><span class="p">:</span>
@@ -544,7 +564,7 @@
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2020/10/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/02/12 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -552,7 +572,7 @@
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2020 audEERING GmbH
+      &copy; 2020-2021 audEERING GmbH
     </p>
   </div> 
 
@@ -565,6 +585,12 @@
   </div>
   
 
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
 
     
@@ -573,12 +599,11 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
         <script src="../../../_static/thebelab-helper.js"></script>
         <script src="../../../_static/clipboard.min.js"></script>
         <script src="../../../_static/copybutton.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     
 
   

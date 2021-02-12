@@ -62,7 +62,7 @@
 
           <a href="index.html">
           
-            <img src="_static/images/audeering.png" class="logo" alt="audEERING"/>
+            <img src="_static/images/audeering.svg" class="logo" alt="audEERING"/>
           
           
             <span> opensmile</span>
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                v1.0.1
+                v2.0.0
               </div>
             
           
@@ -159,7 +159,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
       <li>Usage</li>
     
@@ -168,7 +168,7 @@
         
             
             
-              <a href="https://github.com/audeering/opensmile-python/blob/v1.0.1/docs/usage.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/audeering/opensmile-python/blob/v2.0.0/docs/usage.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -229,7 +229,7 @@ of a pre-defined feature set.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
-    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
+    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">smile</span><span class="o">.</span><span class="n">feature_names</span>
@@ -395,7 +395,7 @@ for low-level descriptors (LLDs).</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
-    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
+    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">LowLevelDescriptors</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">smile</span><span class="o">.</span><span class="n">feature_names</span>
@@ -412,7 +412,22 @@ for low-level descriptors (LLDs).</p>
  &#39;mfcc1_sma3&#39;,
  &#39;mfcc2_sma3&#39;,
  &#39;mfcc3_sma3&#39;,
- &#39;mfcc4_sma3&#39;]
+ &#39;mfcc4_sma3&#39;,
+ &#39;F0semitoneFrom27.5Hz_sma3nz&#39;,
+ &#39;jitterLocal_sma3nz&#39;,
+ &#39;shimmerLocaldB_sma3nz&#39;,
+ &#39;HNRdBACF_sma3nz&#39;,
+ &#39;logRelF0-H1-H2_sma3nz&#39;,
+ &#39;logRelF0-H1-A3_sma3nz&#39;,
+ &#39;F1frequency_sma3nz&#39;,
+ &#39;F1bandwidth_sma3nz&#39;,
+ &#39;F1amplitudeLogRelF0_sma3nz&#39;,
+ &#39;F2frequency_sma3nz&#39;,
+ &#39;F2bandwidth_sma3nz&#39;,
+ &#39;F2amplitudeLogRelF0_sma3nz&#39;,
+ &#39;F3frequency_sma3nz&#39;,
+ &#39;F3bandwidth_sma3nz&#39;,
+ &#39;F3amplitudeLogRelF0_sma3nz&#39;]
 </pre></div>
 </div>
 </div>
@@ -421,7 +436,7 @@ for low-level descriptors (LLDs).</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
-    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
+    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">LowLevelDescriptors</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">smile</span><span class="o">.</span><span class="n">process_signal</span><span class="p">(</span>
@@ -454,8 +469,8 @@ for low-level descriptors (LLDs).</p>
       <th>Loudness_sma3</th>
       <th>alphaRatio_sma3</th>
       <th>...</th>
-      <th>mfcc3_sma3</th>
-      <th>mfcc4_sma3</th>
+      <th>F3bandwidth_sma3nz</th>
+      <th>F3amplitudeLogRelF0_sma3nz</th>
     </tr>
     <tr>
       <th>start</th>
@@ -474,8 +489,8 @@ for low-level descriptors (LLDs).</p>
       <td>0.120807</td>
       <td>-11.173096</td>
       <td>...</td>
-      <td>16.462805</td>
-      <td>1.470655</td>
+      <td>1831.795410</td>
+      <td>-201.0</td>
     </tr>
     <tr>
       <th>0 days 00:00:00.010000</th>
@@ -483,8 +498,8 @@ for low-level descriptors (LLDs).</p>
       <td>0.121294</td>
       <td>-12.639726</td>
       <td>...</td>
-      <td>16.134027</td>
-      <td>-1.364744</td>
+      <td>1818.995972</td>
+      <td>-201.0</td>
     </tr>
     <tr>
       <th>0 days 00:00:00.020000</th>
@@ -492,8 +507,8 @@ for low-level descriptors (LLDs).</p>
       <td>0.122064</td>
       <td>-12.527308</td>
       <td>...</td>
-      <td>14.053108</td>
-      <td>-1.844996</td>
+      <td>1752.772339</td>
+      <td>-201.0</td>
     </tr>
     <tr>
       <th>0 days 00:00:00.030000</th>
@@ -501,8 +516,8 @@ for low-level descriptors (LLDs).</p>
       <td>0.120800</td>
       <td>-10.534764</td>
       <td>...</td>
-      <td>12.013309</td>
-      <td>-2.832459</td>
+      <td>572.195862</td>
+      <td>-201.0</td>
     </tr>
     <tr>
       <th>0 days 00:00:00.040000</th>
@@ -510,8 +525,8 @@ for low-level descriptors (LLDs).</p>
       <td>0.121149</td>
       <td>-8.021888</td>
       <td>...</td>
-      <td>9.089986</td>
-      <td>-0.565453</td>
+      <td>647.467102</td>
+      <td>-201.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -521,54 +536,55 @@ for low-level descriptors (LLDs).</p>
       <td>...</td>
       <td>...</td>
       <td>...</td>
+    </tr>
+    <tr>
+      <th>0 days 00:00:05.150000</th>
+      <th>0 days 00:00:05.170000</th>
+      <td>0.125142</td>
+      <td>-11.412356</td>
+      <td>...</td>
+      <td>670.533386</td>
+      <td>-201.0</td>
+    </tr>
+    <tr>
+      <th>0 days 00:00:05.160000</th>
+      <th>0 days 00:00:05.180000</th>
+      <td>0.123217</td>
+      <td>-10.653890</td>
+      <td>...</td>
+      <td>688.866455</td>
+      <td>-201.0</td>
+    </tr>
+    <tr>
+      <th>0 days 00:00:05.170000</th>
+      <th>0 days 00:00:05.190000</th>
+      <td>0.122397</td>
+      <td>-12.429963</td>
+      <td>...</td>
+      <td>687.448547</td>
+      <td>-201.0</td>
+    </tr>
+    <tr>
+      <th>0 days 00:00:05.180000</th>
+      <th>0 days 00:00:05.200000</th>
+      <td>0.119299</td>
+      <td>-10.532021</td>
+      <td>...</td>
+      <td>736.145508</td>
+      <td>-201.0</td>
     </tr>
     <tr>
       <th>0 days 00:00:05.190000</th>
-      <th>0 days 00:00:05.210000</th>
+      <th>0 days 00:00:05.247709751</th>
       <td>0.119787</td>
       <td>-12.053501</td>
       <td>...</td>
-      <td>12.942782</td>
-      <td>-0.227282</td>
-    </tr>
-    <tr>
-      <th>0 days 00:00:05.200000</th>
-      <th>0 days 00:00:05.220000</th>
-      <td>0.114454</td>
-      <td>-10.003884</td>
-      <td>...</td>
-      <td>13.112980</td>
-      <td>3.017659</td>
-    </tr>
-    <tr>
-      <th>0 days 00:00:05.210000</th>
-      <th>0 days 00:00:05.230000</th>
-      <td>0.115572</td>
-      <td>-9.271779</td>
-      <td>...</td>
-      <td>13.169972</td>
-      <td>0.875018</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">0 days 00:00:05.220000</th>
-      <th>0 days 00:00:05.240000</th>
-      <td>0.114617</td>
-      <td>-7.022179</td>
-      <td>...</td>
-      <td>11.503882</td>
-      <td>-0.421562</td>
-    </tr>
-    <tr>
-      <th>0 days 00:00:05.247709751</th>
-      <td>0.119933</td>
-      <td>-6.758919</td>
-      <td>...</td>
-      <td>10.051334</td>
-      <td>-4.117630</td>
+      <td>1028.123901</td>
+      <td>-201.0</td>
     </tr>
   </tbody>
 </table>
-<p>524 rows × 10 columns</p>
+<p>520 rows × 25 columns</p>
 </div></div></div>
 </div>
 </div>
@@ -579,7 +595,7 @@ we can create a log file.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
-    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
+    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
     <span class="n">loglevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">logfile</span><span class="o">=</span><span class="s1">&#39;smile.log&#39;</span><span class="p">,</span>
@@ -595,22 +611,28 @@ we can create a log file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;[ 23.10.2020 - 19:12:43 ]\n&#39;,
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;[ 12.02.2021 - 11:06:04 ]\n&#39;,
  &#39;    (MSG) [2] SMILEapi: openSMILE starting!\n&#39;,
- &#39;[ 23.10.2020 - 19:12:43 ]\n&#39;,
- &#39;    (MSG) [2] SMILEapi: config file is: /home/runner/work/opensmile-python/opensmile-python/opensmile/core/config/egemaps/v01b/eGeMAPSv01b.conf\n&#39;,
- &#39;[ 23.10.2020 - 19:12:43 ]\n&#39;,
+ &#39;[ 12.02.2021 - 11:06:04 ]\n&#39;,
+ &#39;    (MSG) [2] SMILEapi: config file is: /home/runner/work/opensmile-python/opensmile-python/opensmile/core/config/egemaps/v02/eGeMAPSv02.conf\n&#39;,
+ &#39;[ 12.02.2021 - 11:06:04 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: successfully registered 103 component types.\n&#39;,
- &#39;[ 23.10.2020 - 19:12:43 ]\n&#39;,
+ &#39;[ 12.02.2021 - 11:06:04 ]\n&#39;,
  &quot;    (MSG) [2] instance &#39;gemapsv01b_logSpectral&#39;: logSpecFloor = -140.00  (specFloor = 1.000000e-14)\n&quot;,
- &#39;[ 23.10.2020 - 19:12:43 ]\n&#39;,
- &quot;    (MSG) [2] instance &#39;egemapsv01b_logSpectral_flux&#39;: logSpecFloor = -140.00  (specFloor = 1.000000e-14)\n&quot;,
- &#39;[ 23.10.2020 - 19:12:43 ]\n&#39;,
- &#39;    (MSG) [2] cComponentManager: successfully finished createInstances (72 component instances were finalised, 1 data memories were finalised)\n&#39;,
- &#39;[ 23.10.2020 - 19:12:43 ]\n&#39;,
+ &#39;[ 12.02.2021 - 11:06:04 ]\n&#39;,
+ &quot;    (MSG) [2] instance &#39;egemapsv02_logSpectral_flux&#39;: logSpecFloor = -140.00  (specFloor = 1.000000e-14)\n&quot;,
+ &#39;[ 12.02.2021 - 11:06:04 ]\n&#39;,
+ &#39;    (MSG) [2] cComponentManager: successfully finished createInstances (73 component instances were finalised, 1 data memories were finalised)\n&#39;,
+ &#39;[ 12.02.2021 - 11:06:04 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: starting single thread processing loop\n&#39;,
- &#39;[ 23.10.2020 - 19:12:44 ]\n&#39;,
- &#39;    (MSG) [2] cComponentManager: Processing finished! System ran for 536 ticks.\n&#39;]
+ &#39;[ 12.02.2021 - 11:06:05 ]\n&#39;,
+ &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
+ &#39;[ 12.02.2021 - 11:06:05 ]\n&#39;,
+ &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
+ &#39;[ 12.02.2021 - 11:06:05 ]\n&#39;,
+ &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
+ &#39;[ 12.02.2021 - 11:06:05 ]\n&#39;,
+ &#39;    (MSG) [2] cComponentManager: Processing finished! System ran for 537 ticks.\n&#39;]
 </pre></div>
 </div>
 </div>
@@ -850,7 +872,7 @@ of channels when we create the feature extractor.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
-    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
+    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
     <span class="n">num_channels</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># expected number of channels</span>
 <span class="p">)</span>
@@ -924,7 +946,7 @@ and distribute work across two processes.</p>
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
 <span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
-    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
+    <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
     <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1031,7 +1053,7 @@ and distribute work across two processes.</p>
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2020/10/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/02/12 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -1039,7 +1061,7 @@ and distribute work across two processes.</p>
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2020 audEERING GmbH
+      &copy; 2020-2021 audEERING GmbH
     </p>
   </div> 
 
@@ -1052,6 +1074,12 @@ and distribute work across two processes.</p>
   </div>
   
 
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
 
     
@@ -1060,12 +1088,11 @@ and distribute work across two processes.</p>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     
 
   

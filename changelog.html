@@ -60,7 +60,7 @@
 
           <a href="index.html">
           
-            <img src="_static/images/audeering.png" class="logo" alt="audEERING"/>
+            <img src="_static/images/audeering.svg" class="logo" alt="audEERING"/>
           
           
             <span> opensmile</span>
@@ -71,7 +71,7 @@
             
             
               <div class="version">
-                v1.0.1
+                v2.0.0
               </div>
             
           
@@ -101,6 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#version-2-0-0-2021-02-12">Version 2.0.0 (2021-02-12)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-1-0-1-2020-10-23">Version 1.0.1 (2020-10-23)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-1-0-0-2020-10-23">Version 1.0.0 (2020-10-23)</a></li>
 </ul>
@@ -153,7 +154,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
       <li>Changelog</li>
     
@@ -162,7 +163,7 @@
         
             
             
-              <a href="https://github.com/audeering/opensmile-python/blob/v1.0.1/docs/changelog.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/audeering/opensmile-python/blob/v2.0.0/docs/changelog.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -181,6 +182,17 @@
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a class="reference external" href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 and this project adheres to <a class="reference external" href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<div class="section" id="version-2-0-0-2021-02-12">
+<h2>Version 2.0.0 (2021-02-12)<a class="headerlink" href="#version-2-0-0-2021-02-12" title="Permalink to this headline">¶</a></h2>
+<p>WARNING: Introduces a breaking change by changing the number of LLDs
+in all sets of the GeMAPS family and removing support for deltas
+in those sets.</p>
+<ul class="simple">
+<li><p>Added: <code class="docutils literal notranslate"><span class="pre">FeatureSet.eGeMAPSv02</span></code></p></li>
+<li><p>Changed: add <code class="docutils literal notranslate"><span class="pre">lld_de</span></code> features to <code class="docutils literal notranslate"><span class="pre">lld</span></code> for the GeMAPS family</p></li>
+<li><p>Changed: raise error if <code class="docutils literal notranslate"><span class="pre">lld_de</span></code> is requested for a set of the GeMAPS family</p></li>
+</ul>
+</div>
 <div class="section" id="version-1-0-1-2020-10-23">
 <h2>Version 1.0.1 (2020-10-23)<a class="headerlink" href="#version-1-0-1-2020-10-23" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -220,7 +232,7 @@ and this project adheres to <a class="reference external" href="https://semver.o
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2020/10/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/02/12 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -228,7 +240,7 @@ and this project adheres to <a class="reference external" href="https://semver.o
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2020 audEERING GmbH
+      &copy; 2020-2021 audEERING GmbH
     </p>
   </div> 
 
@@ -241,6 +253,12 @@ and this project adheres to <a class="reference external" href="https://semver.o
   </div>
   
 
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
 
     
@@ -249,12 +267,11 @@ and this project adheres to <a class="reference external" href="https://semver.o
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     
 
   

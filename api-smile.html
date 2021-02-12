@@ -60,7 +60,7 @@
 
           <a href="index.html">
           
-            <img src="_static/images/audeering.png" class="logo" alt="audEERING"/>
+            <img src="_static/images/audeering.svg" class="logo" alt="audEERING"/>
           
           
             <span> opensmile</span>
@@ -71,7 +71,7 @@
             
             
               <div class="version">
-                v1.0.1
+                v2.0.0
               </div>
             
           
@@ -153,7 +153,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
       <li>opensmile</li>
     
@@ -162,7 +162,7 @@
         
             
             
-              <a href="https://github.com/audeering/opensmile-python/blob/v1.0.1/docs/api-smile.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/audeering/opensmile-python/blob/v2.0.0/docs/api-smile.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -236,6 +236,12 @@
 <dt id="opensmile.config.FILE_OUTPUT_CONFIG">
 <code class="sig-name descname">FILE_OUTPUT_CONFIG</code><em class="property"> = 'shared/standard_data_output.conf.inc'</em><a class="headerlink" href="#opensmile.config.FILE_OUTPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard config name for external data output.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="opensmile.config.FILE_OUTPUT_CONFIG_NO_LLD_DE">
+<code class="sig-name descname">FILE_OUTPUT_CONFIG_NO_LLD_DE</code><em class="property"> = 'shared/standard_data_output_no_lld_de.conf.inc'</em><a class="headerlink" href="#opensmile.config.FILE_OUTPUT_CONFIG_NO_LLD_DE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for external data output without lld_de level.</p>
 </dd></dl>
 
 </dd></dl>
@@ -457,7 +463,7 @@ it consists only of <code class="docutils literal notranslate"><span class="pre"
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>signal</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>) – signal values</p></li>
+<li><p><strong>signal</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.20)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>) – signal values</p></li>
 <li><p><strong>sampling_rate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – sampling rate in Hz</p></li>
 <li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – file path</p></li>
 <li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]) – start processing at this position</p></li>
@@ -501,7 +507,7 @@ it consists only of <code class="docutils literal notranslate"><span class="pre"
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2020/10/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/02/12 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -509,7 +515,7 @@ it consists only of <code class="docutils literal notranslate"><span class="pre"
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2020 audEERING GmbH
+      &copy; 2020-2021 audEERING GmbH
     </p>
   </div> 
 
@@ -522,6 +528,12 @@ it consists only of <code class="docutils literal notranslate"><span class="pre"
   </div>
   
 
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
 
     
@@ -530,12 +542,11 @@ it consists only of <code class="docutils literal notranslate"><span class="pre"
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     
 
   

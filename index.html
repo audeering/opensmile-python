@@ -59,7 +59,7 @@
 
           <a href="#">
           
-            <img src="_static/images/audeering.png" class="logo" alt="audEERING"/>
+            <img src="_static/images/audeering.svg" class="logo" alt="audEERING"/>
           
           
             <span> opensmile</span>
@@ -70,7 +70,7 @@
             
             
               <div class="version">
-                v1.0.1
+                v2.0.0
               </div>
             
           
@@ -148,7 +148,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="#">Docs</a> &raquo;</li>
         
       <li>openSMILE Python</li>
     
@@ -157,7 +157,7 @@
         
             
             
-              <a href="https://github.com/audeering/opensmile-python/blob/v1.0.1/docs/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/audeering/opensmile-python/blob/v2.0.0/docs/index.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -187,18 +187,64 @@
 <p>Currently, three standard sets are supported.
 <a class="reference external" href="http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf">ComParE 2016</a> is the largest with more than 6k features.
 The smaller sets <a class="reference external" href="https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf">GeMAPS</a> and  <a class="reference external" href="https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf">eGeMAPS</a>
-come in two variants <code class="docutils literal notranslate"><span class="pre">v01a</span></code> and <code class="docutils literal notranslate"><span class="pre">v01b</span></code>.
-We suggest to use the newer version
+come in variants <code class="docutils literal notranslate"><span class="pre">v01a</span></code>, <code class="docutils literal notranslate"><span class="pre">v01b</span></code> and <code class="docutils literal notranslate"><span class="pre">v02</span></code> (only <a class="reference external" href="https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf">eGeMAPS</a>).
+We suggest to use the latest version
 unless backward compatibility with
 the original papers is desired.</p>
-<p>Each feature set can be extracted on three levels:</p>
+<p>Each feature set can be extracted on two levels:</p>
 <ul class="simple">
 <li><p>Low-level descriptors (LDD)</p></li>
-<li><p>LLDs with deltas</p></li>
 <li><p>Functionals</p></li>
 </ul>
+<p>For <a class="reference external" href="http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf">ComParE 2016</a> a third level is available:</p>
+<ul class="simple">
+<li><p>LLD deltas</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pre v2.0.0 some LLDs of the GeMAPS family were incorrectly output
+as deltas. This was corrected with v2.0.0 and these features are now
+correctly returned as LLDs. Note that with v2.0.0 deltas are no
+longer available for the GeMAPS family.</p>
+</div>
 <p>The following table lists the number of features
 for each set and level.</p>
+<div class="section" id="with-v2-0-0">
+<h3>With v2.0.0<a class="headerlink" href="#with-v2-0-0" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>#features</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ComParE_2016</p></td>
+<td><p>65 / 65 / 6373</p></td>
+</tr>
+<tr class="row-odd"><td><p>GeMAPSv01a</p></td>
+<td><p>18 / - / 62</p></td>
+</tr>
+<tr class="row-even"><td><p>GeMAPSv01b</p></td>
+<td><p>18 / - / 62</p></td>
+</tr>
+<tr class="row-odd"><td><p>eGeMAPSv01a</p></td>
+<td><p>23 / - / 88</p></td>
+</tr>
+<tr class="row-even"><td><p>eGeMAPSv01b</p></td>
+<td><p>23 / - / 88</p></td>
+</tr>
+<tr class="row-odd"><td><p>eGeMAPSv02</p></td>
+<td><p>25 / - / 88</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="pre-v2-0-0">
+<h3>Pre v2.0.0<a class="headerlink" href="#pre-v2-0-0" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
@@ -217,7 +263,7 @@ for each set and level.</p>
 <td><p>5 / 13 / 62</p></td>
 </tr>
 <tr class="row-even"><td><p>GeMAPSv01b</p></td>
-<td><p>62 / 13 / 62</p></td>
+<td><p>5 / 13 / 62</p></td>
 </tr>
 <tr class="row-odd"><td><p>eGeMAPSv01a</p></td>
 <td><p>10 / 13 / 88</p></td>
@@ -227,6 +273,7 @@ for each set and level.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="section" id="code-example">
 <h2>Code example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
@@ -292,7 +339,7 @@ Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;aude
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2020/10/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/02/12 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -300,7 +347,7 @@ Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;aude
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2020 audEERING GmbH
+      &copy; 2020-2021 audEERING GmbH
     </p>
   </div> 
 
@@ -313,6 +360,12 @@ Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;aude
   </div>
   
 
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
 
     
@@ -321,12 +374,11 @@ Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;aude
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     
 
   
