@@ -7,6 +7,18 @@ The format is based on `Keep a Changelog`_,
 and this project adheres to `Semantic Versioning`_.
 
 
+Version 2.0.0 (2021-02-12)
+--------------------------
+
+WARNING: Introduces a breaking change by changing the number of LLDs
+in all sets of the GeMAPS family and removing support for deltas
+in those sets.
+
+* Added: ``FeatureSet.eGeMAPSv02``
+* Changed: add ``lld_de`` features to ``lld`` for the GeMAPS family
+* Changed: raise error if ``lld_de`` is requested for a set of the GeMAPS family
+
+
 Version 1.0.1 (2020-10-23)
 --------------------------
 
