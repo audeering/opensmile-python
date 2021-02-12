@@ -32,8 +32,10 @@ For `ComParE 2016`_ a third level is available:
 
 * LLD deltas
 
-.. note:: With v2.0.0 LLD deltas were removed from all sets of the
-    GeMAPS family.
+.. note:: Pre v2.0.0 some LLDs of the GeMAPS family were incorrectly output
+    as deltas. This was corrected with v2.0.0 and these features are now
+    correctly returned as LLDs. Note that with v2.0.0 deltas are no
+    longer available for the GeMAPS family.
 
 The following table lists the number of features
 for each set and level.
