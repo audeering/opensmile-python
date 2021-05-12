@@ -26,6 +26,7 @@ gemaps_family = [  # no deltas
     opensmile.FeatureSet.eGeMAPSv01a,
     opensmile.FeatureSet.eGeMAPSv01b,
     opensmile.FeatureSet.eGeMAPSv02,
+    opensmile.FeatureSet.emobase,
 ]
 
 

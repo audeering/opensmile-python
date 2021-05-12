@@ -173,6 +173,7 @@ class Smile(audinterface.Feature):
             FeatureSet.eGeMAPSv01a,
             FeatureSet.eGeMAPSv01b,
             FeatureSet.eGeMAPSv02,
+            FeatureSet.emobase
         ]:
             if self.feature_level == FeatureLevel.LowLevelDescriptors_Deltas:
                 raise ValueError(
