@@ -1,5 +1,4 @@
 import enum
-import typing
 
 
 class FeatureSet(enum.Enum):
