@@ -7,6 +7,18 @@ config
 .. autoclass:: opensmile.config
     :members:
 
+FeatureLevel
+------------
+
+.. autoclass:: opensmile.FeatureLevel
+    :members:
+
+FeatureSet
+----------
+
+.. autoclass:: opensmile.FeatureSet
+    :members:
+
 Smile
 -----
 

@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>opensmile &mdash; opensmile Documentation</title>
@@ -30,6 +31,8 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/audeering.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/audeering.css" type="text/css" />
   <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
   <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -71,7 +74,7 @@
             
             
               <div class="version">
-                v2.0.0
+                v2.0.2
               </div>
             
           
@@ -106,6 +109,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">opensmile</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#config">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#featurelevel">FeatureLevel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#featureset">FeatureSet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#smile">Smile</a></li>
 </ul>
 </li>
@@ -162,7 +167,7 @@
         
             
             
-              <a href="https://github.com/audeering/opensmile-python/blob/v2.0.0/docs/api-smile.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/audeering/opensmile-python/blob/v2.0.2/docs/api-smile.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -176,86 +181,131 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="opensmile">
+  <section id="opensmile">
 <h1>opensmile<a class="headerlink" href="#opensmile" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="config">
+<section id="config">
 <h2>config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt id="opensmile.config">
-<em class="property">class </em><code class="sig-prename descclassname">opensmile.</code><code class="sig-name descname">config</code><a class="reference internal" href="_modules/opensmile/core/config.html#config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opensmile.config" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.config">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">opensmile.</span></span><span class="sig-name descname"><span class="pre">config</span></span><a class="reference internal" href="_modules/opensmile/core/config.html#config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensmile.config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get/set defaults for the <code class="xref py py-mod docutils literal notranslate"><span class="pre">opensmile</span></code> module.</p>
 <dl class="py attribute">
-<dt id="opensmile.config.CONFIG_EXT">
-<code class="sig-name descname">CONFIG_EXT</code><em class="property"> = '.conf'</em><a class="headerlink" href="#opensmile.config.CONFIG_EXT" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.config.CONFIG_EXT">
+<span class="sig-name descname"><span class="pre">CONFIG_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.conf'</span></em><a class="headerlink" href="#opensmile.config.CONFIG_EXT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extension of config files.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.config.CONFIG_ROOT">
-<code class="sig-name descname">CONFIG_ROOT</code><em class="property"> = 'config'</em><a class="headerlink" href="#opensmile.config.CONFIG_ROOT" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.config.CONFIG_ROOT">
+<span class="sig-name descname"><span class="pre">CONFIG_ROOT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'config'</span></em><a class="headerlink" href="#opensmile.config.CONFIG_ROOT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Root directory of config files.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.config.EXTERNAL_INPUT_CONFIG">
-<code class="sig-name descname">EXTERNAL_INPUT_CONFIG</code><em class="property"> = 'shared/standard_external_wave_input.conf.inc'</em><a class="headerlink" href="#opensmile.config.EXTERNAL_INPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.config.EXTERNAL_INPUT_CONFIG">
+<span class="sig-name descname"><span class="pre">EXTERNAL_INPUT_CONFIG</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'shared/standard_external_wave_input.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.EXTERNAL_INPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard config name for external wave input.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.config.EXTERNAL_OUTPUT_COMPONENT">
-<code class="sig-name descname">EXTERNAL_OUTPUT_COMPONENT</code><em class="property"> = 'extsink'</em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_COMPONENT" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.config.EXTERNAL_OUTPUT_COMPONENT">
+<span class="sig-name descname"><span class="pre">EXTERNAL_OUTPUT_COMPONENT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'extsink'</span></em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_COMPONENT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard component name for external data output.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.config.EXTERNAL_OUTPUT_MULTI_CONFIG">
-<code class="sig-name descname">EXTERNAL_OUTPUT_MULTI_CONFIG</code><em class="property"> = 'shared/standard_external_data_output_multi.conf.inc'</em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_MULTI_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.config.EXTERNAL_OUTPUT_MULTI_CONFIG">
+<span class="sig-name descname"><span class="pre">EXTERNAL_OUTPUT_MULTI_CONFIG</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'shared/standard_external_data_output_multi.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_MULTI_CONFIG" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard config name for external data output from multiple levels.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.config.EXTERNAL_OUTPUT_SINGLE_CONFIG">
-<code class="sig-name descname">EXTERNAL_OUTPUT_SINGLE_CONFIG</code><em class="property"> = 'shared/standard_external_data_output_single.conf.inc'</em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_SINGLE_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.config.EXTERNAL_OUTPUT_SINGLE_CONFIG">
+<span class="sig-name descname"><span class="pre">EXTERNAL_OUTPUT_SINGLE_CONFIG</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'shared/standard_external_data_output_single.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_SINGLE_CONFIG" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard config name for external data output from a single level.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.config.EXTERNAL_SOURCE_COMPONENT">
-<code class="sig-name descname">EXTERNAL_SOURCE_COMPONENT</code><em class="property"> = 'extsource'</em><a class="headerlink" href="#opensmile.config.EXTERNAL_SOURCE_COMPONENT" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.config.EXTERNAL_SOURCE_COMPONENT">
+<span class="sig-name descname"><span class="pre">EXTERNAL_SOURCE_COMPONENT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'extsource'</span></em><a class="headerlink" href="#opensmile.config.EXTERNAL_SOURCE_COMPONENT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard component name for external input.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.config.FILE_INPUT_CONFIG">
-<code class="sig-name descname">FILE_INPUT_CONFIG</code><em class="property"> = 'shared/standard_wave_input.conf.inc'</em><a class="headerlink" href="#opensmile.config.FILE_INPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.config.FILE_INPUT_CONFIG">
+<span class="sig-name descname"><span class="pre">FILE_INPUT_CONFIG</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'shared/standard_wave_input.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.FILE_INPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard config name for wave input from file.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.config.FILE_OUTPUT_CONFIG">
-<code class="sig-name descname">FILE_OUTPUT_CONFIG</code><em class="property"> = 'shared/standard_data_output.conf.inc'</em><a class="headerlink" href="#opensmile.config.FILE_OUTPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.config.FILE_OUTPUT_CONFIG">
+<span class="sig-name descname"><span class="pre">FILE_OUTPUT_CONFIG</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'shared/standard_data_output.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.FILE_OUTPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard config name for external data output.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.config.FILE_OUTPUT_CONFIG_NO_LLD_DE">
-<code class="sig-name descname">FILE_OUTPUT_CONFIG_NO_LLD_DE</code><em class="property"> = 'shared/standard_data_output_no_lld_de.conf.inc'</em><a class="headerlink" href="#opensmile.config.FILE_OUTPUT_CONFIG_NO_LLD_DE" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.config.FILE_OUTPUT_CONFIG_NO_LLD_DE">
+<span class="sig-name descname"><span class="pre">FILE_OUTPUT_CONFIG_NO_LLD_DE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'shared/standard_data_output_no_lld_de.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.FILE_OUTPUT_CONFIG_NO_LLD_DE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard config name for external data output without lld_de level.</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="smile">
+</section>
+<section id="featurelevel">
+<h2>FeatureLevel<a class="headerlink" href="#featurelevel" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="opensmile.FeatureLevel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">opensmile.</span></span><span class="sig-name descname"><span class="pre">FeatureLevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opensmile/core/define.html#FeatureLevel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensmile.FeatureLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enumeration of standard feature levels.</p>
+<ul class="simple">
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">LowLevelDescriptors</span></code> - low-level descriptors (LLD) calculated
+over a sliding window</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">LowLevelDescriptors_Deltas</span></code> - Delta regression of LLDs</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">Functionals</span></code> - statistical functionals mapping variable series of
+LLDs to static values</p></li>
+</ul>
+<p>For more information see <a class="reference external" href="https://mediatum.ub.tum.de/doc/1082431/1082431.pdf">https://mediatum.ub.tum.de/doc/1082431/1082431.pdf</a></p>
+</dd></dl>
+
+</section>
+<section id="featureset">
+<h2>FeatureSet<a class="headerlink" href="#featureset" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="opensmile.FeatureSet">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">opensmile.</span></span><span class="sig-name descname"><span class="pre">FeatureSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opensmile/core/define.html#FeatureSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensmile.FeatureSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enumeration of standard feature sets.</p>
+<p>The following feature sets are available:</p>
+<ul class="simple">
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">ComParE_2016</span></code></p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">GeMAPS</span></code>, deprecated alias for <code class="xref py py-attr docutils literal notranslate"><span class="pre">GeMAPSv01a</span></code></p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">GeMAPSv01a</span></code></p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">GeMAPSv01b</span></code></p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">eGeMAPS</span></code>, deprecated alias for <code class="xref py py-attr docutils literal notranslate"><span class="pre">eGeMAPSv01a</span></code></p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">eGeMAPSv01a</span></code></p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">eGeMAPSv01b</span></code></p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">eGeMAPSv02</span></code></p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">emobase</span></code></p></li>
+</ul>
+<p>For references, see the papers on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf">ComParE 2016</a></p></li>
+<li><p><a class="reference external" href="https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf">GeMAPS</a></p></li>
+<li><p><a class="reference external" href="https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf">eGeMAPS</a></p></li>
+<li><p>emobase</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="smile">
 <h2>Smile<a class="headerlink" href="#smile" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt id="opensmile.Smile">
-<em class="property">class </em><code class="sig-prename descclassname">opensmile.</code><code class="sig-name descname">Smile</code><span class="sig-paren">(</span><em class="sig-param">feature_set=&lt;FeatureSet.ComParE_2016: 'compare/ComParE_2016'&gt;</em>, <em class="sig-param">feature_level=&lt;FeatureLevel.Functionals: 'func'&gt;</em>, <em class="sig-param">*</em>, <em class="sig-param">options=None</em>, <em class="sig-param">loglevel=2</em>, <em class="sig-param">logfile=None</em>, <em class="sig-param">num_channels=1</em>, <em class="sig-param">keep_nat=False</em>, <em class="sig-param">num_workers=1</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opensmile/core/smile.html#Smile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opensmile.Smile" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.Smile">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">opensmile.</span></span><span class="sig-name descname"><span class="pre">Smile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">feature_set=&lt;FeatureSet.ComParE_2016:</span> <span class="pre">'compare/ComParE_2016'&gt;</span></em>, <em class="sig-param"><span class="pre">feature_level=&lt;FeatureLevel.Functionals:</span> <span class="pre">'func'&gt;</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">options=None</span></em>, <em class="sig-param"><span class="pre">loglevel=2</span></em>, <em class="sig-param"><span class="pre">logfile=None</span></em>, <em class="sig-param"><span class="pre">num_channels=1</span></em>, <em class="sig-param"><span class="pre">keep_nat=False</span></em>, <em class="sig-param"><span class="pre">num_workers=1</span></em>, <em class="sig-param"><span class="pre">verbose=False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opensmile/core/smile.html#Smile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensmile.Smile" title="Permalink to this definition">¶</a></dt>
 <dd><p>OpenSMILE feature extractor.</p>
 <ol class="arabic">
 <li><p>You can choose a pre-defined feature set by passing one of
-<code class="xref py py-class docutils literal notranslate"><span class="pre">opensmile.FeatureSet</span></code></p></li>
+<a class="reference internal" href="#opensmile.FeatureSet" title="opensmile.FeatureSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">opensmile.FeatureSet</span></code></a></p></li>
 <li><p>You can also provide a custom config file using the following
 template:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[componentInstances:cComponentManager]
@@ -283,8 +333,8 @@ includeSingleElementFields = 1
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>feature_set</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureSet</span></code>]) – default feature set or path to a custom config file</p></li>
-<li><p><strong>feature_level</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureLevel</span></code>]) – default feature level or level name if a custom
+<li><p><strong>feature_set</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference internal" href="#opensmile.FeatureSet" title="opensmile.core.define.FeatureSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureSet</span></code></a>]) – default feature set or path to a custom config file</p></li>
+<li><p><strong>feature_level</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference internal" href="#opensmile.FeatureLevel" title="opensmile.core.define.FeatureLevel"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureLevel</span></code></a>]) – default feature level or level name if a custom
 config file is used</p></li>
 <li><p><strong>options</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>]) – dictionary with optional script parameters</p></li>
 <li><p><strong>loglevel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – log level (0-5), the higher the number the more log
@@ -313,14 +363,14 @@ processing</p></li>
 </pre></div>
 </div>
 <dl class="py method">
-<dt id="opensmile.Smile.__call__">
-<code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.__call__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.Smile.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call self as a function.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="opensmile.Smile.config_name">
-<em class="property">property </em><code class="sig-name descname">config_name</code><a class="headerlink" href="#opensmile.Smile.config_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="opensmile.Smile.config_name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">config_name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#opensmile.Smile.config_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return name of config file (without file extension).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -329,9 +379,9 @@ processing</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt id="opensmile.Smile.config_path">
-<em class="property">property </em><code class="sig-name descname">config_path</code><a class="headerlink" href="#opensmile.Smile.config_path" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="opensmile.Smile.config_path">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">config_path</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#opensmile.Smile.config_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return file path of config file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -340,9 +390,9 @@ processing</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt id="opensmile.Smile.default_config_root">
-<em class="property">property </em><code class="sig-name descname">default_config_root</code><a class="headerlink" href="#opensmile.Smile.default_config_root" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="opensmile.Smile.default_config_root">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">default_config_root</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#opensmile.Smile.default_config_root" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return root directory with standard config files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -352,38 +402,38 @@ processing</p></li>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.Smile.feature_level">
-<code class="sig-name descname">feature_level</code><a class="headerlink" href="#opensmile.Smile.feature_level" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.Smile.feature_level">
+<span class="sig-name descname"><span class="pre">feature_level</span></span><a class="headerlink" href="#opensmile.Smile.feature_level" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard feature level or sink level in custom config file.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.Smile.feature_set">
-<code class="sig-name descname">feature_set</code><a class="headerlink" href="#opensmile.Smile.feature_set" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.Smile.feature_set">
+<span class="sig-name descname"><span class="pre">feature_set</span></span><a class="headerlink" href="#opensmile.Smile.feature_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard feature set or path to custom config file</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.Smile.logfile">
-<code class="sig-name descname">logfile</code><a class="headerlink" href="#opensmile.Smile.logfile" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.Smile.logfile">
+<span class="sig-name descname"><span class="pre">logfile</span></span><a class="headerlink" href="#opensmile.Smile.logfile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log file</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.Smile.loglevel">
-<code class="sig-name descname">loglevel</code><a class="headerlink" href="#opensmile.Smile.loglevel" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.Smile.loglevel">
+<span class="sig-name descname"><span class="pre">loglevel</span></span><a class="headerlink" href="#opensmile.Smile.loglevel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log level</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="opensmile.Smile.options">
-<code class="sig-name descname">options</code><a class="headerlink" href="#opensmile.Smile.options" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.Smile.options">
+<span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#opensmile.Smile.options" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dictionary with options</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="opensmile.Smile.process_file">
-<code class="sig-name descname">process_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">channel</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_file" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.Smile.process_file">
+<span class="sig-name descname"><span class="pre">process_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract features from an audio file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -404,8 +454,8 @@ processing</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="opensmile.Smile.process_files">
-<code class="sig-name descname">process_files</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">files</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">starts</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ends</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">channel</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_files" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.Smile.process_files">
+<span class="sig-name descname"><span class="pre">process_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract features for a list of files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -426,8 +476,8 @@ processing</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="opensmile.Smile.process_folder">
-<code class="sig-name descname">process_folder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">filetype</span><span class="o">=</span><span class="default_value">'wav'</span></em>, <em class="sig-param"><span class="n">channel</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_folder" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.Smile.process_folder">
+<span class="sig-name descname"><span class="pre">process_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filetype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wav'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_folder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract features from files in a folder.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -451,8 +501,8 @@ processing</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="opensmile.Smile.process_signal">
-<code class="sig-name descname">process_signal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span></em>, <em class="sig-param"><span class="n">sampling_rate</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">file</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_signal" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="opensmile.Smile.process_signal">
+<span class="sig-name descname"><span class="pre">process_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_rate</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_signal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract features for an audio signal.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -481,8 +531,8 @@ it consists only of <code class="docutils literal notranslate"><span class="pre"
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -507,7 +557,7 @@ it consists only of <code class="docutils literal notranslate"><span class="pre"
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/02/12 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/05/14 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -539,6 +589,7 @@ it consists only of <code class="docutils literal notranslate"><span class="pre"
     
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>

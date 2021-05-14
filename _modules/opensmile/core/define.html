@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>opensmile.core.define &mdash; opensmile Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/audeering.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/audeering.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    
+      
+    
+  
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          <a href="../../../index.html">
+          
+            <img src="../../../_static/images/audeering.svg" class="logo" alt="audEERING"/>
+          
+          
+            <span> opensmile</span>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api-smile.html">opensmile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">opensmile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>opensmile.core.define</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for opensmile.core.define</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">enum</span>
+
+
+<div class="viewcode-block" id="FeatureSet"><a class="viewcode-back" href="../../../api-smile.html#opensmile.FeatureSet">[docs]</a><span class="k">class</span> <span class="nc">FeatureSet</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Enumeration of standard feature sets.</span>
+
+<span class="sd">    The following feature sets are available:</span>
+
+<span class="sd">    * :attr:`ComParE_2016`</span>
+<span class="sd">    * :attr:`GeMAPS`, deprecated alias for :attr:`GeMAPSv01a`</span>
+<span class="sd">    * :attr:`GeMAPSv01a`</span>
+<span class="sd">    * :attr:`GeMAPSv01b`</span>
+<span class="sd">    * :attr:`eGeMAPS`, deprecated alias for :attr:`eGeMAPSv01a`</span>
+<span class="sd">    * :attr:`eGeMAPSv01a`</span>
+<span class="sd">    * :attr:`eGeMAPSv01b`</span>
+<span class="sd">    * :attr:`eGeMAPSv02`</span>
+<span class="sd">    * :attr:`emobase`</span>
+
+<span class="sd">    For references, see the papers on:</span>
+
+<span class="sd">    * `ComParE 2016`_</span>
+<span class="sd">    * GeMAPS_</span>
+<span class="sd">    * eGeMAPS_</span>
+<span class="sd">    * emobase</span>
+
+<span class="sd">    .. _ComParE 2016:</span>
+<span class="sd">        http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf</span>
+<span class="sd">    .. _GeMAPS:</span>
+<span class="sd">        https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf</span>
+<span class="sd">    .. _eGeMAPS:</span>
+<span class="sd">        https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ComParE_2016</span> <span class="o">=</span> <span class="s1">&#39;compare/ComParE_2016&#39;</span>
+    <span class="n">GeMAPS</span> <span class="o">=</span> <span class="s1">&#39;gemaps/v01a/GeMAPSv01a&#39;</span>  <span class="c1"># legacy</span>
+    <span class="n">GeMAPSv01a</span> <span class="o">=</span> <span class="s1">&#39;gemaps/v01a/GeMAPSv01a&#39;</span>
+    <span class="n">GeMAPSv01b</span> <span class="o">=</span> <span class="s1">&#39;gemaps/v01b/GeMAPSv01b&#39;</span>
+    <span class="n">eGeMAPS</span> <span class="o">=</span> <span class="s1">&#39;egemaps/v01a/eGeMAPSv01a&#39;</span>   <span class="c1"># legacy</span>
+    <span class="n">eGeMAPSv01a</span> <span class="o">=</span> <span class="s1">&#39;egemaps/v01a/eGeMAPSv01a&#39;</span>
+    <span class="n">eGeMAPSv01b</span> <span class="o">=</span> <span class="s1">&#39;egemaps/v01b/eGeMAPSv01b&#39;</span>
+    <span class="n">eGeMAPSv02</span> <span class="o">=</span> <span class="s1">&#39;egemaps/v02/eGeMAPSv02&#39;</span>
+    <span class="n">emobase</span> <span class="o">=</span> <span class="s1">&#39;emobase/emobase&#39;</span></div>
+
+
+<div class="viewcode-block" id="FeatureLevel"><a class="viewcode-back" href="../../../api-smile.html#opensmile.FeatureLevel">[docs]</a><span class="k">class</span> <span class="nc">FeatureLevel</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Enumeration of standard feature levels.</span>
+
+<span class="sd">    * :attr:`LowLevelDescriptors` - low-level descriptors (LLD) calculated</span>
+<span class="sd">      over a sliding window</span>
+<span class="sd">    * :attr:`LowLevelDescriptors_Deltas` - Delta regression of LLDs</span>
+<span class="sd">    * :attr:`Functionals` - statistical functionals mapping variable series of</span>
+<span class="sd">      LLDs to static values</span>
+
+<span class="sd">    For more information see https://mediatum.ub.tum.de/doc/1082431/1082431.pdf</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">LowLevelDescriptors</span> <span class="o">=</span> <span class="s1">&#39;lld&#39;</span>
+    <span class="n">LowLevelDescriptors_Deltas</span> <span class="o">=</span> <span class="s1">&#39;lld_de&#39;</span>
+    <span class="n">Functionals</span> <span class="o">=</span> <span class="s1">&#39;func&#39;</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div>
+    <p>
+        
+        
+        
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/05/14 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+        
+    </p>
+  </div>
+
+  <div role="contentinfo">
+    <p>
+        
+      &copy; 2020-2021 audEERING GmbH
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/thebelab-helper.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
