@@ -15,12 +15,14 @@ class FeatureSet(enum.Enum):
     * :attr:`eGeMAPSv01a`
     * :attr:`eGeMAPSv01b`
     * :attr:`eGeMAPSv02`
+    * :attr:`emobase`
 
     For references, see the papers on:
 
     * `ComParE 2016`_
     * GeMAPS_
     * eGeMAPS_
+    * emobase
 
     .. _ComParE 2016:
         http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf
@@ -38,6 +40,7 @@ class FeatureSet(enum.Enum):
     eGeMAPSv01a = 'egemaps/v01a/eGeMAPSv01a'
     eGeMAPSv01b = 'egemaps/v01b/eGeMAPSv01b'
     eGeMAPSv02 = 'egemaps/v02/eGeMAPSv02'
+    emobase = 'emobase/emobase'
 
 
 class FeatureLevel(enum.Enum):
