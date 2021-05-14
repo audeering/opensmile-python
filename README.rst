@@ -54,6 +54,9 @@ eGeMAPSv01b   23 / - / 88
 eGeMAPSv02    25 / - / 88
 ============  ==============
 
+.. note:: Additional feature sets have been added by the community.
+    For a full list please see :class:`opensmile.FeatureSet`.
+
 Pre v2.0.0
 ~~~~~~~~~~
 

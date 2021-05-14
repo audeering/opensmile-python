@@ -7,6 +7,12 @@ The format is based on `Keep a Changelog`_,
 and this project adheres to `Semantic Versioning`_.
 
 
+Version 2.0.1 (2021-05-14)
+--------------------------
+
+* Added: ``FeatureSet.emobase``
+
+
 Version 2.0.0 (2021-02-12)
 --------------------------
 
