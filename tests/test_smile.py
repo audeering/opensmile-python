@@ -4,13 +4,13 @@ import numpy as np
 import pandas as pd
 import pytest
 
-import audiofile
 import audeer
+import audiofile
 
 import opensmile
 
 
-deprecated_feature_sets = [  # deprecated: recommended
+deprecated_feature_sets = [  # deprecated
     opensmile.FeatureSet.GeMAPS,
     opensmile.FeatureSet.GeMAPSv01a,
     opensmile.FeatureSet.eGeMAPS,
@@ -47,27 +47,30 @@ gemaps_family = [  # no deltas
 ])
 def test_channels(x, sr, num_channels, feature_set, feature_level):
 
-    # create feature extractor for single channel
+    x = np.repeat(x, num_channels, axis=0)
 
-    fex = opensmile.Smile(feature_set, feature_level)
+    # create feature extractor with mixdown
+
+    fex = opensmile.Smile(feature_set, feature_level, mixdown=True)
+    fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+    assert isinstance(fex, opensmile.Smile)
 
     y_mono = fex.process_signal(x, sr)
 
     # create feature extractor for multiple channels
 
     fex = opensmile.Smile(
-        feature_set, feature_level, num_channels=num_channels,
+        feature_set, feature_level, channels=range(num_channels),
     )
+    fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+    assert isinstance(fex, opensmile.Smile)
 
-    with pytest.raises(RuntimeError):
-        fex.process_signal(x, sr)  # channel mismatch
-    x = np.repeat(x, num_channels, axis=0)
     y = fex.process_signal(x, sr)
 
     # assertions
 
     assert y_mono.shape[0] == y.shape[0]
-    assert y_mono.shape[1] * fex.num_channels == y.shape[1]
+    assert y_mono.shape[1] * len(fex.process.channels) == y.shape[1]
     for c in range(num_channels):
         np.testing.assert_equal(
             y.values[:, c * fex.num_features:(c + 1) * fex.num_features],
@@ -95,6 +98,8 @@ def test_custom(config, level):
     # create feature extractor
 
     fex = opensmile.Smile(config, level)
+    fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+    assert isinstance(fex, opensmile.Smile)
 
     # extract from file
 
@@ -144,8 +149,12 @@ def test_default(tmpdir, feature_set, feature_level):
         if feature_set in deprecated_feature_sets:
             with pytest.warns(UserWarning):
                 fex = opensmile.Smile(feature_set, feature_level)
+                fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+                assert isinstance(fex, opensmile.Smile)
         else:
             fex = opensmile.Smile(feature_set, feature_level)
+            fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+            assert isinstance(fex, opensmile.Smile)
 
         # extract features from file
 
@@ -200,14 +209,26 @@ def test_default(tmpdir, feature_set, feature_level):
         opensmile.FeatureLevel.Functionals
     ),
 ])
-@pytest.mark.parametrize('num_workers', [1, 5, None])
+@pytest.mark.parametrize(
+    'num_workers',
+    [
+        1, 5, None,
+    ],
+)
 def test_files(num_files, feature_set, feature_level, num_workers):
 
     # create feature extractor
 
     fex = opensmile.Smile(
-        feature_set, feature_level, num_workers=num_workers,
+        feature_set,
+        feature_level,
+        num_workers=num_workers,
     )
+    fex = opensmile.Smile.from_yaml_s(
+        fex.to_yaml_s(),
+        num_workers=num_workers,
+    )
+    assert isinstance(fex, opensmile.Smile)
 
     # extract from single file
 
@@ -221,6 +242,63 @@ def test_files(num_files, feature_set, feature_level, num_workers):
 
     np.testing.assert_equal(np.concatenate([y_file] * num_files),
                             y_files.values)
+
+
+@pytest.mark.parametrize('feature_set,feature_level', [
+    (
+        pytest.CONFIG_FILE,
+        opensmile.FeatureLevel.LowLevelDescriptors,
+    ),
+    (
+        pytest.CONFIG_FILE,
+        opensmile.FeatureLevel.Functionals,
+    ),
+])
+@pytest.mark.parametrize('index', [
+    pd.MultiIndex.from_arrays(
+        [
+            [pytest.WAV_FILE] * 3,
+            pd.to_timedelta([0, 1, 2], unit='s'),
+            pd.to_timedelta([1, 2, 3], unit='s'),
+        ],
+        names=['file', 'start', 'end'],
+    ),
+])
+@pytest.mark.parametrize(
+    'num_workers',
+    [
+        1, 5, None
+    ],
+)
+def test_index(feature_set, feature_level, index, num_workers):
+
+    # create feature extractor
+
+    fex = opensmile.Smile(
+        feature_set,
+        feature_level,
+        num_workers=num_workers,
+    )
+    fex = opensmile.Smile.from_yaml_s(
+        fex.to_yaml_s(),
+        num_workers=num_workers,
+    )
+    assert isinstance(fex, opensmile.Smile)
+
+    # extract from index
+
+    y = fex.process_index(index)
+
+    # extract from files
+
+    files = index.get_level_values(0)
+    starts = index.get_level_values(1)
+    ends = index.get_level_values(2)
+    y_files = fex.process_files(files, starts=starts, ends=ends)
+
+    # assertions
+
+    pd.testing.assert_frame_equal(y, y_files)
 
 
 @pytest.mark.parametrize('file,feature_set,feature_level', [
@@ -240,12 +318,15 @@ def test_signal(file, feature_set, feature_level):
     # create feature extractor
 
     fex = opensmile.Smile(feature_set, feature_level)
+    fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+    assert isinstance(fex, opensmile.Smile)
 
     # extract from numpy array
 
     x, sr = audiofile.read(file, always_2d=True)
     y = fex.process_signal(x, sr)
     y_file = fex.process_file(file)
+    y_call = fex(x, sr)
     with pytest.warns(UserWarning):
         y_empty = fex.process_signal(x[0, :10], sr)
 
@@ -253,4 +334,5 @@ def test_signal(file, feature_set, feature_level):
 
     assert fex.feature_names == y.columns.to_list()
     np.testing.assert_equal(y.values, y_file.values)
+    np.testing.assert_equal(y.values, y_call)
     assert all(y_empty.isna())

@@ -1,4 +1,7 @@
 import enum
+import typing
+
+import audobject
 
 
 class FeatureSet(enum.Enum):
@@ -42,6 +45,23 @@ class FeatureSet(enum.Enum):
     emobase = 'emobase/emobase'
 
 
+class FeatureSetResolver(audobject.ValueResolver):
+    r"""Custom value resolver for :class:`opensmile.FeatureSet`."""
+
+    def decode(self, value: str) -> typing.Union[str, FeatureSet]:
+        if value in FeatureSet.__members__:
+            value = FeatureSet[value]
+        return value
+
+    def encode(self, value: typing.Union[str, FeatureSet]) -> str:
+        if isinstance(value, FeatureSet):
+            value = str(value).split('.')[-1]
+        return value
+
+    def encode_type(self):
+        return str
+
+
 class FeatureLevel(enum.Enum):
     r""" Enumeration of standard feature levels.
 
@@ -57,3 +77,20 @@ class FeatureLevel(enum.Enum):
     LowLevelDescriptors = 'lld'
     LowLevelDescriptors_Deltas = 'lld_de'
     Functionals = 'func'
+
+
+class FeatureLevelResolver(audobject.ValueResolver):
+    r"""Custom value resolver for :class:`opensmile.FeatureLevel`."""
+
+    def decode(self, value: str) -> typing.Union[str, FeatureLevel]:
+        if value in FeatureLevel.__members__:
+            value = FeatureLevel[value]
+        return value
+
+    def encode(self, value: typing.Union[str, FeatureLevel]) -> str:
+        if isinstance(value, FeatureLevel):
+            value = str(value).split('.')[-1]
+        return value
+
+    def encode_type(self):
+        return str

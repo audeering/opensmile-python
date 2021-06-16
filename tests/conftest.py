@@ -1,28 +1,16 @@
-import glob
+import audeer
 import os
+import glob
 import sys
 
 import pytest
 import pandas as pd
-
-import audeer
-import audiofile
-
-
-def safe_path(path):
-    if path:
-        path = os.path.realpath(os.path.expanduser(path))
-        # Convert bytes to str, see https://stackoverflow.com/a/606199
-        if type(path) == bytes:
-            path = path.decode('utf-8').strip('\x00')
-    return path
+import audiofile as af
 
 
 pytest.ROOT = os.path.dirname(os.path.realpath(__file__))
 pytest.WAV_FILE = os.path.join(pytest.ROOT, 'test.wav')
-pytest.WAV_ARRAY, pytest.WAV_SR = audiofile.read(
-    pytest.WAV_FILE, always_2d=True,
-)
+pytest.WAV_ARRAY, pytest.WAV_SR = af.read(pytest.WAV_FILE, always_2d=True)
 pytest.FRAME_LIST_STARTS = pd.to_timedelta(['1.0s', '3.0s', '4.0s'])
 pytest.FRAME_LIST_ENDS = pd.to_timedelta(['1.5s', '3.5s', '5.0s'])
 pytest.CONFIG_FILE = os.path.join(pytest.ROOT, 'test.conf')
