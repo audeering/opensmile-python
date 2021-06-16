@@ -59,7 +59,6 @@ class Smile(audinterface.Feature, audobject.Object):
         * ``loglevel``
         * ``logfile``
         * ``num_workers``
-        * ``multiprocessing``
         * ``segment``
         * ``verbose``
 
