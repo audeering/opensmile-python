@@ -7,6 +7,17 @@ The format is based on `Keep a Changelog`_,
 and this project adheres to `Semantic Versioning`_.
 
 
+Version 2.1.0 (2021-06-16)
+--------------------------
+
+* Added: ``channels``, ``mixdown``, ``resample`` argument
+* Added: support for ``audformat``
+* Changed: disable Windows tests
+* Changed: dependency to ``audinterface`` and ``audobject``
+* Changed: use ``emodb`` in usage section
+* Removed: static files from docs
+
+
 Version 2.0.2 (2021-05-14)
 --------------------------
 
