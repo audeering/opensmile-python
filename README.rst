@@ -12,6 +12,15 @@ Python interface for extracting openSMILE_ features.
 
 .. note:: Only 64-bit Python is supported.
 
+.. note:: With version 2.1.0 we now support
+    audformat_ and automatic resampling / mixdown
+    of the input signals. Unfortunately,
+    this does not yet work under Windows.
+    So if you are on Windows,
+    please install a version prior to 2.1.0.
+    We will hopefully release a Windows compatible
+    version in the near future.
+
 Feature sets
 ------------
 
@@ -119,6 +128,7 @@ Please cite openSMILE in your publications by citing the following paper:
 .. _ComParE 2016: http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf
 .. _GeMAPS: https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf
 .. _eGeMAPS: https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf
+.. _audformat: https://github.com/audeering/audformat
 
 .. badges images and links:
 .. |tests| image:: https://github.com/audeering/opensmile-python/workflows/Test/badge.svg
