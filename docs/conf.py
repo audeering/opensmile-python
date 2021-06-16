@@ -65,7 +65,6 @@ html_context = {
     'display_github': True,
 }
 html_title = title
-html_static_path = ['_static']
 
 # Linkcheck ---------------------------------------------------------------
 
