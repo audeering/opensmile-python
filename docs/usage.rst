@@ -28,6 +28,8 @@ load some files from the
 emodb_ database.
 
 .. jupyter-execute::
+    :hide-output:
+    :stderr:
 
     import os
     import time
