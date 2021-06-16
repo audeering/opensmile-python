@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                v2.0.2
+                v2.1.0
               </div>
             
           
@@ -167,7 +167,7 @@
         
             
             
-              <a href="https://github.com/audeering/opensmile-python/blob/v2.0.2/docs/api-smile.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/audeering/opensmile-python/blob/v2.1.0/docs/api-smile.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -301,7 +301,7 @@ LLDs to static values</p></li>
 <h2>Smile<a class="headerlink" href="#smile" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="opensmile.Smile">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">opensmile.</span></span><span class="sig-name descname"><span class="pre">Smile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">feature_set=&lt;FeatureSet.ComParE_2016:</span> <span class="pre">'compare/ComParE_2016'&gt;</span></em>, <em class="sig-param"><span class="pre">feature_level=&lt;FeatureLevel.Functionals:</span> <span class="pre">'func'&gt;</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">options=None</span></em>, <em class="sig-param"><span class="pre">loglevel=2</span></em>, <em class="sig-param"><span class="pre">logfile=None</span></em>, <em class="sig-param"><span class="pre">num_channels=1</span></em>, <em class="sig-param"><span class="pre">keep_nat=False</span></em>, <em class="sig-param"><span class="pre">num_workers=1</span></em>, <em class="sig-param"><span class="pre">verbose=False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opensmile/core/smile.html#Smile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensmile.Smile" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">opensmile.</span></span><span class="sig-name descname"><span class="pre">Smile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">feature_set=&lt;FeatureSet.ComParE_2016:</span> <span class="pre">'compare/ComParE_2016'&gt;</span></em>, <em class="sig-param"><span class="pre">feature_level=&lt;FeatureLevel.Functionals:</span> <span class="pre">'func'&gt;</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">options=None</span></em>, <em class="sig-param"><span class="pre">loglevel=2</span></em>, <em class="sig-param"><span class="pre">logfile=None</span></em>, <em class="sig-param"><span class="pre">sampling_rate=None</span></em>, <em class="sig-param"><span class="pre">channels=0</span></em>, <em class="sig-param"><span class="pre">mixdown=False</span></em>, <em class="sig-param"><span class="pre">resample=False</span></em>, <em class="sig-param"><span class="pre">segment=None</span></em>, <em class="sig-param"><span class="pre">keep_nat=False</span></em>, <em class="sig-param"><span class="pre">num_workers=1</span></em>, <em class="sig-param"><span class="pre">verbose=False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opensmile/core/smile.html#Smile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensmile.Smile" title="Permalink to this definition">¶</a></dt>
 <dd><p>OpenSMILE feature extractor.</p>
 <ol class="arabic">
 <li><p>You can choose a pre-defined feature set by passing one of
@@ -330,6 +330,19 @@ includeSingleElementFields = 1
 </div>
 </li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following arguments are not serialized:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">keep_nat</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">loglevel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logfile</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">segment</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verbose</span></code></p></li>
+</ul>
+<p>For more information see section on <a class="reference external" href="http://tools.pp.audeering.com/audobject/usage.html#hidden-arguments">hidden arguments</a>.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -340,11 +353,23 @@ config file is used</p></li>
 <li><p><strong>loglevel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – log level (0-5), the higher the number the more log
 messages are given</p></li>
 <li><p><strong>logfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code> log messages will be stored to this file</p></li>
-<li><p><strong>num_channels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – the expected number of channels</p></li>
+<li><p><strong>sampling_rate</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – sampling rate in Hz.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code> it will call <code class="docutils literal notranslate"><span class="pre">process_func</span></code> with the actual
+sampling rate of the signal.</p></li>
+<li><p><strong>channels</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]]) – channel selection, see <code class="xref py py-func docutils literal notranslate"><span class="pre">audresample.remix()</span></code></p></li>
+<li><p><strong>mixdown</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – apply mono mix-down on selection</p></li>
+<li><p><strong>resample</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code> enforces given sampling rate by resampling</p></li>
+<li><p><strong>segment</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code>]) – when a <code class="xref py py-class docutils literal notranslate"><span class="pre">audinterface.Segment</span></code> object is provided,
+it will be used to find a segmentation of the input signal.
+Afterwards processing is applied to each segment</p></li>
 <li><p><strong>keep_nat</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – if the end of segment is set to <code class="docutils literal notranslate"><span class="pre">NaT</span></code> do not replace
 with file duration in the result</p></li>
 <li><p><strong>num_workers</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – number of parallel jobs or 1 for sequential
-processing</p></li>
+processing. If <code class="docutils literal notranslate"><span class="pre">None</span></code> will be set to the number of
+processors on the machine multiplied by 5 in case of
+multithreading and number of processors in case of
+multiprocessing</p></li>
+<li><p><strong>multiprocessing</strong> – use multiprocessing instead of multithreading</p></li>
 <li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – show debug messages</p></li>
 </ul>
 </dd>
@@ -364,8 +389,78 @@ processing</p></li>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="opensmile.Smile.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.__call__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Call self as a function.</p>
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opensmile/core/smile.html#Smile.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensmile.Smile.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply processing to signal.</p>
+<p>This function processes the signal <strong>without</strong> transforming the output
+into a <code class="xref py py-class docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>. Instead it will return the raw processed
+signal. However, if channel selection, mixdown and/or resampling
+is enabled, the signal will be first remixed and resampled if the
+input sampling rate does not fit the expected sampling rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.20)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>) – signal values</p></li>
+<li><p><strong>sampling_rate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – sampling rate in Hz</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.20)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Processed signal</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if sampling rates do not match</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if channel selection is invalid</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="opensmile.Smile.arguments">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">arguments</span></span><em class="property"><span class="pre">:</span> <span class="pre">Dict[str,</span> <span class="pre">Any]</span></em><a class="headerlink" href="#opensmile.Smile.arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns arguments that are serialized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary of arguments and their values.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if arguments are found that are not assigned to
+    attributes of the same name</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">audobject.testing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span> <span class="o">=</span> <span class="n">audobject</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">TestObject</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">point</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">arguments</span>
+<span class="go">{&#39;name&#39;: &#39;test&#39;, &#39;point&#39;: (1, 1)}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="opensmile.Smile.borrowed_arguments">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">borrowed_arguments</span></span><em class="property"><span class="pre">:</span> <span class="pre">Dict[str,</span> <span class="pre">str]</span></em><a class="headerlink" href="#opensmile.Smile.borrowed_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns borrowed arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary with borrowed arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.Smile.column_names">
+<span class="sig-name descname"><span class="pre">column_names</span></span><a class="headerlink" href="#opensmile.Smile.column_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feature column names.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -408,9 +503,126 @@ processing</p></li>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.Smile.feature_names">
+<span class="sig-name descname"><span class="pre">feature_names</span></span><a class="headerlink" href="#opensmile.Smile.feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feature names.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="opensmile.Smile.feature_set">
 <span class="sig-name descname"><span class="pre">feature_set</span></span><a class="headerlink" href="#opensmile.Smile.feature_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard feature set or path to custom config file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensmile.Smile.from_dict">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create object from dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]) – dictionary with variables</p></li>
+<li><p><strong>kwargs</strong> – additional variables</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Object</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if a mandatory argument of the object
+    is missing in the dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensmile.Smile.from_yaml">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_or_stream</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.from_yaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create object from YAML file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_or_stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.IO" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IO</span></code></a>]) – file path or stream</p></li>
+<li><p><strong>kwargs</strong> – additional variables</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Object</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensmile.Smile.from_yaml_s">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_yaml_s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yaml_string</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.from_yaml_s" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create object from YAML string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yaml_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – YAML string</p></li>
+<li><p><strong>kwargs</strong> – additional variables</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Object</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="opensmile.Smile.hidden_arguments">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">hidden_arguments</span></span><em class="property"><span class="pre">:</span> <span class="pre">List[str]</span></em><a class="headerlink" href="#opensmile.Smile.hidden_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns hidden arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List with names of hidden arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.Smile.hop_dur">
+<span class="sig-name descname"><span class="pre">hop_dur</span></span><a class="headerlink" href="#opensmile.Smile.hop_dur" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hop duration.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="opensmile.Smile.id">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#opensmile.Smile.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object identifier.</p>
+<p>The ID of an object ID is created from its non-hidden arguments.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="n">Object</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bar</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="gp">... </span>       <span class="bp">self</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="n">bar</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo1</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">(</span><span class="s1">&#39;I am unique!&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">foo1</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="go">893df240-babe-d796-cdf1-c436171b7a96</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo2</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">(</span><span class="s1">&#39;I am different!&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">foo2</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="go">9303f2a5-bfc9-e5ff-0ffa-a9846e2d2190</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo3</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">(</span><span class="s1">&#39;I am unique!&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">foo1</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">foo3</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
@@ -426,26 +638,61 @@ processing</p></li>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.Smile.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#opensmile.Smile.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the feature set.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.Smile.num_channels">
+<span class="sig-name descname"><span class="pre">num_channels</span></span><a class="headerlink" href="#opensmile.Smile.num_channels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expected number of channels</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.Smile.num_features">
+<span class="sig-name descname"><span class="pre">num_features</span></span><a class="headerlink" href="#opensmile.Smile.num_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of features.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="opensmile.Smile.options">
 <span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#opensmile.Smile.options" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dictionary with options</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.Smile.params">
+<span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#opensmile.Smile.params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of parameters describing the feature set.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.Smile.process">
+<span class="sig-name descname"><span class="pre">process</span></span><a class="headerlink" href="#opensmile.Smile.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing object.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="opensmile.Smile.process_file">
-<span class="sig-name descname"><span class="pre">process_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_file" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">process_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract features from an audio file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – file path</p></li>
-<li><p><strong>channel</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – channel number</p></li>
-<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]) – start processing at this position</p></li>
-<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]) – end processing at this position</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>]) – start processing at this position.
+If value is as a float or integer it is treated as seconds</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>]) – end processing at this position.
+If value is as a float or integer it is treated as seconds</p></li>
+<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – root folder to expand relative file path</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if number of channels do not match</p>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if sampling rates do not match</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if channel selection is invalid</p></li>
+</ul>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
@@ -455,19 +702,26 @@ processing</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="opensmile.Smile.process_files">
-<span class="sig-name descname"><span class="pre">process_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_files" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">process_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract features for a list of files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>files</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – list of file paths</p></li>
-<li><p><strong>starts</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]]) – list with start positions</p></li>
-<li><p><strong>ends</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]]) – list with end positions</p></li>
-<li><p><strong>channel</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – channel number</p></li>
+<li><p><strong>starts</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]], <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>]) – segment start positions.
+Time values given as float or integers are treated as seconds.
+If a scalar is given, it is applied to all files</p></li>
+<li><p><strong>ends</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]], <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>]) – segment end positions.
+Time values given as float or integers are treated as seconds
+If a scalar is given, it is applied to all files</p></li>
+<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – root folder to expand relative file paths</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if number of channels do not match</p>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if sampling rates do not match</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if channel selection is invalid</p></li>
+</ul>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
@@ -477,7 +731,7 @@ processing</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="opensmile.Smile.process_folder">
-<span class="sig-name descname"><span class="pre">process_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filetype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wav'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_folder" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">process_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filetype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wav'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_folder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract features from files in a folder.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -488,12 +742,40 @@ processing</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – root folder</p></li>
 <li><p><strong>filetype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – file extension</p></li>
-<li><p><strong>channel</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – channel number</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if number of channels do not match</p>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if sampling rates do not match</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if channel selection is invalid</p></li>
+</ul>
 </dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensmile.Smile.process_index">
+<span class="sig-name descname"><span class="pre">process_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract features from an index conform to <a class="reference external" href="https://audeering.github.io/audformat/data-format.html">audformat</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code>) – index with segment information</p></li>
+<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – root folder to expand relative file paths</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if sampling rates do not match</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if channel selection is invalid</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><strong>ValueError</strong></a> – if index is not conform to <a class="reference external" href="https://audeering.github.io/audformat/data-format.html">audformat</a></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
 </dd>
@@ -516,17 +798,206 @@ it consists only of <code class="docutils literal notranslate"><span class="pre"
 <li><p><strong>signal</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.20)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>) – signal values</p></li>
 <li><p><strong>sampling_rate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – sampling rate in Hz</p></li>
 <li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – file path</p></li>
-<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]) – start processing at this position</p></li>
-<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>]) – end processing at this position</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>]) – start processing at this position.
+If value is as a float or integer it is treated as seconds</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Timedelta</span></code>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>]) – end processing at this position.
+If value is as a float or integer it is treated as seconds</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if number of channels do not match</p>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if sampling rates do not match</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if channel selection is invalid</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if dimension of extracted features
+    is greater than three</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if feature extractor uses sliding window,
+    but <code class="docutils literal notranslate"><span class="pre">self.win_dur</span></code> is not specified</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if number of features does not match
+    number of feature names</p></li>
+</ul>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensmile.Smile.process_signal_from_index">
+<span class="sig-name descname"><span class="pre">process_signal_from_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_signal_from_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split a signal into segments and extract features for each segment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.20)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>) – signal values</p></li>
+<li><p><strong>sampling_rate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – sampling rate in Hz</p></li>
+<li><p><strong>index</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">MultiIndex</span></code>) – a <a class="reference external" href="https://pandas-docs.github.io/pandas-docs-travis/reference/api/pandas.MultiIndex.html#pandas.MultiIndex" title="(in pandas v0.25.0.dev0+752.g49f33f0d)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.MultiIndex</span></code></a> with two levels
+named <cite>start</cite> and <cite>end</cite> that hold start and end
+positions as <a class="reference external" href="https://pandas-docs.github.io/pandas-docs-travis/reference/api/pandas.Timedelta.html#pandas.Timedelta" title="(in pandas v0.25.0.dev0+752.g49f33f0d)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Timedelta</span></code></a> objects.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if sampling rates do not match</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if channel selection is invalid</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><strong>ValueError</strong></a> – if given index has wrong format</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensmile.Smile.process_unified_format_index">
+<span class="sig-name descname"><span class="pre">process_unified_format_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.process_unified_format_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract features from an index conform to the <a class="reference external" href="http://tools.pp.audeering.com/audata/data-tables.html">Unified Format</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is assumed that the index already holds segments,
+i.e. in case a <code class="docutils literal notranslate"><span class="pre">segment</span></code> object is given, it will be ignored.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code>) – index with segment information</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if sampling rates do not match</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.9)"><strong>RuntimeError</strong></a> – if channel selection is invalid</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><strong>ValueError</strong></a> – if index is not conform to the <a class="reference external" href="http://tools.pp.audeering.com/audata/data-tables.html">Unified Format</a></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="opensmile.Smile.resolvers">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">resolvers</span></span><em class="property"><span class="pre">:</span> <span class="pre">Dict[str,</span> <span class="pre">audobject.core.resolver.ValueResolver]</span></em><a class="headerlink" href="#opensmile.Smile.resolvers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return resolvers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueResolver</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary with resolvers.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensmile.Smile.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts object to a dictionary.</p>
+<p>Includes items from <code class="xref py py-meth docutils literal notranslate"><span class="pre">audobject.Object.arguments()</span></code>.
+If an argument has a resolver, its value is encoded.
+Usually, the object can be re-instantiated using
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">audobject.Object.from_dict()</span></code>.
+However, if <code class="docutils literal notranslate"><span class="pre">flatten=True</span></code>, this is not possible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>include_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – add version to class name</p></li>
+<li><p><strong>flatten</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – flatten the dictionary</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a>]]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary that represent the object</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">audobject.testing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span> <span class="o">=</span> <span class="n">audobject</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">TestObject</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">point</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">include_version</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">{&#39;$audobject.core.testing.TestObject&#39;: {&#39;name&#39;: &#39;test&#39;, &#39;point&#39;: [1, 1]}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">{&#39;name&#39;: &#39;test&#39;, &#39;point.0&#39;: 1, &#39;point.1&#39;: 1}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensmile.Smile.to_numpy">
+<span class="sig-name descname"><span class="pre">to_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.to_numpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return feature values as a <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.20)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> in original
+shape, i.e. <code class="docutils literal notranslate"><span class="pre">(channels,</span> <span class="pre">features,</span> <span class="pre">time)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frame</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>) – feature frame</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.20)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensmile.Smile.to_yaml">
+<span class="sig-name descname"><span class="pre">to_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_or_stream</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.to_yaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save object to YAML file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_or_stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.IO" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IO</span></code></a>]) – file path or stream</p></li>
+<li><p><strong>include_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – add version to class name</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensmile.Smile.to_yaml_s">
+<span class="sig-name descname"><span class="pre">to_yaml_s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.to_yaml_s" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert object to YAML string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>include_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – add version to class name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>YAML string</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">audobject.testing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span> <span class="o">=</span> <span class="n">audobject</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">TestObject</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">point</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">to_yaml_s</span><span class="p">(</span><span class="n">include_version</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="go">$audobject.core.testing.TestObject:</span>
+<span class="go">  name: test</span>
+<span class="go">  point:</span>
+<span class="go">  - 1</span>
+<span class="go">  - 1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.Smile.unit">
+<span class="sig-name descname"><span class="pre">unit</span></span><a class="headerlink" href="#opensmile.Smile.unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unit of <code class="docutils literal notranslate"><span class="pre">win_dur</span></code> and <code class="docutils literal notranslate"><span class="pre">hop</span> <span class="pre">dur</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.Smile.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#opensmile.Smile.verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show debug messages.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.Smile.win_dur">
+<span class="sig-name descname"><span class="pre">win_dur</span></span><a class="headerlink" href="#opensmile.Smile.win_dur" title="Permalink to this definition">¶</a></dt>
+<dd><p>Window duration.</p>
 </dd></dl>
 
 </dd></dl>
@@ -557,7 +1028,7 @@ it consists only of <code class="docutils literal notranslate"><span class="pre"
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/05/14 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/06/16 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>

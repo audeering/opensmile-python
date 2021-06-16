@@ -6,20 +6,52 @@ a high-level interface to openSMILE_.
 It ships pre-compiled binaries and default feature sets,
 but it's also possible to run custom config files.
 
+.. Load from internal audb repository
+.. jupyter-execute::
+    :hide-code:
+
+    import audb
+
+    audb.config.REPOSITORIES = [
+        audb.Repository(
+            name='data-public',
+            host='https://audeering.jfrog.io/artifactory',
+            backend='artifactory',
+        ),
+    ]
+
 Getting ready
 -------------
 
-Let's do some imports.
+Let's do some imports and
+load some files from the
+emodb_ database.
 
 .. jupyter-execute::
+    :hide-output:
+    :stderr:
 
+    import os
     import time
 
     import numpy as np
     import pandas as pd
 
+    import audb
     import audiofile
     import opensmile
+
+
+    db = audb.load(
+        'emodb',
+        version='1.1.1',
+        format='wav',
+        mixdown=True,
+        sampling_rate=16000,
+        media='wav/03a01.*',  # load subset
+        full_path=False,
+        verbose=False,
+    )
 
 .. jupyter-execute::
     :hide-code:
@@ -29,12 +61,16 @@ Let's do some imports.
 Process signal
 --------------
 
-Read file into memory.
+Read first ten seconds of a file into memory.
 
 .. jupyter-execute::
 
-    file = 'docs/_static/test.wav'
-    signal, sampling_rate = audiofile.read(file, always_2d=True)
+    file = os.path.join(db.root, db.files[0])
+    signal, sampling_rate = audiofile.read(
+        file,
+        duration=10,
+        always_2d=True,
+    )
 
 We set up a feature extractor for functionals
 of a pre-defined feature set.
@@ -105,7 +141,7 @@ we can create a log file.
 Custom config
 -------------
 
-We can also use custom config files.
+We can create a custom config.
 
 .. jupyter-execute::
 
@@ -199,30 +235,47 @@ And...
     )
     smile.process_signal(
         signal,
-        sampling_rate
+        sampling_rate,
     )
 
-More information about config files
-can be found in the `openSMILE documentation`_.
+Resample
+--------
 
-Multi-channel
--------------
-
-We can process multi-channel audio.
-Note that we need to set the number
-of channels when we create the feature extractor.
+It's possible to resample the
+input signals on the fly.
 
 .. jupyter-execute::
 
     smile = opensmile.Smile(
         feature_set=opensmile.FeatureSet.eGeMAPSv02,
         feature_level=opensmile.FeatureLevel.Functionals,
-        num_channels=3,  # expected number of channels
+        sampling_rate=8000,
+        resample=True,
+    )
+    smile.process_signal(
+        signal,
+        sampling_rate,
+    )
+
+Multi-channel
+-------------
+
+We can process multi-channel audio.
+Note that we need to set the channels
+we want to process when we create
+the feature extractor.
+
+.. jupyter-execute::
+
+    smile = opensmile.Smile(
+        feature_set=opensmile.FeatureSet.eGeMAPSv02,
+        feature_level=opensmile.FeatureLevel.Functionals,
+        channels=[0, -1],  # process first and last channel
     )
     signal = np.concatenate([signal, signal, signal], axis=0)
     smile.process_signal(
         signal,
-        sampling_rate
+        sampling_rate,
     )
 
 File input
@@ -230,21 +283,43 @@ File input
 
 We can extract features from files.
 Note that we only process
-the first three seconds of the files
-and distribute work across two processes.
+the first ten seconds of the files
 
 .. jupyter-execute::
 
-    files = [file] * 3
+    files = db.files  # pick files
     smile = opensmile.Smile(
         feature_set=opensmile.FeatureSet.eGeMAPSv02,
         feature_level=opensmile.FeatureLevel.Functionals,
-        num_workers=2,
     )
     smile.process_files(
         files,
-        ends=[pd.to_timedelta('3s')] * len(files)
+        ends=['2s'] * len(files),
+        root=db.root,
     )
 
-.. _openSMILE: https://github.com/audeering/opensmile
-.. _openSMILE documentation: https://audeering.github.io/opensmile/
+audformat
+---------
+
+We can extract features from an index
+in the `audformat`_.
+Note that we set five workers
+to speed up the processing.
+
+.. jupyter-execute::
+
+    index = db['emotion'].index  # pick table index
+    smile = opensmile.Smile(
+        feature_set=opensmile.FeatureSet.eGeMAPSv02,
+        feature_level=opensmile.FeatureLevel.Functionals,
+        num_workers=5,
+    )
+    smile.process_index(
+        index,
+        root=db.root,
+    )
+
+
+.. _audformat: https://audeering.github.io/audformat/data-format.html
+.. _emodb: https://github.com/audeering/emodb
+.. _openSMILE: https://gitlab.audeering.com/tools/opensmile

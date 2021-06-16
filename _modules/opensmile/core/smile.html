@@ -71,7 +71,7 @@
             
             
               <div class="version">
-                v2.0.2
+                v2.1.0
               </div>
             
           
@@ -178,8 +178,8 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">import</span> <span class="nn">audeer</span>
-
-<span class="kn">import</span> <span class="nn">opensmile.core.audinterface</span> <span class="k">as</span> <span class="nn">audinterface</span>
+<span class="kn">import</span> <span class="nn">audinterface</span>
+<span class="kn">import</span> <span class="nn">audobject</span>
 
 <span class="kn">from</span> <span class="nn">opensmile.core.SMILEapi</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">OpenSMILE</span><span class="p">,</span>
@@ -188,11 +188,13 @@
 <span class="kn">from</span> <span class="nn">opensmile.core.config</span> <span class="kn">import</span> <span class="n">config</span>
 <span class="kn">from</span> <span class="nn">opensmile.core.define</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">FeatureLevel</span><span class="p">,</span>
+    <span class="n">FeatureLevelResolver</span><span class="p">,</span>
     <span class="n">FeatureSet</span><span class="p">,</span>
+    <span class="n">FeatureSetResolver</span><span class="p">,</span>
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="Smile"><a class="viewcode-back" href="../../../api-smile.html#opensmile.Smile">[docs]</a><span class="k">class</span> <span class="nc">Smile</span><span class="p">(</span><span class="n">audinterface</span><span class="o">.</span><span class="n">Feature</span><span class="p">):</span>
+<div class="viewcode-block" id="Smile"><a class="viewcode-back" href="../../../api-smile.html#opensmile.Smile">[docs]</a><span class="k">class</span> <span class="nc">Smile</span><span class="p">(</span><span class="n">audinterface</span><span class="o">.</span><span class="n">Feature</span><span class="p">,</span> <span class="n">audobject</span><span class="o">.</span><span class="n">Object</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;OpenSMILE feature extractor.</span>
 
 <span class="sd">    1. You can choose a pre-defined feature set by passing one of</span>
@@ -222,6 +224,17 @@
 <span class="sd">           ;;; default sink</span>
 <span class="sd">           \{\cm[sink{?}:include external sink]}</span>
 
+<span class="sd">    .. note:: The following arguments are not serialized:</span>
+
+<span class="sd">        * ``keep_nat``</span>
+<span class="sd">        * ``loglevel``</span>
+<span class="sd">        * ``logfile``</span>
+<span class="sd">        * ``num_workers``</span>
+<span class="sd">        * ``segment``</span>
+<span class="sd">        * ``verbose``</span>
+
+<span class="sd">        For more information see section on `hidden arguments`_.</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        feature_set: default feature set or path to a custom config file</span>
 <span class="sd">        feature_level: default feature level or level name if a custom</span>
@@ -230,11 +243,23 @@
 <span class="sd">        loglevel: log level (0-5), the higher the number the more log</span>
 <span class="sd">            messages are given</span>
 <span class="sd">        logfile: if not ``None`` log messages will be stored to this file</span>
-<span class="sd">        num_channels: the expected number of channels</span>
+<span class="sd">        sampling_rate: sampling rate in Hz.</span>
+<span class="sd">            If ``None`` it will call ``process_func`` with the actual</span>
+<span class="sd">            sampling rate of the signal.</span>
+<span class="sd">        channels: channel selection, see :func:`audresample.remix`</span>
+<span class="sd">        mixdown: apply mono mix-down on selection</span>
+<span class="sd">        resample: if ``True`` enforces given sampling rate by resampling</span>
+<span class="sd">        segment: when a :class:`audinterface.Segment` object is provided,</span>
+<span class="sd">            it will be used to find a segmentation of the input signal.</span>
+<span class="sd">            Afterwards processing is applied to each segment</span>
 <span class="sd">        keep_nat: if the end of segment is set to ``NaT`` do not replace</span>
 <span class="sd">            with file duration in the result</span>
 <span class="sd">        num_workers: number of parallel jobs or 1 for sequential</span>
-<span class="sd">            processing</span>
+<span class="sd">            processing. If ``None`` will be set to the number of</span>
+<span class="sd">            processors on the machine multiplied by 5 in case of</span>
+<span class="sd">            multithreading and number of processors in case of</span>
+<span class="sd">            multiprocessing</span>
+<span class="sd">        multiprocessing: use multiprocessing instead of multithreading</span>
 <span class="sd">        verbose: show debug messages</span>
 
 <span class="sd">    Example:</span>
@@ -250,7 +275,35 @@
 <span class="sd">    0 days  0 days 00:00:01    0.0</span>
 <span class="sd">    Name: audspec_lengthL1norm_sma_range, dtype: float32</span>
 
+<span class="sd">    .. _`hidden arguments`: http://tools.pp.audeering.com/audobject/usage.html#hidden-arguments</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+    <span class="nd">@audobject</span><span class="o">.</span><span class="n">init_decorator</span><span class="p">(</span>
+        <span class="n">borrow</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;sampling_rate&#39;</span><span class="p">:</span> <span class="s1">&#39;process&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;channels&#39;</span><span class="p">:</span> <span class="s1">&#39;process&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;mixdown&#39;</span><span class="p">:</span> <span class="s1">&#39;process&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;resample&#39;</span><span class="p">:</span> <span class="s1">&#39;process&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="n">hide</span><span class="o">=</span><span class="p">[</span>
+            <span class="s1">&#39;keep_nat&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;logfile&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;loglevel&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;num_workers&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;segment&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;verbose&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="n">resolvers</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;feature_set&#39;</span><span class="p">:</span> <span class="n">FeatureSetResolver</span><span class="p">,</span>
+            <span class="s1">&#39;feature_level&#39;</span><span class="p">:</span> <span class="n">FeatureLevelResolver</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="nd">@audeer</span><span class="o">.</span><span class="n">deprecated_keyword_argument</span><span class="p">(</span>
+        <span class="n">deprecated_argument</span><span class="o">=</span><span class="s1">&#39;num_channels&#39;</span><span class="p">,</span>
+        <span class="n">removal_version</span><span class="o">=</span><span class="s1">&#39;0.13.0&#39;</span><span class="p">,</span>
+        <span class="n">new_argument</span><span class="o">=</span><span class="s1">&#39;channels&#39;</span><span class="p">,</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+    <span class="p">)</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">feature_set</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span>
@@ -263,7 +316,11 @@
             <span class="n">options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">loglevel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
             <span class="n">logfile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">num_channels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="n">sampling_rate</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">channels</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="n">mixdown</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="n">resample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="n">segment</span><span class="p">:</span> <span class="n">audinterface</span><span class="o">.</span><span class="n">Segment</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">keep_nat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
             <span class="n">num_workers</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
             <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -285,17 +342,20 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_feature_names</span><span class="p">(),</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;smile&#39;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">process_func</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_extract</span><span class="p">,</span>
             <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span>
-            <span class="n">num_channels</span><span class="o">=</span><span class="n">num_channels</span><span class="p">,</span>
+            <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+            <span class="n">resample</span><span class="o">=</span><span class="n">resample</span><span class="p">,</span>
+            <span class="n">channels</span><span class="o">=</span><span class="n">channels</span><span class="p">,</span>
+            <span class="n">mixdown</span><span class="o">=</span><span class="n">mixdown</span><span class="p">,</span>
+            <span class="n">segment</span><span class="o">=</span><span class="n">segment</span><span class="p">,</span>
             <span class="n">keep_nat</span><span class="o">=</span><span class="n">keep_nat</span><span class="p">,</span>
             <span class="n">multiprocessing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
         <span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_starts</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ends</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_deprecated</span><span class="p">()</span>
 
@@ -356,7 +416,7 @@
         <span class="n">deprecated_feature_sets</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># deprecated: recommended</span>
             <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPS</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01b</span><span class="p">,</span>
             <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01a</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01b</span><span class="p">,</span>
-            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPS</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
+            <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPS</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">,</span>
             <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01a</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
             <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv01b</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
         <span class="p">}</span>
@@ -376,12 +436,6 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">TimedeltaIndex</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">TimedeltaIndex</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Run feature extraction.&quot;&quot;&quot;</span>
 
-        <span class="k">if</span> <span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_channels</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Input signal has </span><span class="si">{</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> channels, &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;but &#39;num_channels&#39; to set to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_channels</span><span class="si">}</span><span class="s2">.&quot;</span>
-            <span class="p">)</span>
-
         <span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">signal</span> <span class="o">*=</span> <span class="mi">32768</span>
         <span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
@@ -392,9 +446,9 @@
 
         <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">signal</span><span class="p">:</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_starts</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_ends</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">starts</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">ends</span> <span class="o">=</span> <span class="p">[]</span>
 
             <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">()</span>
             <span class="n">options</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
@@ -405,6 +459,10 @@
             <span class="n">options</span><span class="p">[</span><span class="s1">&#39;nBits&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
 
             <span class="n">smile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_smile</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+            <span class="n">smile</span><span class="o">.</span><span class="n">external_sink_set_callback_ex</span><span class="p">(</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">EXTERNAL_OUTPUT_COMPONENT</span><span class="p">,</span>
+                <span class="n">Smile</span><span class="o">.</span><span class="n">_sink_callback</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">starts</span><span class="p">,</span> <span class="n">ends</span><span class="p">)</span>
+            <span class="p">)</span>
             <span class="n">smile</span><span class="o">.</span><span class="n">external_audio_source_write_data</span><span class="p">(</span>
                 <span class="n">config</span><span class="o">.</span><span class="n">EXTERNAL_SOURCE_COMPONENT</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
             <span class="p">)</span>
@@ -414,16 +472,16 @@
             <span class="n">smile</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
             <span class="n">smile</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
 
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">y</span><span class="p">:</span>
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
                     <span class="ne">UserWarning</span><span class="p">(</span><span class="s2">&quot;Segment too short, filling with NaN.&quot;</span><span class="p">)</span>
                 <span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_starts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_ends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="n">sampling_rate</span><span class="p">)</span>
+                <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+                <span class="n">starts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">ends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="n">sampling_rate</span><span class="p">)</span>
 
-            <span class="n">starts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_starts</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
-            <span class="n">ends</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ends</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+            <span class="n">starts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">starts</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+            <span class="n">ends</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">ends</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">starts</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
                 <span class="n">starts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">starts</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
                 <span class="n">ends</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">ends</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
@@ -431,7 +489,7 @@
                 <span class="n">starts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">TimedeltaIndex</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">starts</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)])</span>
                 <span class="n">ends</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">TimedeltaIndex</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">ends</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)])</span>
 
-            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
             <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">starts</span><span class="p">,</span> <span class="n">ends</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -540,17 +598,47 @@
             <span class="n">loglevel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">loglevel</span><span class="p">,</span>
             <span class="n">log_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span>
             <span class="n">debug</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
-        <span class="n">smile</span><span class="o">.</span><span class="n">external_sink_set_callback_ex</span><span class="p">(</span>
-            <span class="n">config</span><span class="o">.</span><span class="n">EXTERNAL_OUTPUT_COMPONENT</span><span class="p">,</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_sink_callback</span>
-        <span class="p">)</span>
         <span class="k">return</span> <span class="n">smile</span>
 
-    <span class="k">def</span> <span class="nf">_sink_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">meta</span><span class="p">:</span> <span class="n">FrameMetaData</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Callback where features are collected.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_starts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">time</span> <span class="o">+</span> <span class="n">meta</span><span class="o">.</span><span class="n">lengthSec</span><span class="p">)</span></div>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_sink_callback</span><span class="p">(</span>
+        <span class="n">y</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">starts</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+        <span class="n">ends</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">FrameMetaData</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return callback where features are collected.&quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">meta</span><span class="p">:</span> <span class="n">FrameMetaData</span><span class="p">):</span>
+            <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+            <span class="n">starts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+            <span class="n">ends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">time</span> <span class="o">+</span> <span class="n">meta</span><span class="o">.</span><span class="n">lengthSec</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">callback</span>
+
+<div class="viewcode-block" id="Smile.__call__"><a class="viewcode-back" href="../../../api-smile.html#opensmile.Smile.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">signal</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+            <span class="n">sampling_rate</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply processing to signal.</span>
+
+<span class="sd">        This function processes the signal **without** transforming the output</span>
+<span class="sd">        into a :class:`pd.DataFrame`. Instead it will return the raw processed</span>
+<span class="sd">        signal. However, if channel selection, mixdown and/or resampling</span>
+<span class="sd">        is enabled, the signal will be first remixed and resampled if the</span>
+<span class="sd">        input sampling rate does not fit the expected sampling rate.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            signal: signal values</span>
+<span class="sd">            sampling_rate: sampling rate in Hz</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Processed signal</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: if sampling rates do not match</span>
+<span class="sd">            RuntimeError: if channel selection is invalid</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div></div>
 </pre></div>
 
            </div>
@@ -566,7 +654,7 @@
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/05/14 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/06/16 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
