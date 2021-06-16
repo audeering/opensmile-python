@@ -7,8 +7,8 @@ import numpy as np
 import pandas as pd
 
 import audeer
-
-import opensmile.core.audinterface as audinterface
+import audinterface
+import audobject
 
 from opensmile.core.SMILEapi import (
     OpenSMILE,
@@ -17,11 +17,13 @@ from opensmile.core.SMILEapi import (
 from opensmile.core.config import config
 from opensmile.core.define import (
     FeatureLevel,
+    FeatureLevelResolver,
     FeatureSet,
+    FeatureSetResolver,
 )
 
 
-class Smile(audinterface.Feature):
+class Smile(audinterface.Feature, audobject.Object):
     r"""OpenSMILE feature extractor.
 
     1. You can choose a pre-defined feature set by passing one of
@@ -51,6 +53,18 @@ class Smile(audinterface.Feature):
            ;;; default sink
            \{\cm[sink{?}:include external sink]}
 
+    .. note:: The following arguments are not serialized:
+
+        * ``keep_nat``
+        * ``loglevel``
+        * ``logfile``
+        * ``num_workers``
+        * ``multiprocessing``
+        * ``segment``
+        * ``verbose``
+
+        For more information see section on `hidden arguments`_.
+
     Args:
         feature_set: default feature set or path to a custom config file
         feature_level: default feature level or level name if a custom
@@ -59,11 +73,23 @@ class Smile(audinterface.Feature):
         loglevel: log level (0-5), the higher the number the more log
             messages are given
         logfile: if not ``None`` log messages will be stored to this file
-        num_channels: the expected number of channels
+        sampling_rate: sampling rate in Hz.
+            If ``None`` it will call ``process_func`` with the actual
+            sampling rate of the signal.
+        channels: channel selection, see :func:`audresample.remix`
+        mixdown: apply mono mix-down on selection
+        resample: if ``True`` enforces given sampling rate by resampling
+        segment: when a :class:`audinterface.Segment` object is provided,
+            it will be used to find a segmentation of the input signal.
+            Afterwards processing is applied to each segment
         keep_nat: if the end of segment is set to ``NaT`` do not replace
             with file duration in the result
         num_workers: number of parallel jobs or 1 for sequential
-            processing
+            processing. If ``None`` will be set to the number of
+            processors on the machine multiplied by 5 in case of
+            multithreading and number of processors in case of
+            multiprocessing
+        multiprocessing: use multiprocessing instead of multithreading
         verbose: show debug messages
 
     Example:
@@ -79,7 +105,35 @@ class Smile(audinterface.Feature):
     0 days  0 days 00:00:01    0.0
     Name: audspec_lengthL1norm_sma_range, dtype: float32
 
+    .. _`hidden arguments`: http://tools.pp.audeering.com/audobject/usage.html#hidden-arguments
+
     """  # noqa: E501
+    @audobject.init_decorator(
+        borrow={
+            'sampling_rate': 'process',
+            'channels': 'process',
+            'mixdown': 'process',
+            'resample': 'process',
+        },
+        hide=[
+            'keep_nat',
+            'logfile',
+            'loglevel',
+            'num_workers',
+            'segment',
+            'verbose',
+        ],
+        resolvers={
+            'feature_set': FeatureSetResolver,
+            'feature_level': FeatureLevelResolver,
+        }
+    )
+    @audeer.deprecated_keyword_argument(
+        deprecated_argument='num_channels',
+        removal_version='0.13.0',
+        new_argument='channels',
+        mapping=lambda x: range(x),
+    )
     def __init__(
             self,
             feature_set: typing.Union[
@@ -92,7 +146,11 @@ class Smile(audinterface.Feature):
             options: dict = None,
             loglevel: int = 2,
             logfile: str = None,
-            num_channels: int = 1,
+            sampling_rate: int = None,
+            channels: typing.Union[int, typing.Sequence[int]] = 0,
+            mixdown: bool = False,
+            resample: bool = False,
+            segment: audinterface.Segment = None,
             keep_nat: bool = False,
             num_workers: typing.Optional[int] = 1,
             verbose: bool = False,
@@ -114,17 +172,20 @@ class Smile(audinterface.Feature):
 
         super().__init__(
             self._feature_names(),
+            name='smile',
+            params=None,
             process_func=self._extract,
             num_workers=num_workers,
-            num_channels=num_channels,
+            sampling_rate=sampling_rate,
+            resample=resample,
+            channels=channels,
+            mixdown=mixdown,
+            segment=segment,
             keep_nat=keep_nat,
             multiprocessing=True,
             verbose=verbose,
         )
-
-        self._y = None
-        self._starts = None
-        self._ends = None
+        self.params = self.to_dict(flatten=True)
 
         self._check_deprecated()
 
@@ -185,7 +246,7 @@ class Smile(audinterface.Feature):
         deprecated_feature_sets = {  # deprecated: recommended
             FeatureSet.GeMAPS: FeatureSet.GeMAPSv01b,
             FeatureSet.GeMAPSv01a: FeatureSet.GeMAPSv01b,
-            FeatureSet.eGeMAPS: FeatureSet.eGeMAPSv02,
+            FeatureSet.eGeMAPS: FeatureSet.eGeMAPSv01b,
             FeatureSet.eGeMAPSv01a: FeatureSet.eGeMAPSv02,
             FeatureSet.eGeMAPSv01b: FeatureSet.eGeMAPSv02,
         }
@@ -205,12 +266,6 @@ class Smile(audinterface.Feature):
     ) -> (pd.TimedeltaIndex, pd.TimedeltaIndex, np.ndarray):
         r"""Run feature extraction."""
 
-        if signal.shape[0] != self.num_channels:
-            raise RuntimeError(
-                f"Input signal has {signal.shape[0]} channels, "
-                f"but 'num_channels' to set to {self.num_channels}."
-            )
-
         signal = signal.copy()
         signal *= 32768
         signal = signal.astype(np.int16)
@@ -221,9 +276,9 @@ class Smile(audinterface.Feature):
 
         for x in signal:
 
-            self._y = []
-            self._starts = []
-            self._ends = []
+            y = []
+            starts = []
+            ends = []
 
             options = self._options()
             options['source'] = os.path.join(
@@ -234,6 +289,10 @@ class Smile(audinterface.Feature):
             options['nBits'] = 16
 
             smile = self._smile(options=options)
+            smile.external_sink_set_callback_ex(
+                config.EXTERNAL_OUTPUT_COMPONENT,
+                Smile._sink_callback(y, starts, ends)
+            )
             smile.external_audio_source_write_data(
                 config.EXTERNAL_SOURCE_COMPONENT, bytes(x)
             )
@@ -243,16 +302,16 @@ class Smile(audinterface.Feature):
             smile.run()
             smile.free()
 
-            if not self._y:
+            if not y:
                 warnings.warn(
                     UserWarning("Segment too short, filling with NaN.")
                 )
-                self._y.append(np.ones(self.num_features) * np.nan)
-                self._starts.append(0)
-                self._ends.append(signal.size / sampling_rate)
+                y.append(np.ones(self.num_features) * np.nan)
+                starts.append(0)
+                ends.append(signal.size / sampling_rate)
 
-            starts = np.vstack(self._starts).squeeze()
-            ends = np.vstack(self._ends).squeeze()
+            starts = np.vstack(starts).squeeze()
+            ends = np.vstack(ends).squeeze()
             if starts.shape:
                 starts = pd.to_timedelta(starts, 's')
                 ends = pd.to_timedelta(ends, 's')
@@ -260,7 +319,7 @@ class Smile(audinterface.Feature):
                 starts = pd.TimedeltaIndex([pd.to_timedelta(starts, 's')])
                 ends = pd.TimedeltaIndex([pd.to_timedelta(ends, 's')])
 
-            y = np.vstack(self._y)
+            y = np.vstack(y)
             ys.append(y)
 
         return starts, ends, np.concatenate(ys, axis=1)
@@ -369,14 +428,44 @@ class Smile(audinterface.Feature):
             loglevel=self.loglevel,
             log_file=self.logfile,
             debug=self.verbose)
-        smile.external_sink_set_callback_ex(
-            config.EXTERNAL_OUTPUT_COMPONENT,
-            self._sink_callback
-        )
         return smile
 
-    def _sink_callback(self, y: np.ndarray, meta: FrameMetaData):
-        r"""Callback where features are collected."""
-        self._y.append(y.copy())
-        self._starts.append(meta.time)
-        self._ends.append(meta.time + meta.lengthSec)
+    @staticmethod
+    def _sink_callback(
+        y: typing.List[np.ndarray],
+        starts: typing.List[float],
+        ends: typing.List[float]
+    ) -> typing.Callable[[np.ndarray, FrameMetaData], None]:
+        r"""Return callback where features are collected."""
+        def callback(data: np.ndarray, meta: FrameMetaData):
+            y.append(data.copy())
+            starts.append(meta.time)
+            ends.append(meta.time + meta.lengthSec)
+        return callback
+
+    def __call__(
+            self,
+            signal: np.ndarray,
+            sampling_rate: int,
+    ) -> np.ndarray:
+        r"""Apply processing to signal.
+
+        This function processes the signal **without** transforming the output
+        into a :class:`pd.DataFrame`. Instead it will return the raw processed
+        signal. However, if channel selection, mixdown and/or resampling
+        is enabled, the signal will be first remixed and resampled if the
+        input sampling rate does not fit the expected sampling rate.
+
+        Args:
+            signal: signal values
+            sampling_rate: sampling rate in Hz
+
+        Returns:
+            Processed signal
+
+        Raises:
+            RuntimeError: if sampling rates do not match
+            RuntimeError: if channel selection is invalid
+
+        """
+        return super().__call__(signal, sampling_rate)[-1]
