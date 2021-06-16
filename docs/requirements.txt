@@ -1,3 +1,4 @@
+audb
 jupyter-sphinx
 sphinx
 sphinx-audeering-theme
