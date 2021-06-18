@@ -12,15 +12,6 @@ Python interface for extracting openSMILE_ features.
 
 .. note:: Only 64-bit Python is supported.
 
-.. note:: With version 2.1.0 we now support
-    audformat_ and automatic resampling / mixdown
-    of the input signals. Unfortunately,
-    this does not yet work under Windows.
-    So if you are on Windows,
-    please install a version prior to 2.1.0.
-    We will hopefully release a Windows compatible
-    version in the near future.
-
 Feature sets
 ------------
 
