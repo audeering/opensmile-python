@@ -6,13 +6,14 @@ package_data = {
         'core/bin/linux/*',
         'core/bin/osx/*',
         'core/bin/win/*',
-        'core/config/shared/*',
         'core/config/compare/*',
-        'core/config/gemaps/v01a/*',
-        'core/config/gemaps/v01b/*',
         'core/config/egemaps/v01a/*',
         'core/config/egemaps/v01b/*',
         'core/config/egemaps/v02/*',
+        'core/config/emobase/*',
+        'core/config/gemaps/v01a/*',
+        'core/config/gemaps/v01b/*',
+        'core/config/shared/*',
     ]
 }
 
