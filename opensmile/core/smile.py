@@ -467,4 +467,9 @@ class Smile(audinterface.Feature, audobject.Object):
             RuntimeError: if channel selection is invalid
 
         """
-        return super().__call__(signal, sampling_rate)[-1]
+        # process functions returns (starts, values, values)
+        # but we only want to return values here
+        y = self.process(signal, sampling_rate)[2]
+        # reshape to (channels, features, frames)
+        y = y.T.reshape(self.num_channels, self.num_features, -1)
+        return y

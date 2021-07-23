@@ -332,7 +332,8 @@ def test_signal(file, feature_set, feature_level):
 
     # assertions
 
+    assert y_call.ndim == 3
     assert fex.feature_names == y.columns.to_list()
     np.testing.assert_equal(y.values, y_file.values)
-    np.testing.assert_equal(y.values, y_call)
+    np.testing.assert_equal(y.values.squeeze(), y_call.squeeze().T)
     assert all(y_empty.isna())
