@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Contributing &mdash; opensmile Documentation</title>
@@ -74,7 +73,7 @@
             
             
               <div class="version">
-                v2.1.3
+                v2.2.0
               </div>
             
           
@@ -98,7 +97,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting started</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
@@ -111,7 +110,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API Documentation</span></p>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api-smile.html">opensmile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -167,7 +166,7 @@
         
             
             
-              <a href="https://github.com/audeering/opensmile-python/blob/v2.1.3/docs/contributing.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/audeering/opensmile-python/blob/v2.2.0/docs/contributing.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -181,13 +180,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="contributing">
+  <div class="section" id="contributing">
 <h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
 <p>Everyone is invited to contribute to this project.
 Feel free to create a <a class="reference external" href="https://github.com/audeering/opensmile-python/compare/">pull request</a> .
 If you find errors, omissions, inconsistencies or other things
 that need improvement, please create an <a class="reference external" href="https://github.com/audeering/opensmile-python/issues/new/">issue</a>.</p>
-<section id="development-installation">
+<div class="section" id="development-installation">
 <h2>Development Installation<a class="headerlink" href="#development-installation" title="Permalink to this headline">¶</a></h2>
 <p>Instead of pip-installing the latest release from <a class="reference external" href="https://pypi.org/project/opensmile-python/">PyPI</a>,
 you should get the newest development version from <a class="reference external" href="https://github.com/audeering/opensmile-python/">Github</a>:</p>
@@ -203,8 +202,8 @@ you should get the newest development version from <a class="reference external"
 <p>This way,
 your installation always stays up-to-date,
 even if you pull new changes from the Github repository.</p>
-</section>
-<section id="building-the-documentation">
+</div>
+<div class="section" id="building-the-documentation">
 <h2>Building the Documentation<a class="headerlink" href="#building-the-documentation" title="Permalink to this headline">¶</a></h2>
 <p>If you make changes to the documentation,
 you can re-create the HTML pages using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a>.
@@ -222,8 +221,8 @@ in the directory <code class="file docutils literal notranslate"><span class="pr
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">sphinx</span> <span class="n">docs</span><span class="o">/</span> <span class="n">build</span><span class="o">/</span><span class="n">sphinx</span><span class="o">/</span><span class="n">html</span> <span class="o">-</span><span class="n">b</span> <span class="n">linkcheck</span>
 </pre></div>
 </div>
-</section>
-<section id="running-the-tests">
+</div>
+<div class="section" id="running-the-tests">
 <h2>Running the Tests<a class="headerlink" href="#running-the-tests" title="Permalink to this headline">¶</a></h2>
 <p>You’ll need <a class="reference external" href="https://pytest.org/">pytest</a> for that.
 It can be installed with:</p>
@@ -234,8 +233,8 @@ It can be installed with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pytest</span>
 </pre></div>
 </div>
-</section>
-<section id="creating-a-new-release">
+</div>
+<div class="section" id="creating-a-new-release">
 <h2>Creating a New Release<a class="headerlink" href="#creating-a-new-release" title="Permalink to this headline">¶</a></h2>
 <p>New releases are made using the following steps:</p>
 <ol class="arabic simple">
@@ -244,8 +243,8 @@ It can be installed with:</p>
 <li><p>Create an (annotated) tag with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span> <span class="pre">-a</span> <span class="pre">X.Y.Z</span></code></p></li>
 <li><p>Push the commit and the tag to Github</p></li>
 </ol>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -270,7 +269,7 @@ It can be installed with:</p>
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/06 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>

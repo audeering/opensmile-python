@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>openSMILE Python &mdash; opensmile Documentation</title>
@@ -73,7 +72,7 @@
             
             
               <div class="version">
-                v2.1.3
+                v2.2.0
               </div>
             
           
@@ -97,14 +96,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting started</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API Documentation</span></p>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api-smile.html">opensmile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -160,7 +159,7 @@
         
             
             
-              <a href="https://github.com/audeering/opensmile-python/blob/v2.1.3/docs/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/audeering/opensmile-python/blob/v2.2.0/docs/index.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -174,7 +173,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="opensmile-python">
+  <div class="section" id="opensmile-python">
 <h1>openSMILE Python<a class="headerlink" href="#opensmile-python" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/audeering/opensmile-python/actions?query=workflow%3ATest"><img alt="Test status" src="https://github.com/audeering/opensmile-python/workflows/Test/badge.svg" /></a> <a class="reference external" href="https://codecov.io/gh/audeering/opensmile-python"><img alt="code coverage" src="https://codecov.io/gh/audeering/opensmile-python/branch/master/graph/badge.svg?token=PUA9P2UJW1" /></a> <a class="reference external" href="https://audeering.github.io/opensmile-python/"><img alt="opensmile's documentation" src="https://img.shields.io/pypi/v/opensmile?label=docs" /></a> <a class="reference external" href="https://pypi.org/project/opensmile/"><img alt="opensmile's supported Python versions" src="https://img.shields.io/pypi/pyversions/opensmile.svg" /></a> <a class="reference external" href="https://github.com/audeering/opensmile-python/blob/master/LICENSE"><img alt="opensmile's audEERING license" src="https://img.shields.io/badge/license-audEERING-red.svg" /></a></p>
 <p>Python interface for extracting <a class="reference external" href="https://github.com/audeering/opensmile">openSMILE</a> features.</p>
@@ -185,7 +184,7 @@
 <p class="admonition-title">Note</p>
 <p>Only 64-bit Python is supported.</p>
 </div>
-<section id="feature-sets">
+<div class="section" id="feature-sets">
 <h2>Feature sets<a class="headerlink" href="#feature-sets" title="Permalink to this headline">¶</a></h2>
 <p>Currently, three standard sets are supported.
 <a class="reference external" href="http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf">ComParE 2016</a> is the largest with more than 6k features.
@@ -212,7 +211,7 @@ longer available for the GeMAPS family.</p>
 </div>
 <p>The following table lists the number of features
 for each set and level.</p>
-<section id="with-v2-0-0">
+<div class="section" id="with-v2-0-0">
 <h3>With v2.0.0<a class="headerlink" href="#with-v2-0-0" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -250,8 +249,8 @@ for each set and level.</p>
 <p>Additional feature sets have been added by the community.
 For a full list please see the documentation of <code class="docutils literal notranslate"><span class="pre">opensmile.FeatureSet</span></code>.</p>
 </div>
-</section>
-<section id="pre-v2-0-0">
+</div>
+<div class="section" id="pre-v2-0-0">
 <h3>Pre v2.0.0<a class="headerlink" href="#pre-v2-0-0" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -281,9 +280,9 @@ For a full list please see the documentation of <code class="docutils literal no
 </tr>
 </tbody>
 </table>
-</section>
-</section>
-<section id="code-example">
+</div>
+</div>
+<div class="section" id="code-example">
 <h2>Code example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
 <p>Code example,
 that extracts <a class="reference external" href="http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf">ComParE 2016</a>  functionals from an audio file:</p>
@@ -296,8 +295,8 @@ that extracts <a class="reference external" href="http://www.tangsoo.de/document
 <span class="n">y</span> <span class="o">=</span> <span class="n">smile</span><span class="o">.</span><span class="n">process_file</span><span class="p">(</span><span class="s1">&#39;audio.wav&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="license">
+</div>
+<div class="section" id="license">
 <h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
 <p>openSMILE follows a dual-licensing model. Since the main goal of the project
 is a widespread use of the software to facilitate research in the field of
@@ -312,8 +311,8 @@ Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;aude
 <p>Copyright © 2008-2013, Institute for Human-Machine Communication, Technische Universität München, Germany</p>
 <p>Copyright © 2013-2015, audEERING UG (haftungsbeschränkt)</p>
 <p>Copyright © 2016-2020, audEERING GmbH</p>
-</section>
-<section id="citing">
+</div>
+<div class="section" id="citing">
 <h2>Citing<a class="headerlink" href="#citing" title="Permalink to this headline">¶</a></h2>
 <p>Please cite openSMILE in your publications by citing the following paper:</p>
 <blockquote>
@@ -323,8 +322,8 @@ Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;aude
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -347,7 +346,7 @@ Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;aude
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/06 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>

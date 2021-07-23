@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Usage &mdash; opensmile Documentation</title>
@@ -76,7 +75,7 @@
             
             
               <div class="version">
-                v2.1.3
+                v2.2.0
               </div>
             
           
@@ -100,7 +99,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting started</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
@@ -117,7 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API Documentation</span></p>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api-smile.html">opensmile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -173,7 +172,7 @@
         
             
             
-              <a href="https://github.com/audeering/opensmile-python/blob/v2.1.3/docs/usage.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/audeering/opensmile-python/blob/v2.2.0/docs/usage.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -187,7 +186,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="usage">
+  <div class="section" id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
 <p>The aim of <code class="xref py py-mod docutils literal notranslate"><span class="pre">opensmile</span></code> is to provide
 a high-level interface to <a class="reference external" href="https://gitlab.audeering.com/tools/opensmile">openSMILE</a>.
@@ -197,7 +196,7 @@ but it’s also possible to run custom config files.</p>
 <div class="cell_output docutils container">
 </div>
 </div>
-<section id="getting-ready">
+<div class="section" id="getting-ready">
 <h2>Getting ready<a class="headerlink" href="#getting-ready" title="Permalink to this headline">¶</a></h2>
 <p>Let’s do some imports and
 load some files from the
@@ -235,8 +234,8 @@ load some files from the
 <div class="cell_output docutils container">
 </div>
 </div>
-</section>
-<section id="process-signal">
+</div>
+<div class="section" id="process-signal">
 <h2>Process signal<a class="headerlink" href="#process-signal" title="Permalink to this headline">¶</a></h2>
 <p>Read first ten seconds of a file into memory.</p>
 <div class="jupyter_cell jupyter_container docutils container">
@@ -616,8 +615,8 @@ for low-level descriptors (LLDs).</p>
 <p>185 rows × 25 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="logging">
+</div>
+<div class="section" id="logging">
 <h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
 <p>To know what happens under the hood
 we can create a log file.</p>
@@ -640,34 +639,34 @@ we can create a log file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;[ 06.07.2021 - 09:16:03 ]\n&#39;,
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;[ 23.07.2021 - 11:48:58 ]\n&#39;,
  &#39;    (MSG) [2] SMILEapi: openSMILE starting!\n&#39;,
- &#39;[ 06.07.2021 - 09:16:03 ]\n&#39;,
+ &#39;[ 23.07.2021 - 11:48:58 ]\n&#39;,
  &#39;    (MSG) [2] SMILEapi: config file is: /home/runner/work/opensmile-python/opensmile-python/opensmile/core/config/egemaps/v02/eGeMAPSv02.conf\n&#39;,
- &#39;[ 06.07.2021 - 09:16:03 ]\n&#39;,
+ &#39;[ 23.07.2021 - 11:48:58 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: successfully registered 103 component types.\n&#39;,
- &#39;[ 06.07.2021 - 09:16:03 ]\n&#39;,
+ &#39;[ 23.07.2021 - 11:48:58 ]\n&#39;,
  &quot;    (MSG) [2] instance &#39;gemapsv01b_logSpectral&#39;: logSpecFloor = -140.00  (specFloor = 1.000000e-14)\n&quot;,
- &#39;[ 06.07.2021 - 09:16:03 ]\n&#39;,
+ &#39;[ 23.07.2021 - 11:48:58 ]\n&#39;,
  &quot;    (MSG) [2] instance &#39;egemapsv02_logSpectral_flux&#39;: logSpecFloor = -140.00  (specFloor = 1.000000e-14)\n&quot;,
- &#39;[ 06.07.2021 - 09:16:03 ]\n&#39;,
+ &#39;[ 23.07.2021 - 11:48:58 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: successfully finished createInstances (73 component instances were finalised, 1 data memories were finalised)\n&#39;,
- &#39;[ 06.07.2021 - 09:16:03 ]\n&#39;,
+ &#39;[ 23.07.2021 - 11:48:58 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: starting single thread processing loop\n&#39;,
- &#39;[ 06.07.2021 - 09:16:03 ]\n&#39;,
+ &#39;[ 23.07.2021 - 11:48:58 ]\n&#39;,
  &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
- &#39;[ 06.07.2021 - 09:16:03 ]\n&#39;,
+ &#39;[ 23.07.2021 - 11:48:58 ]\n&#39;,
  &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
- &#39;[ 06.07.2021 - 09:16:03 ]\n&#39;,
+ &#39;[ 23.07.2021 - 11:48:58 ]\n&#39;,
  &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
- &#39;[ 06.07.2021 - 09:16:03 ]\n&#39;,
+ &#39;[ 23.07.2021 - 11:48:58 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: Processing finished! System ran for 199 ticks.\n&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="custom-config">
+</div>
+<div class="section" id="custom-config">
 <h2>Custom config<a class="headerlink" href="#custom-config" title="Permalink to this headline">¶</a></h2>
 <p>We can create a custom config.</p>
 <div class="jupyter_cell jupyter_container docutils container">
@@ -890,8 +889,8 @@ we are interested in.</p>
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="resample">
+</div>
+<div class="section" id="resample">
 <h2>Resample<a class="headerlink" href="#resample" title="Permalink to this headline">¶</a></h2>
 <p>It’s possible to resample the
 input signals on the fly.</p>
@@ -961,8 +960,8 @@ input signals on the fly.</p>
 <p>1 rows × 88 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="multi-channel">
+</div>
+<div class="section" id="multi-channel">
 <h2>Multi-channel<a class="headerlink" href="#multi-channel" title="Permalink to this headline">¶</a></h2>
 <p>We can process multi-channel audio.
 Note that we need to set the channels
@@ -1034,8 +1033,8 @@ the feature extractor.</p>
 <p>1 rows × 176 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="file-input">
+</div>
+<div class="section" id="file-input">
 <h2>File input<a class="headerlink" href="#file-input" title="Permalink to this headline">¶</a></h2>
 <p>We can extract features from files.
 Note that we only process
@@ -1129,8 +1128,8 @@ the first ten seconds of the files</p>
 <p>3 rows × 88 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="audformat">
+</div>
+<div class="section" id="audformat">
 <h2>audformat<a class="headerlink" href="#audformat" title="Permalink to this headline">¶</a></h2>
 <p>We can extract features from an index
 in the <a class="reference external" href="https://audeering.github.io/audformat/data-format.html">audformat</a>.
@@ -1225,8 +1224,8 @@ to speed up the processing.</p>
 <p>3 rows × 88 columns</p>
 </div></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1251,7 +1250,7 @@ to speed up the processing.</p>
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/06 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>

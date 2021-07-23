@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Changelog &mdash; opensmile Documentation</title>
@@ -74,7 +73,7 @@
             
             
               <div class="version">
-                v2.1.3
+                v2.2.0
               </div>
             
           
@@ -98,12 +97,13 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting started</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#version-2-2-0-2021-07-23">Version 2.2.0 (2021-07-23)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-2-1-3-2021-07-06">Version 2.1.3 (2021-07-06)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-2-1-2-2021-06-21">Version 2.1.2 (2021-06-21)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-2-1-1-2021-06-18">Version 2.1.1 (2021-06-18)</a></li>
@@ -116,7 +116,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">API Documentation</span></p>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api-smile.html">opensmile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -172,7 +172,7 @@
         
             
             
-              <a href="https://github.com/audeering/opensmile-python/blob/v2.1.3/docs/changelog.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/audeering/opensmile-python/blob/v2.2.0/docs/changelog.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -186,30 +186,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="changelog">
+  <div class="section" id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a class="reference external" href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 and this project adheres to <a class="reference external" href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<section id="version-2-1-3-2021-07-06">
+<div class="section" id="version-2-2-0-2021-07-23">
+<h2>Version 2.2.0 (2021-07-23)<a class="headerlink" href="#version-2-2-0-2021-07-23" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Fixed: <code class="docutils literal notranslate"><span class="pre">Smile.__call__()</span></code> always returns (channels, features, frames)</p></li>
+</ul>
+</div>
+<div class="section" id="version-2-1-3-2021-07-06">
 <h2>Version 2.1.3 (2021-07-06)<a class="headerlink" href="#version-2-1-3-2021-07-06" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Fixed: include <code class="docutils literal notranslate"><span class="pre">emobase</span></code> config files into package</p></li>
 </ul>
-</section>
-<section id="version-2-1-2-2021-06-21">
+</div>
+<div class="section" id="version-2-1-2-2021-06-21">
 <h2>Version 2.1.2 (2021-06-21)<a class="headerlink" href="#version-2-1-2-2021-06-21" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Fixed: short underline in CHANGELOG</p></li>
 </ul>
-</section>
-<section id="version-2-1-1-2021-06-18">
+</div>
+<div class="section" id="version-2-1-1-2021-06-18">
 <h2>Version 2.1.1 (2021-06-18)<a class="headerlink" href="#version-2-1-1-2021-06-18" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Changed: enable Windows tests again</p></li>
 </ul>
-</section>
-<section id="version-2-1-0-2021-06-16">
+</div>
+<div class="section" id="version-2-1-0-2021-06-16">
 <h2>Version 2.1.0 (2021-06-16)<a class="headerlink" href="#version-2-1-0-2021-06-16" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Added: <code class="docutils literal notranslate"><span class="pre">channels</span></code>, <code class="docutils literal notranslate"><span class="pre">mixdown</span></code>, <code class="docutils literal notranslate"><span class="pre">resample</span></code> argument</p></li>
@@ -219,20 +225,20 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>Changed: use <code class="docutils literal notranslate"><span class="pre">emodb</span></code> in usage section</p></li>
 <li><p>Removed: static files from docs</p></li>
 </ul>
-</section>
-<section id="version-2-0-2-2021-05-14">
+</div>
+<div class="section" id="version-2-0-2-2021-05-14">
 <h2>Version 2.0.2 (2021-05-14)<a class="headerlink" href="#version-2-0-2-2021-05-14" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Fixed: building docs in publish workflow</p></li>
 </ul>
-</section>
-<section id="version-2-0-1-2021-05-14">
+</div>
+<div class="section" id="version-2-0-1-2021-05-14">
 <h2>Version 2.0.1 (2021-05-14)<a class="headerlink" href="#version-2-0-1-2021-05-14" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Added: <code class="docutils literal notranslate"><span class="pre">FeatureSet.emobase</span></code></p></li>
 </ul>
-</section>
-<section id="version-2-0-0-2021-02-12">
+</div>
+<div class="section" id="version-2-0-0-2021-02-12">
 <h2>Version 2.0.0 (2021-02-12)<a class="headerlink" href="#version-2-0-0-2021-02-12" title="Permalink to this headline">¶</a></h2>
 <p>WARNING: Introduces a breaking change by changing the number of LLDs
 in all sets of the GeMAPS family and removing support for deltas
@@ -242,22 +248,22 @@ in those sets.</p>
 <li><p>Changed: add <code class="docutils literal notranslate"><span class="pre">lld_de</span></code> features to <code class="docutils literal notranslate"><span class="pre">lld</span></code> for the GeMAPS family</p></li>
 <li><p>Changed: raise error if <code class="docutils literal notranslate"><span class="pre">lld_de</span></code> is requested for a set of the GeMAPS family</p></li>
 </ul>
-</section>
-<section id="version-1-0-1-2020-10-23">
+</div>
+<div class="section" id="version-1-0-1-2020-10-23">
 <h2>Version 1.0.1 (2020-10-23)<a class="headerlink" href="#version-1-0-1-2020-10-23" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Fixed: add missing binaries to wheel</p></li>
 <li><p>Fixed: building docs in publish workflow</p></li>
 <li><p>Fixed: link to documentation in badge</p></li>
 </ul>
-</section>
-<section id="version-1-0-0-2020-10-23">
+</div>
+<div class="section" id="version-1-0-0-2020-10-23">
 <h2>Version 1.0.0 (2020-10-23)<a class="headerlink" href="#version-1-0-0-2020-10-23" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Added: initial release using openSMILE 3.0</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -282,7 +288,7 @@ in those sets.</p>
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/06 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>

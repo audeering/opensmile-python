@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>opensmile &mdash; opensmile Documentation</title>
@@ -74,7 +73,7 @@
             
             
               <div class="version">
-                v2.1.3
+                v2.2.0
               </div>
             
           
@@ -98,14 +97,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting started</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API Documentation</span></p>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">opensmile</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#config">config</a></li>
@@ -167,7 +166,7 @@
         
             
             
-              <a href="https://github.com/audeering/opensmile-python/blob/v2.1.3/docs/api-smile.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/audeering/opensmile-python/blob/v2.2.0/docs/api-smile.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -181,9 +180,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="opensmile">
+  <div class="section" id="opensmile">
 <h1>opensmile<a class="headerlink" href="#opensmile" title="Permalink to this headline">¶</a></h1>
-<section id="config">
+<div class="section" id="config">
 <h2>config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="opensmile.config">
@@ -251,8 +250,8 @@
 
 </dd></dl>
 
-</section>
-<section id="featurelevel">
+</div>
+<div class="section" id="featurelevel">
 <h2>FeatureLevel<a class="headerlink" href="#featurelevel" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="opensmile.FeatureLevel">
@@ -268,8 +267,8 @@ LLDs to static values</p></li>
 <p>For more information see <a class="reference external" href="https://mediatum.ub.tum.de/doc/1082431/1082431.pdf">https://mediatum.ub.tum.de/doc/1082431/1082431.pdf</a></p>
 </dd></dl>
 
-</section>
-<section id="featureset">
+</div>
+<div class="section" id="featureset">
 <h2>FeatureSet<a class="headerlink" href="#featureset" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="opensmile.FeatureSet">
@@ -296,12 +295,12 @@ LLDs to static values</p></li>
 </ul>
 </dd></dl>
 
-</section>
-<section id="smile">
+</div>
+<div class="section" id="smile">
 <h2>Smile<a class="headerlink" href="#smile" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="opensmile.Smile">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">opensmile.</span></span><span class="sig-name descname"><span class="pre">Smile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">feature_set=&lt;FeatureSet.ComParE_2016:</span> <span class="pre">'compare/ComParE_2016'&gt;</span></em>, <em class="sig-param"><span class="pre">feature_level=&lt;FeatureLevel.Functionals:</span> <span class="pre">'func'&gt;</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">options=None</span></em>, <em class="sig-param"><span class="pre">loglevel=2</span></em>, <em class="sig-param"><span class="pre">logfile=None</span></em>, <em class="sig-param"><span class="pre">sampling_rate=None</span></em>, <em class="sig-param"><span class="pre">channels=0</span></em>, <em class="sig-param"><span class="pre">mixdown=False</span></em>, <em class="sig-param"><span class="pre">resample=False</span></em>, <em class="sig-param"><span class="pre">segment=None</span></em>, <em class="sig-param"><span class="pre">keep_nat=False</span></em>, <em class="sig-param"><span class="pre">num_workers=1</span></em>, <em class="sig-param"><span class="pre">verbose=False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opensmile/core/smile.html#Smile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensmile.Smile" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">opensmile.</span></span><span class="sig-name descname"><span class="pre">Smile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">FeatureSet.ComParE_2016</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">FeatureLevel.Functionals</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mixdown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_nat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opensmile/core/smile.html#Smile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensmile.Smile" title="Permalink to this definition">¶</a></dt>
 <dd><p>OpenSMILE feature extractor.</p>
 <ol class="arabic">
 <li><p>You can choose a pre-defined feature set by passing one of
@@ -516,12 +515,13 @@ input sampling rate does not fit the expected sampling rate.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="opensmile.Smile.from_dict">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.from_dict" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.from_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create object from dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>d</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]) – dictionary with variables</p></li>
+<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – if dictionary was read from a file, set to source directory</p></li>
 <li><p><strong>kwargs</strong> – additional variables</p></li>
 </ul>
 </dd>
@@ -908,7 +908,7 @@ i.e. in case a <code class="docutils literal notranslate"><span class="pre">segm
 
 <dl class="py method">
 <dt class="sig sig-object py" id="opensmile.Smile.to_dict">
-<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.to_dict" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opensmile.Smile.to_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts object to a dictionary.</p>
 <p>Includes items from <code class="xref py py-meth docutils literal notranslate"><span class="pre">audobject.Object.arguments()</span></code>.
 If an argument has a resolver, its value is encoded.
@@ -920,6 +920,7 @@ However, if <code class="docutils literal notranslate"><span class="pre">flatten
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>include_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – add version to class name</p></li>
 <li><p><strong>flatten</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – flatten the dictionary</p></li>
+<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – if file is written to disk, set to target directory</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -1017,8 +1018,8 @@ shape, i.e. <code class="docutils literal notranslate"><span class="pre">(channe
 
 </dd></dl>
 
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1043,7 +1044,7 @@ shape, i.e. <code class="docutils literal notranslate"><span class="pre">(channe
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/06 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
