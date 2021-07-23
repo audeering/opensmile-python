@@ -7,6 +7,12 @@ The format is based on `Keep a Changelog`_,
 and this project adheres to `Semantic Versioning`_.
 
 
+Version 2.2.0 (2021-07-23)
+--------------------------
+
+* Fixed: ``Smile.__call__()`` always returns (channels, features, frames)
+
+
 Version 2.1.3 (2021-07-06)
 --------------------------
 
