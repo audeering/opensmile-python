@@ -1,7 +1,9 @@
 from opensmile.core.config import config
 from opensmile.core.define import (
     FeatureSet,
+    FeatureSetResolver,
     FeatureLevel,
+    FeatureLevelResolver,
 )
 from opensmile.core.smile import (
     Smile,
