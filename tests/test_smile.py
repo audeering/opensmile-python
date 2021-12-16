@@ -6,6 +6,7 @@ import pytest
 
 import audeer
 import audiofile
+import audobject
 
 import opensmile
 
@@ -52,7 +53,7 @@ def test_channels(x, sr, num_channels, feature_set, feature_level):
     # create feature extractor with mixdown
 
     fex = opensmile.Smile(feature_set, feature_level, mixdown=True)
-    fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+    fex = audobject.from_yaml_s(fex.to_yaml_s())
     assert isinstance(fex, opensmile.Smile)
 
     y_mono = fex.process_signal(x, sr)
@@ -62,7 +63,7 @@ def test_channels(x, sr, num_channels, feature_set, feature_level):
     fex = opensmile.Smile(
         feature_set, feature_level, channels=range(num_channels),
     )
-    fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+    fex = audobject.from_yaml_s(fex.to_yaml_s())
     assert isinstance(fex, opensmile.Smile)
 
     y = fex.process_signal(x, sr)
@@ -98,7 +99,7 @@ def test_custom(config, level):
     # create feature extractor
 
     fex = opensmile.Smile(config, level)
-    fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+    fex = audobject.from_yaml_s(fex.to_yaml_s())
     assert isinstance(fex, opensmile.Smile)
 
     # extract from file
@@ -149,11 +150,11 @@ def test_default(tmpdir, feature_set, feature_level):
         if feature_set in deprecated_feature_sets:
             with pytest.warns(UserWarning):
                 fex = opensmile.Smile(feature_set, feature_level)
-                fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+                fex = audobject.from_yaml_s(fex.to_yaml_s())
                 assert isinstance(fex, opensmile.Smile)
         else:
             fex = opensmile.Smile(feature_set, feature_level)
-            fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+            fex = audobject.from_yaml_s(fex.to_yaml_s())
             assert isinstance(fex, opensmile.Smile)
 
         # extract features from file
@@ -224,9 +225,9 @@ def test_files(num_files, feature_set, feature_level, num_workers):
         feature_level,
         num_workers=num_workers,
     )
-    fex = opensmile.Smile.from_yaml_s(
+    fex = audobject.from_yaml_s(
         fex.to_yaml_s(),
-        num_workers=num_workers,
+        override_args={'num_workers': num_workers},
     )
     assert isinstance(fex, opensmile.Smile)
 
@@ -279,9 +280,9 @@ def test_index(feature_set, feature_level, index, num_workers):
         feature_level,
         num_workers=num_workers,
     )
-    fex = opensmile.Smile.from_yaml_s(
+    fex = audobject.from_yaml_s(
         fex.to_yaml_s(),
-        num_workers=num_workers,
+        override_args={'num_workers': num_workers},
     )
     assert isinstance(fex, opensmile.Smile)
 
@@ -318,7 +319,7 @@ def test_signal(file, feature_set, feature_level):
     # create feature extractor
 
     fex = opensmile.Smile(feature_set, feature_level)
-    fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+    fex = audobject.from_yaml_s(fex.to_yaml_s())
     assert isinstance(fex, opensmile.Smile)
 
     # extract from numpy array

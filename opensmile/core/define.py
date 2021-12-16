@@ -45,7 +45,7 @@ class FeatureSet(enum.Enum):
     emobase = 'emobase/emobase'
 
 
-class FeatureSetResolver(audobject.ValueResolver):
+class FeatureSetResolver(audobject.resolver.Base):
     r"""Custom value resolver for :class:`opensmile.FeatureSet`."""
 
     def decode(self, value: str) -> typing.Union[str, FeatureSet]:
@@ -79,7 +79,7 @@ class FeatureLevel(enum.Enum):
     Functionals = 'func'
 
 
-class FeatureLevelResolver(audobject.ValueResolver):
+class FeatureLevelResolver(audobject.resolver.Base):
     r"""Custom value resolver for :class:`opensmile.FeatureLevel`."""
 
     def decode(self, value: str) -> typing.Union[str, FeatureLevel]:
