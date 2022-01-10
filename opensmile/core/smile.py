@@ -59,6 +59,7 @@ class Smile(audinterface.Feature, audobject.Object):
         * ``loglevel``
         * ``logfile``
         * ``num_workers``
+        * ``multiprocessing``
         * ``segment``
         * ``verbose``
 
@@ -119,6 +120,7 @@ class Smile(audinterface.Feature, audobject.Object):
             'logfile',
             'loglevel',
             'num_workers',
+            'multiprocessing',
             'segment',
             'verbose',
         ],
@@ -152,6 +154,7 @@ class Smile(audinterface.Feature, audobject.Object):
             segment: audinterface.Segment = None,
             keep_nat: bool = False,
             num_workers: typing.Optional[int] = 1,
+            multiprocessing: bool = False,
             verbose: bool = False,
     ):
 
@@ -181,7 +184,7 @@ class Smile(audinterface.Feature, audobject.Object):
             mixdown=mixdown,
             segment=segment,
             keep_nat=keep_nat,
-            multiprocessing=True,
+            multiprocessing=multiprocessing,
             verbose=verbose,
         )
         self.params = self.to_dict(flatten=True)
