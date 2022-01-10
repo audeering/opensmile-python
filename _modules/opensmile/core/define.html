@@ -60,7 +60,7 @@
 
           <a href="../../../index.html">
           
-            <img src="../../../_static/images/audeering.svg" class="logo" alt="audEERING"/>
+            <img src="../../../_static/images/audeering.png" class="logo" alt="audEERING"/>
           
           
             <span> opensmile</span>
@@ -71,7 +71,7 @@
             
             
               <div class="version">
-                v2.2.0
+                v2.4.1
               </div>
             
           
@@ -129,40 +129,14 @@
         
         <div class="rst-content">
         
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../index.html">Module code</a> &raquo;</li>
-        
       <li>opensmile.core.define</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -216,7 +190,7 @@
     <span class="n">emobase</span> <span class="o">=</span> <span class="s1">&#39;emobase/emobase&#39;</span></div>
 
 
-<span class="k">class</span> <span class="nc">FeatureSetResolver</span><span class="p">(</span><span class="n">audobject</span><span class="o">.</span><span class="n">ValueResolver</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">FeatureSetResolver</span><span class="p">(</span><span class="n">audobject</span><span class="o">.</span><span class="n">resolver</span><span class="o">.</span><span class="n">Base</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Custom value resolver for :class:`opensmile.FeatureSet`.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FeatureSet</span><span class="p">]:</span>
@@ -250,7 +224,7 @@
     <span class="n">Functionals</span> <span class="o">=</span> <span class="s1">&#39;func&#39;</span></div>
 
 
-<span class="k">class</span> <span class="nc">FeatureLevelResolver</span><span class="p">(</span><span class="n">audobject</span><span class="o">.</span><span class="n">ValueResolver</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">FeatureLevelResolver</span><span class="p">(</span><span class="n">audobject</span><span class="o">.</span><span class="n">resolver</span><span class="o">.</span><span class="n">Base</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Custom value resolver for :class:`opensmile.FeatureLevel`.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FeatureLevel</span><span class="p">]:</span>
@@ -280,7 +254,7 @@
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2022/01/10 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -288,7 +262,7 @@
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2021 audEERING GmbH
+      &copy; 2020-2022 audEERING GmbH
     </p>
   </div> 
 

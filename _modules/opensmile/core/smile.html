@@ -60,7 +60,7 @@
 
           <a href="../../../index.html">
           
-            <img src="../../../_static/images/audeering.svg" class="logo" alt="audEERING"/>
+            <img src="../../../_static/images/audeering.png" class="logo" alt="audEERING"/>
           
           
             <span> opensmile</span>
@@ -71,7 +71,7 @@
             
             
               <div class="version">
-                v2.2.0
+                v2.4.1
               </div>
             
           
@@ -129,40 +129,14 @@
         
         <div class="rst-content">
         
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../index.html">Module code</a> &raquo;</li>
-        
       <li>opensmile.core.smile</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -230,6 +204,7 @@
 <span class="sd">        * ``loglevel``</span>
 <span class="sd">        * ``logfile``</span>
 <span class="sd">        * ``num_workers``</span>
+<span class="sd">        * ``multiprocessing``</span>
 <span class="sd">        * ``segment``</span>
 <span class="sd">        * ``verbose``</span>
 
@@ -290,6 +265,7 @@
             <span class="s1">&#39;logfile&#39;</span><span class="p">,</span>
             <span class="s1">&#39;loglevel&#39;</span><span class="p">,</span>
             <span class="s1">&#39;num_workers&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;multiprocessing&#39;</span><span class="p">,</span>
             <span class="s1">&#39;segment&#39;</span><span class="p">,</span>
             <span class="s1">&#39;verbose&#39;</span><span class="p">,</span>
         <span class="p">],</span>
@@ -323,6 +299,7 @@
             <span class="n">segment</span><span class="p">:</span> <span class="n">audinterface</span><span class="o">.</span><span class="n">Segment</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">keep_nat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
             <span class="n">num_workers</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="n">multiprocessing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
             <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
 
@@ -352,7 +329,7 @@
             <span class="n">mixdown</span><span class="o">=</span><span class="n">mixdown</span><span class="p">,</span>
             <span class="n">segment</span><span class="o">=</span><span class="n">segment</span><span class="p">,</span>
             <span class="n">keep_nat</span><span class="o">=</span><span class="n">keep_nat</span><span class="p">,</span>
-            <span class="n">multiprocessing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">multiprocessing</span><span class="o">=</span><span class="n">multiprocessing</span><span class="p">,</span>
             <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -659,7 +636,7 @@
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2021/07/23 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2022/01/10 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -667,7 +644,7 @@
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2021 audEERING GmbH
+      &copy; 2020-2022 audEERING GmbH
     </p>
   </div> 
 
