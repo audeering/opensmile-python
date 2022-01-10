@@ -211,12 +211,16 @@ def test_default(tmpdir, feature_set, feature_level):
     ),
 ])
 @pytest.mark.parametrize(
-    'num_workers',
+    'num_workers, multiprocessing',
     [
-        1, 5, None,
+        (1, False),
+        (5, False),
+        (5, True),
+        (None, False)
     ],
 )
-def test_files(num_files, feature_set, feature_level, num_workers):
+def test_files(num_files, feature_set, feature_level,
+               num_workers, multiprocessing):
 
     # create feature extractor
 
@@ -224,10 +228,14 @@ def test_files(num_files, feature_set, feature_level, num_workers):
         feature_set,
         feature_level,
         num_workers=num_workers,
+        multiprocessing=multiprocessing,
     )
     fex = audobject.from_yaml_s(
         fex.to_yaml_s(),
-        override_args={'num_workers': num_workers},
+        override_args={
+            'num_workers': num_workers,
+            'multiprocessing': multiprocessing,
+        },
     )
     assert isinstance(fex, opensmile.Smile)
 
@@ -266,12 +274,16 @@ def test_files(num_files, feature_set, feature_level, num_workers):
     ),
 ])
 @pytest.mark.parametrize(
-    'num_workers',
+    'num_workers, multiprocessing',
     [
-        1, 5, None
+        (1, False),
+        (5, False),
+        (5, True),
+        (None, False)
     ],
 )
-def test_index(feature_set, feature_level, index, num_workers):
+def test_index(feature_set, feature_level, index,
+               num_workers, multiprocessing):
 
     # create feature extractor
 
@@ -279,10 +291,14 @@ def test_index(feature_set, feature_level, index, num_workers):
         feature_set,
         feature_level,
         num_workers=num_workers,
+        multiprocessing=multiprocessing,
     )
     fex = audobject.from_yaml_s(
         fex.to_yaml_s(),
-        override_args={'num_workers': num_workers},
+        override_args={
+            'num_workers': num_workers,
+            'multiprocessing': multiprocessing,
+        },
     )
     assert isinstance(fex, opensmile.Smile)
 
