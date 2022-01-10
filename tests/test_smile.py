@@ -150,7 +150,7 @@ def test_default(tmpdir, feature_set, feature_level):
         if feature_set in deprecated_feature_sets:
             with pytest.warns(UserWarning):
                 fex = opensmile.Smile(feature_set, feature_level)
-                fex = opensmile.Smile.from_yaml_s(fex.to_yaml_s())
+                fex = audobject.from_yaml_s(fex.to_yaml_s())
                 assert isinstance(fex, opensmile.Smile)
         else:
             fex = opensmile.Smile(feature_set, feature_level)
