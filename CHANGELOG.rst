@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog`_,
 and this project adheres to `Semantic Versioning`_.
 
+Version 2.4.0 (2022-01-10)
+--------------------------
+
+* Added: ``multiprocessing`` argument to ``Smile``
+* Changed: update binaries to ``3.0.1`` to support multi-threading
+
 
 Version 2.3.0 (2021-12-16)
 --------------------------
