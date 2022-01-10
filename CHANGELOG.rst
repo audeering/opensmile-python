@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog`_,
 and this project adheres to `Semantic Versioning`_.
 
+Version 2.4.1 (2022-01-10)
+--------------------------
+
+* Changed: switch to ``Python 3.8`` during publishing
+
+
 Version 2.4.0 (2022-01-10)
 --------------------------
 
