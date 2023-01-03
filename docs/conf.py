@@ -1,37 +1,42 @@
 import configparser
 from datetime import date
 import os
-from subprocess import check_output
+import shutil
+
+import audeer
 
 
 config = configparser.ConfigParser()
 config.read(os.path.join('..', 'setup.cfg'))
+
 
 # Project -----------------------------------------------------------------
 
 author = config['metadata']['author']
 copyright = f'2020-{date.today().year} audEERING GmbH'
 project = config['metadata']['name']
-# The x.y.z version read from tags
-try:
-    version = check_output(['git', 'describe', '--tags', '--always'])
-    version = version.decode().strip()
-except Exception:
-    version = '<unknown>'
-title = '{} Documentation'.format(project)
+version = audeer.git_repo_version()
+title = 'Documentation'
 
 
 # General -----------------------------------------------------------------
 
 master_doc = 'index'
-extensions = []
 source_suffix = '.rst'
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**.ipynb_checkpoints']
+exclude_patterns = [
+    'api-src',
+    'build',
+    'tests',
+    'Thumbs.db',
+    '.DS_Store',
+]
+templates_path = ['_templates']
 pygments_style = None
 extensions = [
     'jupyter_sphinx',  # executing code blocks
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',  # support for Google-style docstrings
+    'sphinx.ext.autosummary',
     'sphinx.ext.viewcode',
     'sphinx.ext.intersphinx',
     'sphinx.ext.autosectionlabel',
@@ -52,6 +57,11 @@ intersphinx_mapping = {
 copybutton_prompt_text = r'>>> |\.\.\. |\$ '
 copybutton_prompt_is_regexp = True
 
+# Disable auto-generation of TOC entries in the API
+# https://github.com/sphinx-doc/sphinx/issues/6316
+toc_object_entries = False
+
+
 # HTML --------------------------------------------------------------------
 
 html_theme = 'sphinx_audeering_theme'
@@ -66,9 +76,23 @@ html_context = {
 }
 html_title = title
 
+
 # Linkcheck ---------------------------------------------------------------
 
 linkcheck_ignore = [
     'https://sail.usc.edu/',
     'http://sphinx-doc.org/',
 ]
+
+
+# Copy API (sub-)module RST files to docs/api/ folder ---------------------
+
+audeer.rmdir('api')
+audeer.mkdir('api')
+api_src_files = audeer.list_file_names('api-src')
+api_dst_files = [
+    audeer.path('api', os.path.basename(src_file))
+    for src_file in api_src_files
+]
+for src_file, dst_file in zip(api_src_files, api_dst_files):
+    shutil.copyfile(src_file, dst_file)
