@@ -1,0 +1,14 @@
+# Configuration of checks run by pre-commit
+#
+# The tests are executed in the CI pipeline,
+# see CONTRIBUTING.rst for further instructions.
+# You can also run the checks directly at the terminal, e.g.
+#
+# $ pre-commit install
+# $ pre-commit run --all-files
+#
+repos:
+-   repo: https://github.com/pycqa/flake8
+    rev: '5.0.4'
+    hooks:
+    -   id: flake8

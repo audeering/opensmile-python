@@ -17,30 +17,44 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+
     - name: Setup Ubuntu
       run: |
         sudo apt-get update
         sudo apt-get -y install libsndfile1 sox
       if: matrix.os == 'ubuntu-latest'
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r docs/requirements.txt
         pip install -r tests/requirements.txt
+
+    - name: Install pre-commit hooks
+      run: |
+        pre-commit install --install-hooks
+
+    - name: Code style check via pre-commit
+      run: |
+        pre-commit run --all-files
+
     - name: Test with pytest
       run: |
         python -m pytest
+
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: ./coverage.xml
       if: matrix.os == 'ubuntu-latest'
+
     - name: Test building documentation
       run: |
         python -m sphinx docs/ docs/_build/ -b html -W
