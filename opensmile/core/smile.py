@@ -92,8 +92,7 @@ class Smile(audinterface.Feature, audobject.Object):
         multiprocessing: use multiprocessing instead of multithreading
         verbose: show debug messages
 
-    Example:
-
+    Examples:
     >>> sampling_rate = 16000
     >>> signal = np.zeros(sampling_rate)
     >>> smile = Smile(
