@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>config &mdash; Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/audeering.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FeatureLevel" href="opensmile.FeatureLevel.html" />
+    <link rel="prev" title="opensmile" href="opensmile.html" />
+    
+      
+    
+  
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          <a href="../index.html">
+          
+            <img src="../_static/images/audeering.png" class="logo" alt="audEERING"/>
+          
+          
+            <span> opensmile</span>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.4.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="opensmile.html">opensmile</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config-ext">CONFIG_EXT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config-root">CONFIG_ROOT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-input-config">EXTERNAL_INPUT_CONFIG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-output-component">EXTERNAL_OUTPUT_COMPONENT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-output-multi-config">EXTERNAL_OUTPUT_MULTI_CONFIG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-output-single-config">EXTERNAL_OUTPUT_SINGLE_CONFIG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-source-component">EXTERNAL_SOURCE_COMPONENT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-input-config">FILE_INPUT_CONFIG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-output-config">FILE_OUTPUT_CONFIG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-output-config-no-lld-de">FILE_OUTPUT_CONFIG_NO_LLD_DE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="opensmile.FeatureLevel.html">FeatureLevel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opensmile.FeatureSet.html">FeatureSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opensmile.Smile.html">Smile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">opensmile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="opensmile.html">opensmile</a> &raquo;</li>
+      <li>config</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/audeering/opensmile-python/" class="fa fa-github"> GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="config">
+<h1>config<a class="headerlink" href="#config" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="opensmile.config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensmile.</span></span><span class="sig-name descname"><span class="pre">config</span></span><a class="reference internal" href="../_modules/opensmile/core/config.html#config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensmile.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get/set defaults for the <a class="reference internal" href="opensmile.html#module-opensmile" title="opensmile"><code class="xref py py-mod docutils literal notranslate"><span class="pre">opensmile</span></code></a> module.</p>
+</dd></dl>
+
+<div class="section" id="config-ext">
+<h2>CONFIG_EXT<a class="headerlink" href="#config-ext" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.config.CONFIG_EXT">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">CONFIG_EXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'.conf'</span></em><a class="headerlink" href="#opensmile.config.CONFIG_EXT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extension of config files.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="config-root">
+<h2>CONFIG_ROOT<a class="headerlink" href="#config-root" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.config.CONFIG_ROOT">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">CONFIG_ROOT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'config'</span></em><a class="headerlink" href="#opensmile.config.CONFIG_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Root directory of config files.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="external-input-config">
+<h2>EXTERNAL_INPUT_CONFIG<a class="headerlink" href="#external-input-config" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.config.EXTERNAL_INPUT_CONFIG">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">EXTERNAL_INPUT_CONFIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shared/standard_external_wave_input.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.EXTERNAL_INPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for external wave input.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="external-output-component">
+<h2>EXTERNAL_OUTPUT_COMPONENT<a class="headerlink" href="#external-output-component" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.config.EXTERNAL_OUTPUT_COMPONENT">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">EXTERNAL_OUTPUT_COMPONENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'extsink'</span></em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_COMPONENT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard component name for external data output.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="external-output-multi-config">
+<h2>EXTERNAL_OUTPUT_MULTI_CONFIG<a class="headerlink" href="#external-output-multi-config" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.config.EXTERNAL_OUTPUT_MULTI_CONFIG">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">EXTERNAL_OUTPUT_MULTI_CONFIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shared/standard_external_data_output_multi.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_MULTI_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for external data output from multiple levels.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="external-output-single-config">
+<h2>EXTERNAL_OUTPUT_SINGLE_CONFIG<a class="headerlink" href="#external-output-single-config" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.config.EXTERNAL_OUTPUT_SINGLE_CONFIG">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">EXTERNAL_OUTPUT_SINGLE_CONFIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shared/standard_external_data_output_single.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.EXTERNAL_OUTPUT_SINGLE_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for external data output from a single level.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="external-source-component">
+<h2>EXTERNAL_SOURCE_COMPONENT<a class="headerlink" href="#external-source-component" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.config.EXTERNAL_SOURCE_COMPONENT">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">EXTERNAL_SOURCE_COMPONENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'extsource'</span></em><a class="headerlink" href="#opensmile.config.EXTERNAL_SOURCE_COMPONENT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard component name for external input.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="file-input-config">
+<h2>FILE_INPUT_CONFIG<a class="headerlink" href="#file-input-config" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.config.FILE_INPUT_CONFIG">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">FILE_INPUT_CONFIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shared/standard_wave_input.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.FILE_INPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for wave input from file.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="file-output-config">
+<h2>FILE_OUTPUT_CONFIG<a class="headerlink" href="#file-output-config" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.config.FILE_OUTPUT_CONFIG">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">FILE_OUTPUT_CONFIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shared/standard_data_output.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.FILE_OUTPUT_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for external data output.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="file-output-config-no-lld-de">
+<h2>FILE_OUTPUT_CONFIG_NO_LLD_DE<a class="headerlink" href="#file-output-config-no-lld-de" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.config.FILE_OUTPUT_CONFIG_NO_LLD_DE">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">FILE_OUTPUT_CONFIG_NO_LLD_DE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shared/standard_data_output_no_lld_de.conf.inc'</span></em><a class="headerlink" href="#opensmile.config.FILE_OUTPUT_CONFIG_NO_LLD_DE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard config name for external data output without lld_de level.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="opensmile.FeatureLevel.html" class="btn btn-neutral float-right" title="FeatureLevel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="opensmile.html" class="btn btn-neutral float-left" title="opensmile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div>
+    <p>
+        
+        
+        
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2023/01/03 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+        
+    </p>
+  </div>
+
+  <div role="contentinfo">
+    <p>
+        
+      &copy; 2020-2023 audEERING GmbH
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/thebelab-helper.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

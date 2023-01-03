@@ -1,0 +1,164 @@
+﻿Smile
+=====
+
+.. currentmodule:: opensmile
+
+.. autoclass:: Smile
+
+
+\_\_call\_\_\(\)
+----------------
+.. automethod:: Smile.__call__
+    
+arguments
+---------
+.. autoattribute:: Smile.arguments
+    
+borrowed\_arguments
+-------------------
+.. autoattribute:: Smile.borrowed_arguments
+    
+column\_names
+-------------
+.. autoattribute:: Smile.column_names
+    
+config\_name
+------------
+.. autoattribute:: Smile.config_name
+    
+config\_path
+------------
+.. autoattribute:: Smile.config_path
+    
+default\_config\_root
+---------------------
+.. autoattribute:: Smile.default_config_root
+    
+feature\_level
+--------------
+.. autoattribute:: Smile.feature_level
+    
+feature\_names
+--------------
+.. autoattribute:: Smile.feature_names
+    
+feature\_set
+------------
+.. autoattribute:: Smile.feature_set
+    
+from\_dict\(\)
+--------------
+.. automethod:: Smile.from_dict
+    
+from\_yaml\(\)
+--------------
+.. automethod:: Smile.from_yaml
+    
+from\_yaml\_s\(\)
+-----------------
+.. automethod:: Smile.from_yaml_s
+    
+hidden\_arguments
+-----------------
+.. autoattribute:: Smile.hidden_arguments
+    
+hop\_dur
+--------
+.. autoattribute:: Smile.hop_dur
+    
+id
+--
+.. autoattribute:: Smile.id
+    
+is\_loaded\_from\_dict
+----------------------
+.. autoattribute:: Smile.is_loaded_from_dict
+    
+logfile
+-------
+.. autoattribute:: Smile.logfile
+    
+loglevel
+--------
+.. autoattribute:: Smile.loglevel
+    
+name
+----
+.. autoattribute:: Smile.name
+    
+num\_channels
+-------------
+.. autoattribute:: Smile.num_channels
+    
+num\_features
+-------------
+.. autoattribute:: Smile.num_features
+    
+options
+-------
+.. autoattribute:: Smile.options
+    
+params
+------
+.. autoattribute:: Smile.params
+    
+process
+-------
+.. autoattribute:: Smile.process
+    
+process\_file\(\)
+-----------------
+.. automethod:: Smile.process_file
+    
+process\_files\(\)
+------------------
+.. automethod:: Smile.process_files
+    
+process\_folder\(\)
+-------------------
+.. automethod:: Smile.process_folder
+    
+process\_func\_applies\_sliding\_window
+---------------------------------------
+.. autoattribute:: Smile.process_func_applies_sliding_window
+    
+process\_index\(\)
+------------------
+.. automethod:: Smile.process_index
+    
+process\_signal\(\)
+-------------------
+.. automethod:: Smile.process_signal
+    
+process\_signal\_from\_index\(\)
+--------------------------------
+.. automethod:: Smile.process_signal_from_index
+    
+resolvers
+---------
+.. autoattribute:: Smile.resolvers
+    
+to\_dict\(\)
+------------
+.. automethod:: Smile.to_dict
+    
+to\_numpy\(\)
+-------------
+.. automethod:: Smile.to_numpy
+    
+to\_yaml\(\)
+------------
+.. automethod:: Smile.to_yaml
+    
+to\_yaml\_s\(\)
+---------------
+.. automethod:: Smile.to_yaml_s
+    
+verbose
+-------
+.. autoattribute:: Smile.verbose
+    
+win\_dur
+--------
+.. autoattribute:: Smile.win_dur
+    

@@ -1,0 +1,48 @@
+﻿config
+======
+
+.. currentmodule:: opensmile
+
+.. autoclass:: config
+
+
+CONFIG\_EXT
+-----------
+.. autoattribute:: config.CONFIG_EXT
+    
+CONFIG\_ROOT
+------------
+.. autoattribute:: config.CONFIG_ROOT
+    
+EXTERNAL\_INPUT\_CONFIG
+-----------------------
+.. autoattribute:: config.EXTERNAL_INPUT_CONFIG
+    
+EXTERNAL\_OUTPUT\_COMPONENT
+---------------------------
+.. autoattribute:: config.EXTERNAL_OUTPUT_COMPONENT
+    
+EXTERNAL\_OUTPUT\_MULTI\_CONFIG
+-------------------------------
+.. autoattribute:: config.EXTERNAL_OUTPUT_MULTI_CONFIG
+    
+EXTERNAL\_OUTPUT\_SINGLE\_CONFIG
+--------------------------------
+.. autoattribute:: config.EXTERNAL_OUTPUT_SINGLE_CONFIG
+    
+EXTERNAL\_SOURCE\_COMPONENT
+---------------------------
+.. autoattribute:: config.EXTERNAL_SOURCE_COMPONENT
+    
+FILE\_INPUT\_CONFIG
+-------------------
+.. autoattribute:: config.FILE_INPUT_CONFIG
+    
+FILE\_OUTPUT\_CONFIG
+--------------------
+.. autoattribute:: config.FILE_OUTPUT_CONFIG
+    
+FILE\_OUTPUT\_CONFIG\_NO\_LLD\_DE
+---------------------------------
+.. autoattribute:: config.FILE_OUTPUT_CONFIG_NO_LLD_DE
+    

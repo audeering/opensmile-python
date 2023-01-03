@@ -1,0 +1,44 @@
+﻿FeatureSet
+==========
+
+.. currentmodule:: opensmile
+
+.. autoclass:: FeatureSet
+
+
+ComParE\_2016
+-------------
+.. autoattribute:: FeatureSet.ComParE_2016
+    
+eGeMAPS
+-------
+.. autoattribute:: FeatureSet.eGeMAPS
+    
+eGeMAPSv01a
+-----------
+.. autoattribute:: FeatureSet.eGeMAPSv01a
+    
+eGeMAPSv01b
+-----------
+.. autoattribute:: FeatureSet.eGeMAPSv01b
+    
+eGeMAPSv02
+----------
+.. autoattribute:: FeatureSet.eGeMAPSv02
+    
+emobase
+-------
+.. autoattribute:: FeatureSet.emobase
+    
+GeMAPS
+------
+.. autoattribute:: FeatureSet.GeMAPS
+    
+GeMAPSv01a
+----------
+.. autoattribute:: FeatureSet.GeMAPSv01a
+    
+GeMAPSv01b
+----------
+.. autoattribute:: FeatureSet.GeMAPSv01b
+    

@@ -1,0 +1,20 @@
+﻿FeatureLevel
+============
+
+.. currentmodule:: opensmile
+
+.. autoclass:: FeatureLevel
+
+
+Functionals
+-----------
+.. autoattribute:: FeatureLevel.Functionals
+    
+LowLevelDescriptors
+-------------------
+.. autoattribute:: FeatureLevel.LowLevelDescriptors
+    
+LowLevelDescriptors\_Deltas
+---------------------------
+.. autoattribute:: FeatureLevel.LowLevelDescriptors_Deltas
+    

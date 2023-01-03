@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>opensmile.core.config &mdash; opensmile Documentation</title>
+  <title>opensmile.core.config &mdash; Documentation</title>
   
 
   
@@ -25,12 +25,8 @@
     
 
   
-
-  
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/audeering.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/audeering.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/thebelab.css" type="text/css" />
@@ -71,7 +67,7 @@
             
             
               <div class="version">
-                v2.4.1
+                v2.4.2
               </div>
             
           
@@ -104,7 +100,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../api-smile.html">opensmile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/opensmile.html">opensmile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
 </ul>
 
@@ -143,43 +139,43 @@
            <div itemprop="articleBody">
             
   <h1>Source code for opensmile.core.config</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="config"><a class="viewcode-back" href="../../../api-smile.html#opensmile.config">[docs]</a><span></span><span class="k">class</span> <span class="nc">config</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get/set defaults for the :mod:`opensmile` module.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="config"><a class="viewcode-back" href="../../../api/opensmile.config.html#opensmile.config">[docs]</a><span></span><span class="k">class</span> <span class="nc">config</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get/set defaults for the :mod:`opensmile` module.&quot;&quot;&quot;</span>
 
     <span class="n">CONFIG_ROOT</span> <span class="o">=</span> <span class="s1">&#39;config&#39;</span>
-    <span class="sd">&quot;&quot;&quot;Root directory of config files.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Root directory of config files.&quot;&quot;&quot;</span>
 
     <span class="n">CONFIG_EXT</span> <span class="o">=</span> <span class="s1">&#39;.conf&#39;</span>
-    <span class="sd">&quot;&quot;&quot;Extension of config files.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extension of config files.&quot;&quot;&quot;</span>
 
     <span class="n">EXTERNAL_SOURCE_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;extsource&#39;</span>
-    <span class="sd">&quot;&quot;&quot;Standard component name for external input.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard component name for external input.&quot;&quot;&quot;</span>
 
     <span class="n">EXTERNAL_OUTPUT_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;extsink&#39;</span>
-    <span class="sd">&quot;&quot;&quot;Standard component name for external data output.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard component name for external data output.&quot;&quot;&quot;</span>
 
     <span class="n">FILE_INPUT_CONFIG</span> <span class="o">=</span> <span class="s1">&#39;shared/standard_wave_input.conf.inc&#39;</span>
-    <span class="sd">&quot;&quot;&quot;Standard config name for wave input from file.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for wave input from file.&quot;&quot;&quot;</span>
 
     <span class="n">EXTERNAL_INPUT_CONFIG</span> <span class="o">=</span> \
         <span class="s1">&#39;shared/standard_external_wave_input.conf.inc&#39;</span>
-    <span class="sd">&quot;&quot;&quot;Standard config name for external wave input.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for external wave input.&quot;&quot;&quot;</span>
 
     <span class="n">EXTERNAL_OUTPUT_SINGLE_CONFIG</span> <span class="o">=</span> \
         <span class="s1">&#39;shared/standard_external_data_output_single.conf.inc&#39;</span>
-    <span class="sd">&quot;&quot;&quot;Standard config name for external data output from a single level.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for external data output from a single level.&quot;&quot;&quot;</span>
 
     <span class="n">EXTERNAL_OUTPUT_MULTI_CONFIG</span> <span class="o">=</span> \
         <span class="s1">&#39;shared/standard_external_data_output_multi.conf.inc&#39;</span>
-    <span class="sd">&quot;&quot;&quot;Standard config name for external data output from multiple levels.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for external data output from multiple levels.&quot;&quot;&quot;</span>
 
     <span class="n">FILE_OUTPUT_CONFIG</span> <span class="o">=</span> \
         <span class="s1">&#39;shared/standard_data_output.conf.inc&#39;</span>
-    <span class="sd">&quot;&quot;&quot;Standard config name for external data output.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for external data output.&quot;&quot;&quot;</span>
 
     <span class="n">FILE_OUTPUT_CONFIG_NO_LLD_DE</span> <span class="o">=</span> \
         <span class="s1">&#39;shared/standard_data_output_no_lld_de.conf.inc&#39;</span>
-    <span class="sd">&quot;&quot;&quot;Standard config name for external data output without lld_de level.&quot;&quot;&quot;</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for external data output without lld_de level.&quot;&quot;&quot;</span></div>
 </pre></div>
 
            </div>
@@ -195,7 +191,7 @@
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2022/01/10 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2023/01/03 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -203,7 +199,7 @@
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2022 audEERING GmbH
+      &copy; 2020-2023 audEERING GmbH
     </p>
   </div> 
 
@@ -230,12 +226,14 @@
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
         <script src="../../../_static/thebelab-helper.js"></script>
         <script src="../../../_static/clipboard.min.js"></script>
         <script src="../../../_static/copybutton.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     
 
   

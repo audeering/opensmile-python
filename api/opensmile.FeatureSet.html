@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FeatureSet &mdash; Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/audeering.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Smile" href="opensmile.Smile.html" />
+    <link rel="prev" title="FeatureLevel" href="opensmile.FeatureLevel.html" />
+    
+      
+    
+  
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          <a href="../index.html">
+          
+            <img src="../_static/images/audeering.png" class="logo" alt="audEERING"/>
+          
+          
+            <span> opensmile</span>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.4.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="opensmile.html">opensmile</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="opensmile.config.html">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opensmile.FeatureLevel.html">FeatureLevel</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FeatureSet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">ComParE_2016</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">eGeMAPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#egemapsv01a">eGeMAPSv01a</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#egemapsv01b">eGeMAPSv01b</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#egemapsv02">eGeMAPSv02</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#emobase">emobase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">GeMAPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gemapsv01a">GeMAPSv01a</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gemapsv01b">GeMAPSv01b</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="opensmile.Smile.html">Smile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">opensmile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="opensmile.html">opensmile</a> &raquo;</li>
+      <li>FeatureSet</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/audeering/opensmile-python/" class="fa fa-github"> GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="featureset">
+<h1>FeatureSet<a class="headerlink" href="#featureset" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="opensmile.FeatureSet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensmile.</span></span><span class="sig-name descname"><span class="pre">FeatureSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensmile/core/define.html#FeatureSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensmile.FeatureSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enumeration of standard feature sets.</p>
+<p>The following feature sets are available:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#opensmile.FeatureSet.ComParE_2016" title="opensmile.FeatureSet.ComParE_2016"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ComParE_2016</span></code></a></p></li>
+<li><p><a class="reference internal" href="#opensmile.FeatureSet.GeMAPS" title="opensmile.FeatureSet.GeMAPS"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GeMAPS</span></code></a>, deprecated alias for <a class="reference internal" href="#opensmile.FeatureSet.GeMAPSv01a" title="opensmile.FeatureSet.GeMAPSv01a"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GeMAPSv01a</span></code></a></p></li>
+<li><p><a class="reference internal" href="#opensmile.FeatureSet.GeMAPSv01a" title="opensmile.FeatureSet.GeMAPSv01a"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GeMAPSv01a</span></code></a></p></li>
+<li><p><a class="reference internal" href="#opensmile.FeatureSet.GeMAPSv01b" title="opensmile.FeatureSet.GeMAPSv01b"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GeMAPSv01b</span></code></a></p></li>
+<li><p><a class="reference internal" href="#opensmile.FeatureSet.eGeMAPS" title="opensmile.FeatureSet.eGeMAPS"><code class="xref py py-attr docutils literal notranslate"><span class="pre">eGeMAPS</span></code></a>, deprecated alias for <a class="reference internal" href="#opensmile.FeatureSet.eGeMAPSv01a" title="opensmile.FeatureSet.eGeMAPSv01a"><code class="xref py py-attr docutils literal notranslate"><span class="pre">eGeMAPSv01a</span></code></a></p></li>
+<li><p><a class="reference internal" href="#opensmile.FeatureSet.eGeMAPSv01a" title="opensmile.FeatureSet.eGeMAPSv01a"><code class="xref py py-attr docutils literal notranslate"><span class="pre">eGeMAPSv01a</span></code></a></p></li>
+<li><p><a class="reference internal" href="#opensmile.FeatureSet.eGeMAPSv01b" title="opensmile.FeatureSet.eGeMAPSv01b"><code class="xref py py-attr docutils literal notranslate"><span class="pre">eGeMAPSv01b</span></code></a></p></li>
+<li><p><a class="reference internal" href="#opensmile.FeatureSet.eGeMAPSv02" title="opensmile.FeatureSet.eGeMAPSv02"><code class="xref py py-attr docutils literal notranslate"><span class="pre">eGeMAPSv02</span></code></a></p></li>
+<li><p><a class="reference internal" href="#opensmile.FeatureSet.emobase" title="opensmile.FeatureSet.emobase"><code class="xref py py-attr docutils literal notranslate"><span class="pre">emobase</span></code></a></p></li>
+</ul>
+<p>For references, see the papers on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf">ComParE 2016</a></p></li>
+<li><p><a class="reference external" href="https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf">GeMAPS</a></p></li>
+<li><p><a class="reference external" href="https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf">eGeMAPS</a></p></li>
+<li><p>emobase</p></li>
+</ul>
+</dd></dl>
+
+<div class="section" id="id1">
+<h2>ComParE_2016<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.FeatureSet.ComParE_2016">
+<span class="sig-prename descclassname"><span class="pre">FeatureSet.</span></span><span class="sig-name descname"><span class="pre">ComParE_2016</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'compare/ComParE_2016'</span></em><a class="headerlink" href="#opensmile.FeatureSet.ComParE_2016" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h2>eGeMAPS<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.FeatureSet.eGeMAPS">
+<span class="sig-prename descclassname"><span class="pre">FeatureSet.</span></span><span class="sig-name descname"><span class="pre">eGeMAPS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'egemaps/v01a/eGeMAPSv01a'</span></em><a class="headerlink" href="#opensmile.FeatureSet.eGeMAPS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="egemapsv01a">
+<h2>eGeMAPSv01a<a class="headerlink" href="#egemapsv01a" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.FeatureSet.eGeMAPSv01a">
+<span class="sig-prename descclassname"><span class="pre">FeatureSet.</span></span><span class="sig-name descname"><span class="pre">eGeMAPSv01a</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'egemaps/v01a/eGeMAPSv01a'</span></em><a class="headerlink" href="#opensmile.FeatureSet.eGeMAPSv01a" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="egemapsv01b">
+<h2>eGeMAPSv01b<a class="headerlink" href="#egemapsv01b" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.FeatureSet.eGeMAPSv01b">
+<span class="sig-prename descclassname"><span class="pre">FeatureSet.</span></span><span class="sig-name descname"><span class="pre">eGeMAPSv01b</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'egemaps/v01b/eGeMAPSv01b'</span></em><a class="headerlink" href="#opensmile.FeatureSet.eGeMAPSv01b" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="egemapsv02">
+<h2>eGeMAPSv02<a class="headerlink" href="#egemapsv02" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.FeatureSet.eGeMAPSv02">
+<span class="sig-prename descclassname"><span class="pre">FeatureSet.</span></span><span class="sig-name descname"><span class="pre">eGeMAPSv02</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'egemaps/v02/eGeMAPSv02'</span></em><a class="headerlink" href="#opensmile.FeatureSet.eGeMAPSv02" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="emobase">
+<h2>emobase<a class="headerlink" href="#emobase" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.FeatureSet.emobase">
+<span class="sig-prename descclassname"><span class="pre">FeatureSet.</span></span><span class="sig-name descname"><span class="pre">emobase</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'emobase/emobase'</span></em><a class="headerlink" href="#opensmile.FeatureSet.emobase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="id3">
+<h2>GeMAPS<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.FeatureSet.GeMAPS">
+<span class="sig-prename descclassname"><span class="pre">FeatureSet.</span></span><span class="sig-name descname"><span class="pre">GeMAPS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gemaps/v01a/GeMAPSv01a'</span></em><a class="headerlink" href="#opensmile.FeatureSet.GeMAPS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="gemapsv01a">
+<h2>GeMAPSv01a<a class="headerlink" href="#gemapsv01a" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.FeatureSet.GeMAPSv01a">
+<span class="sig-prename descclassname"><span class="pre">FeatureSet.</span></span><span class="sig-name descname"><span class="pre">GeMAPSv01a</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gemaps/v01a/GeMAPSv01a'</span></em><a class="headerlink" href="#opensmile.FeatureSet.GeMAPSv01a" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="gemapsv01b">
+<h2>GeMAPSv01b<a class="headerlink" href="#gemapsv01b" title="Permalink to this heading">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensmile.FeatureSet.GeMAPSv01b">
+<span class="sig-prename descclassname"><span class="pre">FeatureSet.</span></span><span class="sig-name descname"><span class="pre">GeMAPSv01b</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gemaps/v01b/GeMAPSv01b'</span></em><a class="headerlink" href="#opensmile.FeatureSet.GeMAPSv01b" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="opensmile.Smile.html" class="btn btn-neutral float-right" title="Smile" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="opensmile.FeatureLevel.html" class="btn btn-neutral float-left" title="FeatureLevel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div>
+    <p>
+        
+        
+        
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2023/01/03 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+        
+    </p>
+  </div>
+
+  <div role="contentinfo">
+    <p>
+        
+      &copy; 2020-2023 audEERING GmbH
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/thebelab-helper.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

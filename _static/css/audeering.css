@@ -38,6 +38,17 @@ body {
     /* Decrease distance between paragraphs */
     margin-bottom: 10px !important;
 }
+/* Fix display of class properties in API */
+/* https://github.com/audeering/sphinx-audeering-theme/issues/57 */
+.rst-content dl:not(.docutils) .property {
+    display: revert;
+    padding-right: 4px;
+}
+/* Fix bottom margin of nested bullet points */
+/* https://github.com/audeering/sphinx-audeering-theme/pull/56 */
+.rst-content .section ol p, .rst-content .section ul p {
+    margin-bottom: 0;
+}
 
 /***** LINKS *************************************************************/
 a {
@@ -198,10 +209,10 @@ content .viewcode-back {
     color: var(--black);
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",Courier,monospace;
 }
-dl.class em,
-dl.function em,
-dl.method em,
-dl.property em {
+dl.class dt em,
+dl.function dt em,
+dl.method dt em,
+dl.property dt em {
     font-style: normal;
 }
 .rst-content dl:not(.docutils) dt {

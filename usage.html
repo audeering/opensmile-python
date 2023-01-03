@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; opensmile Documentation</title>
+  <title>Usage &mdash; Documentation</title>
   
 
   
@@ -25,12 +25,8 @@
     
 
   
-
-  
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/audeering.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/audeering.css" type="text/css" />
   <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
@@ -75,7 +71,7 @@
             
             
               <div class="version">
-                v2.4.1
+                v2.4.2
               </div>
             
           
@@ -118,7 +114,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="api-smile.html">opensmile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/opensmile.html">opensmile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 </ul>
 
@@ -157,8 +153,8 @@
            <div itemprop="articleBody">
             
   <div class="section" id="usage">
-<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
-<p>The aim of <code class="xref py py-mod docutils literal notranslate"><span class="pre">opensmile</span></code> is to provide
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h1>
+<p>The aim of <a class="reference internal" href="api/opensmile.html#module-opensmile" title="opensmile"><code class="xref py py-mod docutils literal notranslate"><span class="pre">opensmile</span></code></a> is to provide
 a high-level interface to <a class="reference external" href="https://gitlab.audeering.com/tools/opensmile">openSMILE</a>.
 It ships pre-compiled binaries and default feature sets,
 but it’s also possible to run custom config files.</p>
@@ -167,13 +163,13 @@ but it’s also possible to run custom config files.</p>
 </div>
 </div>
 <div class="section" id="getting-ready">
-<h2>Getting ready<a class="headerlink" href="#getting-ready" title="Permalink to this headline">¶</a></h2>
+<h2>Getting ready<a class="headerlink" href="#getting-ready" title="Permalink to this heading">¶</a></h2>
 <p>Let’s do some imports and
 load some files from the
 <a class="reference external" href="https://github.com/audeering/emodb">emodb</a> database.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -206,11 +202,11 @@ load some files from the
 </div>
 </div>
 <div class="section" id="process-signal">
-<h2>Process signal<a class="headerlink" href="#process-signal" title="Permalink to this headline">¶</a></h2>
+<h2>Process signal<a class="headerlink" href="#process-signal" title="Permalink to this heading">¶</a></h2>
 <p>Read first ten seconds of a file into memory.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">audiofile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
     <span class="n">file</span><span class="p">,</span>
     <span class="n">duration</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
@@ -226,7 +222,7 @@ load some files from the
 of a pre-defined feature set.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
     <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
 <span class="p">)</span>
@@ -330,7 +326,7 @@ of a pre-defined feature set.</p>
 <p>And extract features for the signal.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span><span class="o">.</span><span class="n">process_signal</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span><span class="o">.</span><span class="n">process_signal</span><span class="p">(</span>
     <span class="n">signal</span><span class="p">,</span>
     <span class="n">sampling_rate</span>
 <span class="p">)</span>
@@ -392,7 +388,7 @@ of a pre-defined feature set.</p>
 for low-level descriptors (LLDs).</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
     <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">LowLevelDescriptors</span><span class="p">,</span>
 <span class="p">)</span>
@@ -433,7 +429,7 @@ for low-level descriptors (LLDs).</p>
 <p>And re-run feature extraction.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
     <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">LowLevelDescriptors</span><span class="p">,</span>
 <span class="p">)</span>
@@ -587,12 +583,12 @@ for low-level descriptors (LLDs).</p>
 </div>
 </div>
 <div class="section" id="logging">
-<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this heading">¶</a></h2>
 <p>To know what happens under the hood
 we can create a log file.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
     <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
     <span class="n">loglevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
@@ -609,27 +605,27 @@ we can create a log file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;[ 10.01.2022 - 14:41:58 ]\n&#39;,
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;[ 03.01.2023 - 14:27:57 ]\n&#39;,
  &#39;    (MSG) [2] SMILEapi: openSMILE starting!\n&#39;,
- &#39;[ 10.01.2022 - 14:41:58 ]\n&#39;,
+ &#39;[ 03.01.2023 - 14:27:57 ]\n&#39;,
  &#39;    (MSG) [2] SMILEapi: config file is: /home/runner/work/opensmile-python/opensmile-python/opensmile/core/config/egemaps/v02/eGeMAPSv02.conf\n&#39;,
- &#39;[ 10.01.2022 - 14:41:58 ]\n&#39;,
+ &#39;[ 03.01.2023 - 14:27:57 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: successfully registered 97 component types.\n&#39;,
- &#39;[ 10.01.2022 - 14:41:58 ]\n&#39;,
+ &#39;[ 03.01.2023 - 14:27:57 ]\n&#39;,
  &quot;    (MSG) [2] instance &#39;gemapsv01b_logSpectral&#39;: logSpecFloor = -140.00  (specFloor = 1.000000e-14)\n&quot;,
- &#39;[ 10.01.2022 - 14:41:58 ]\n&#39;,
+ &#39;[ 03.01.2023 - 14:27:57 ]\n&#39;,
  &quot;    (MSG) [2] instance &#39;egemapsv02_logSpectral_flux&#39;: logSpecFloor = -140.00  (specFloor = 1.000000e-14)\n&quot;,
- &#39;[ 10.01.2022 - 14:41:58 ]\n&#39;,
+ &#39;[ 03.01.2023 - 14:27:57 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: successfully finished createInstances (73 component instances were finalised, 1 data memories were finalised)\n&#39;,
- &#39;[ 10.01.2022 - 14:41:58 ]\n&#39;,
+ &#39;[ 03.01.2023 - 14:27:57 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: starting single thread processing loop\n&#39;,
- &#39;[ 10.01.2022 - 14:41:58 ]\n&#39;,
+ &#39;[ 03.01.2023 - 14:27:57 ]\n&#39;,
  &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
- &#39;[ 10.01.2022 - 14:41:58 ]\n&#39;,
+ &#39;[ 03.01.2023 - 14:27:57 ]\n&#39;,
  &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
- &#39;[ 10.01.2022 - 14:41:58 ]\n&#39;,
+ &#39;[ 03.01.2023 - 14:27:57 ]\n&#39;,
  &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
- &#39;[ 10.01.2022 - 14:41:58 ]\n&#39;,
+ &#39;[ 03.01.2023 - 14:27:57 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: Processing finished! System ran for 199 ticks.\n&#39;]
 </pre></div>
 </div>
@@ -637,11 +633,11 @@ we can create a log file.</p>
 </div>
 </div>
 <div class="section" id="custom-config">
-<h2>Custom config<a class="headerlink" href="#custom-config" title="Permalink to this headline">¶</a></h2>
+<h2>Custom config<a class="headerlink" href="#custom-config" title="Permalink to this heading">¶</a></h2>
 <p>We can create a custom config.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">[componentInstances:cComponentManager]</span>
 <span class="s1">instance[dataMemory].type=cDataMemory</span>
 
@@ -713,7 +709,7 @@ Now, we simply pass the level
 we are interested in.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;my.conf&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;my.conf&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
     <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">config_str</span><span class="p">)</span>
 
 <span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
@@ -777,7 +773,7 @@ we are interested in.</p>
 <p>And…</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
     <span class="n">feature_set</span><span class="o">=</span><span class="s1">&#39;my.conf&#39;</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="s1">&#39;lld&#39;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -861,12 +857,12 @@ we are interested in.</p>
 </div>
 </div>
 <div class="section" id="resample">
-<h2>Resample<a class="headerlink" href="#resample" title="Permalink to this headline">¶</a></h2>
+<h2>Resample<a class="headerlink" href="#resample" title="Permalink to this heading">¶</a></h2>
 <p>It’s possible to resample the
 input signals on the fly.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
     <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
     <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span>
@@ -932,14 +928,14 @@ input signals on the fly.</p>
 </div>
 </div>
 <div class="section" id="multi-channel">
-<h2>Multi-channel<a class="headerlink" href="#multi-channel" title="Permalink to this headline">¶</a></h2>
+<h2>Multi-channel<a class="headerlink" href="#multi-channel" title="Permalink to this heading">¶</a></h2>
 <p>We can process multi-channel audio.
 Note that we need to set the channels
 we want to process when we create
 the feature extractor.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
     <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
     <span class="n">channels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># process first and last channel</span>
@@ -963,20 +959,31 @@ the feature extractor.</p>
         vertical-align: top;
     }
 
-    .dataframe thead th {
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
         text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr>
       <th></th>
       <th></th>
-      <th>F0semitoneFrom27.5Hz_sma3nz_amean-0</th>
-      <th>F0semitoneFrom27.5Hz_sma3nz_stddevNorm-0</th>
+      <th colspan="2" halign="left">0</th>
       <th>...</th>
-      <th>StddevUnvoicedSegmentLength-1</th>
-      <th>equivalentSoundLevel_dBp-1</th>
+      <th colspan="2" halign="left">-1</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>F0semitoneFrom27.5Hz_sma3nz_amean</th>
+      <th>F0semitoneFrom27.5Hz_sma3nz_stddevNorm</th>
+      <th>...</th>
+      <th>StddevUnvoicedSegmentLength</th>
+      <th>equivalentSoundLevel_dBp</th>
     </tr>
     <tr>
       <th>start</th>
@@ -1005,13 +1012,13 @@ the feature extractor.</p>
 </div>
 </div>
 <div class="section" id="file-input">
-<h2>File input<a class="headerlink" href="#file-input" title="Permalink to this headline">¶</a></h2>
+<h2>File input<a class="headerlink" href="#file-input" title="Permalink to this heading">¶</a></h2>
 <p>We can extract features from files.
 Note that we only process
 the first ten seconds of the files</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">files</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">files</span>  <span class="c1"># pick files</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">files</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">files</span>  <span class="c1"># pick files</span>
 <span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
     <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
@@ -1100,14 +1107,14 @@ the first ten seconds of the files</p>
 </div>
 </div>
 <div class="section" id="audformat">
-<h2>audformat<a class="headerlink" href="#audformat" title="Permalink to this headline">¶</a></h2>
+<h2>audformat<a class="headerlink" href="#audformat" title="Permalink to this heading">¶</a></h2>
 <p>We can extract features from an index
 in the <a class="reference external" href="https://audeering.github.io/audformat/data-format.html">audformat</a>.
 Note that we set five workers
 to speed up the processing.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;emotion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>  <span class="c1"># pick table index</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;emotion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>  <span class="c1"># pick table index</span>
 <span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
     <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
@@ -1220,7 +1227,7 @@ to speed up the processing.</p>
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2022/01/10 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2023/01/03 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -1228,7 +1235,7 @@ to speed up the processing.</p>
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2022 audEERING GmbH
+      &copy; 2020-2023 audEERING GmbH
     </p>
   </div> 
 
@@ -1255,12 +1262,14 @@ to speed up the processing.</p>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     
 
   

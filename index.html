@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openSMILE Python &mdash; opensmile Documentation</title>
+  <title>openSMILE Python &mdash; Documentation</title>
   
 
   
@@ -25,12 +25,8 @@
     
 
   
-
-  
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/audeering.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/audeering.css" type="text/css" />
   <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
@@ -72,7 +68,7 @@
             
             
               <div class="version">
-                v2.4.1
+                v2.4.2
               </div>
             
           
@@ -105,7 +101,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="api-smile.html">opensmile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/opensmile.html">opensmile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 </ul>
 
@@ -144,7 +140,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="opensmile-python">
-<h1>openSMILE Python<a class="headerlink" href="#opensmile-python" title="Permalink to this headline">¶</a></h1>
+<h1>openSMILE Python<a class="headerlink" href="#opensmile-python" title="Permalink to this heading">¶</a></h1>
 <p><a class="reference external" href="https://github.com/audeering/opensmile-python/actions?query=workflow%3ATest"><img alt="Test status" src="https://github.com/audeering/opensmile-python/workflows/Test/badge.svg" /></a> <a class="reference external" href="https://codecov.io/gh/audeering/opensmile-python"><img alt="code coverage" src="https://codecov.io/gh/audeering/opensmile-python/branch/master/graph/badge.svg?token=PUA9P2UJW1" /></a> <a class="reference external" href="https://audeering.github.io/opensmile-python/"><img alt="opensmile's documentation" src="https://img.shields.io/pypi/v/opensmile?label=docs" /></a> <a class="reference external" href="https://pypi.org/project/opensmile/"><img alt="opensmile's supported Python versions" src="https://img.shields.io/pypi/pyversions/opensmile.svg" /></a> <a class="reference external" href="https://github.com/audeering/opensmile-python/blob/master/LICENSE"><img alt="opensmile's audEERING license" src="https://img.shields.io/badge/license-audEERING-red.svg" /></a></p>
 <p>Python interface for extracting <a class="reference external" href="https://github.com/audeering/opensmile">openSMILE</a> features.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install opensmile
@@ -155,7 +151,7 @@
 <p>Only 64-bit Python is supported.</p>
 </div>
 <div class="section" id="feature-sets">
-<h2>Feature sets<a class="headerlink" href="#feature-sets" title="Permalink to this headline">¶</a></h2>
+<h2>Feature sets<a class="headerlink" href="#feature-sets" title="Permalink to this heading">¶</a></h2>
 <p>Currently, three standard sets are supported.
 <a class="reference external" href="http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf">ComParE 2016</a> is the largest with more than 6k features.
 The smaller sets <a class="reference external" href="https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf">GeMAPS</a> and  <a class="reference external" href="https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf">eGeMAPS</a>
@@ -182,7 +178,7 @@ longer available for the GeMAPS family.</p>
 <p>The following table lists the number of features
 for each set and level.</p>
 <div class="section" id="with-v2-0-0">
-<h3>With v2.0.0<a class="headerlink" href="#with-v2-0-0" title="Permalink to this headline">¶</a></h3>
+<h3>With v2.0.0<a class="headerlink" href="#with-v2-0-0" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
@@ -221,7 +217,7 @@ For a full list please see the documentation of <code class="docutils literal no
 </div>
 </div>
 <div class="section" id="pre-v2-0-0">
-<h3>Pre v2.0.0<a class="headerlink" href="#pre-v2-0-0" title="Permalink to this headline">¶</a></h3>
+<h3>Pre v2.0.0<a class="headerlink" href="#pre-v2-0-0" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
@@ -253,7 +249,7 @@ For a full list please see the documentation of <code class="docutils literal no
 </div>
 </div>
 <div class="section" id="code-example">
-<h2>Code example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
+<h2>Code example<a class="headerlink" href="#code-example" title="Permalink to this heading">¶</a></h2>
 <p>Code example,
 that extracts <a class="reference external" href="http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf">ComParE 2016</a>  functionals from an audio file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">opensmile</span>
@@ -267,7 +263,7 @@ that extracts <a class="reference external" href="http://www.tangsoo.de/document
 </div>
 </div>
 <div class="section" id="license">
-<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<h2>License<a class="headerlink" href="#license" title="Permalink to this heading">¶</a></h2>
 <p>openSMILE follows a dual-licensing model. Since the main goal of the project
 is a widespread use of the software to facilitate research in the field of
 machine learning from audio-visual signals, the source code and binaries are
@@ -283,7 +279,7 @@ Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;aude
 <p>Copyright © 2016-2020, audEERING GmbH</p>
 </div>
 <div class="section" id="citing">
-<h2>Citing<a class="headerlink" href="#citing" title="Permalink to this headline">¶</a></h2>
+<h2>Citing<a class="headerlink" href="#citing" title="Permalink to this heading">¶</a></h2>
 <p>Please cite openSMILE in your publications by citing the following paper:</p>
 <blockquote>
 <div><p>Florian Eyben, Martin Wöllmer, Björn Schuller: “openSMILE - The Munich Versatile and Fast Open-Source Audio Feature Extractor”, Proc. ACM Multimedia (MM), ACM, Florence, Italy, ISBN 978-1-60558-933-6, pp. 1459-1462, 25.-29.10.2010.</p>
@@ -316,7 +312,7 @@ Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;aude
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2022/01/10 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2023/01/03 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -324,7 +320,7 @@ Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;aude
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2022 audEERING GmbH
+      &copy; 2020-2023 audEERING GmbH
     </p>
   </div> 
 
@@ -351,12 +347,14 @@ Contact us at <a class="reference external" href="mailto:info&#37;&#52;&#48;aude
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     
 
   
