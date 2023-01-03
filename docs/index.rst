@@ -18,5 +18,5 @@
     :caption: API Documentation
     :hidden:
 
-    api-smile
+    api/opensmile
     genindex
