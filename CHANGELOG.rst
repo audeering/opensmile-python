@@ -6,6 +6,16 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog`_,
 and this project adheres to `Semantic Versioning`_.
 
+
+Version 2.4.2 (2023-01-03)
+--------------------------
+
+* Added: support for Python 3.9
+* Changed: split API documentation into sub-pages
+  for each function
+* Removed: support for Python 3.6
+
+
 Version 2.4.1 (2022-01-10)
 --------------------------
 
