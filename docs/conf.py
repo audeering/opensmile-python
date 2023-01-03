@@ -45,7 +45,7 @@ autodoc_inherit_docstrings = False  # disable docstring inheritance
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
     'numpy': ('https://docs.scipy.org/doc/numpy/', None),
-    'pandas': ('https://pandas-docs.github.io/pandas-docs-travis/', None),
+    'pandas': ('https://pandas.pydata.org/pandas-docs/stable/', None),
 }
 
 # Do not copy prompot output
