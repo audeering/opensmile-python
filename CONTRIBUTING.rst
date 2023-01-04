@@ -44,7 +44,7 @@ in :file:`setup.cfg`.
 The checks are executed in the CI using `pre-commit`_.
 You can enable those checks locally by executing::
 
-    pip install -r tests/requirements.txt
+    pip install pre-commit  # consider system wide installation
     pre-commit install
     pre-commit run --all-files
 
@@ -54,7 +54,7 @@ every time you create a commit.
 You can also install flake8_
 and call it directly::
 
-    pip install flake8  # you might consider system wide installation
+    pip install flake8  # consider system wide installation
     flake8
 
 It can be restricted to specific folders::
