@@ -1,0 +1,29 @@
+name: Flake8
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+
+    - name: Install pre-commit hooks
+      run: |
+        pip install pre-commit
+        pre-commit install --install-hooks
+
+    - name: Code style check via pre-commit
+      run: |
+        pre-commit run --all-files
