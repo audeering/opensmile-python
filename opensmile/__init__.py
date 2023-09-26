@@ -1,11 +1,7 @@
 from opensmile.core.config import config
-from opensmile.core.define import (
-    FeatureSet,
-    FeatureLevel,
-)
-from opensmile.core.smile import (
-    Smile,
-)
+from opensmile.core.define import FeatureLevel
+from opensmile.core.define import FeatureSet
+from opensmile.core.smile import Smile
 
 
 __all__ = []

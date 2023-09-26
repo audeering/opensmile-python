@@ -1,0 +1,210 @@
+# ===== PROJECT ===========================================================
+#
+[project]
+name = 'opensmile'
+authors = [
+    {name = 'Christop Hausner'},
+    {name = 'Johannes Wagner', email= 'jwagner@audeering.com'},
+    {name = 'Hagen Wierstorf', email = 'hwierstorf@audeering.com'},
+]
+description = 'Python wrapper for common openSMILE feature sets'
+readme = 'README.rst'
+license = {file = 'LICENSE'}
+keywords = [
+    'audio',
+    'tools',
+    'feature',
+    'opensmile',
+    'audeering',
+]
+classifiers = [
+    'Development Status :: 5 - Production/Stable',
+    'Intended Audience :: Science/Research',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Topic :: Scientific/Engineering',
+]
+dependencies = [
+    'audobject >=0.6.1',
+    'audinterface >=0.7.0',
+]
+# Get version dynamically from git
+# (needs setuptools_scm tools config below)
+dynamic = ['version']
+
+[project.urls]
+repository = 'https://github.com/audeering/opensmile-python/'
+documentation = 'https://audeering.github.io/opensmile-python/'
+
+
+# ===== BUILD-SYSTEM ======================================================
+#
+# Requirements for building the Python package
+[build-system]
+requires = ['setuptools>=45', 'setuptools_scm[toml]>=6.2']
+build-backend = 'setuptools.build_meta'
+
+
+# ===== TOOL ==============================================================
+#
+
+# ----- codespell ---------------------------------------------------------
+[tool.codespell]
+builtin = 'clear,rare,informal,usage,names'
+skip = './opensmile.egg-info,./build,./docs/api,./docs/_templates,./docs/examples'
+
+
+# ----- pytest ------------------------------------------------------------
+#
+[tool.pytest.ini_options]
+cache_dir = '.cache/pytest'
+xfail_strict = true
+addopts = '''
+    --doctest-plus
+    --cov=opensmile
+    --cov-fail-under=100
+    --cov-report term-missing
+    --cov-report xml
+'''
+
+
+# ----- ruff --------------------------------------------------------------
+#
+[tool.ruff]
+select = [
+    'D',     # pydocstyle
+    'E',     # pycodestyle errors
+    'F',     # Pyflakes
+    'I',     # isort
+    'N',     # pep8-naming
+    'W',     # pycodestyle warnings
+]
+
+extend-ignore = [
+    'D100',  # Missing docstring in public module
+    'D103',  # Missing docstring in public function
+    'D104',  # Missing docstring in public package
+    'D107',  # Missing docstring in `__init__`
+]
+
+line-length = 79
+
+cache-dir = '.cache/ruff'
+
+[tool.ruff.per-file-ignores]
+'__init__.py' = [
+    'F401',  # * imported but unused
+]
+'define.py' = [
+    'N815',  # e.g. Variable `eGeMAPS` in class scope should not be mixedCase
+    'D102',  # Missing docstring in public method
+]
+'lib.py' = [
+    'D101',  # Missing docstring in public class
+    'D102',  # Missing docstring in public method
+    'D105',  # Missing docstring in magic method
+    'N818',  # Exception name `OpenSmileException` should be named with an Error suffix
+]
+
+
+# ----- I: isort -----
+#
+# Check correct order/syntax of import statements
+#
+[tool.ruff.isort]
+
+# All from imports have their own line, e.g.
+#
+#   from .utils import util_a
+#   from .utils import util_b
+#
+force-single-line = true
+
+# Sort by module names
+# and not import before from, e.g.
+#
+#     from datetime import date
+#     import os
+#
+force-sort-within-sections = true
+
+# Ensure we have two empty lines
+# after last import
+lines-after-imports = 2
+
+# Group all audEERING packages into a separate section, e.g.
+#
+#     import os
+#
+#     import numpy as np
+#
+#     import audb
+#
+section-order = [
+    'future',
+    'standard-library',
+    'third-party',
+    'audeering',
+    'first-party',
+    'local-folder',
+]
+[tool.ruff.isort.sections]
+'audeering' = [
+    'audb',
+    'audbackend',
+    'audeer',
+    'audfactory',
+    'audformat',
+    'audiofile',
+    'audinterface',
+    'audmath',
+    'audmetric',
+    'audobject',
+    'audonnx',
+    'audplot',
+    'audresample',
+    'audsp',
+    'audtorch',
+    'sphinx-audeering-theme',
+]
+
+
+# ----- N: pep8-naming -----
+#
+# Check variable/class names follow PEP8 naming convention
+#
+[tool.ruff.pep8-naming]
+ignore-names = [
+    'config',  # allow lowercase class name
+    'test_*',  # allow uppercase name when testing a class
+]
+
+
+# ----- W: pycodestyle -----
+#
+# Check docstrings follow selected convention
+#
+[tool.ruff.pydocstyle]
+convention = 'google'
+
+
+# ----- setuptools --------------------------------------------------------
+#
+# Disable package data to only select the matching binary in setup.py
+[tool.setuptools]
+include-package-data = false
+# Find all (sub-)modules of the Python package
+[tool.setuptools.packages.find]
+
+
+# ----- setuptools_scm ----------------------------------------------------
+#
+# Use setuptools_scm to get version from git
+[tool.setuptools_scm]

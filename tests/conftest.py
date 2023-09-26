@@ -1,12 +1,13 @@
-import audeer
-import os
 import glob
+import os
 
-import pytest
 import pandas as pd
+import pytest
+
+import audeer
 import audiofile as af
 
-from opensmile.core.SMILEapi import platform_name
+from opensmile.core.lib import platform_name
 
 
 pytest.ROOT = os.path.dirname(os.path.realpath(__file__))

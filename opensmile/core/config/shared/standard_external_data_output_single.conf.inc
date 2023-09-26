@@ -2,7 +2,7 @@
 ///////// > openSMILE configuration file for wave input <            //////////////////
 /////////                                                            //////////////////
 ///////// (c) audEERING GmbH,                                        //////////////////
-/////////     All rights reserverd.                                  //////////////////
+/////////     All rights reserved.                                   //////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 
 [componentInstances:cComponentManager]

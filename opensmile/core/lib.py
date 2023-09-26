@@ -1,16 +1,16 @@
+from ctypes import CFUNCTYPE
+from ctypes import POINTER
+from ctypes import Structure
 from ctypes import byref
 from ctypes import c_char
 from ctypes import c_char_p
 from ctypes import c_double
-from ctypes import c_int
 from ctypes import c_float
+from ctypes import c_int
 from ctypes import c_long
 from ctypes import c_void_p
 from ctypes import cast
 from ctypes import cdll
-from ctypes import CFUNCTYPE
-from ctypes import POINTER
-from ctypes import Structure
 import json
 import os
 import platform
@@ -88,9 +88,7 @@ CMSG_nUserData = 8
 
 
 class ComponentMessage(Structure):  # pragma: no cover
-    """
-    An openSMILE component message.
-    """
+    """An openSMILE component message."""
 
     _fields_ = [
         ("_msgtype", c_char * CMSG_typenameLen),
@@ -132,9 +130,13 @@ class ComponentMessage(Structure):  # pragma: no cover
         return self._msgtext.decode("utf-8")
 
     def unpack_json(self):
-        """
-        Unpacks a component message that wraps a JSON object and returns the
+        """Unpacks component message.
+
+        It unpackas a component message
+        that wraps a JSON object
+        and returns the
         JSON data as a dictionary.
+
         """
         if self.msgtype != "_CONTAINER" or self.msgname != "jsonObject":
             raise ValueError("Message does not contain JSON data")
@@ -258,9 +260,7 @@ def c_char_p_arr(x):
 
 
 class OpenSmileException(Exception):  # pragma: no cover
-    """
-    Exception thrown for internal openSMILE errors.
-    """
+    """Exception thrown for internal openSMILE errors."""
 
     def __init__(self, code: int, message: Optional[str] = None):
         self.code = code
@@ -274,9 +274,7 @@ class OpenSmileException(Exception):  # pragma: no cover
 
 
 class OpenSMILE(object):  # pragma: no cover
-    """
-    The main class implementing the interface to openSMILE.
-    """
+    """The main class implementing the interface to openSMILE."""
 
     def __init__(self):
         self._smileobj = None
@@ -284,10 +282,7 @@ class OpenSMILE(object):  # pragma: no cover
     def initialize(self, config_file: str, options: Dict[str, Any] = None,
                    loglevel: int = 2, debug: bool = False,
                    console_output: bool = False, log_file: str = None):
-        """
-        Initializes openSMILE with the provided config file and command-line
-         options.
-        """
+        """Initializes openSMILE with config file and CLI options."""
         self._smileobj = smileapi.smile_new()
         if self._smileobj is None:
             raise OpenSmileException(SMILE_FAIL,
@@ -309,12 +304,12 @@ class OpenSMILE(object):  # pragma: no cover
 
     def external_source_write_data(self, component_name: str,
                                    data: np.ndarray) -> bool:
-        """
-        Writes a data buffer to the specified instance of a cExternalSource
-        component.
+        """Writes data buffer to instance of a cExternalSource.
 
-        Returns True if the data was written successfully, otherwise returns
-        False (e.g. if the internal buffer of the component is full).
+        Returns True if the data was written successfully,
+        otherwise returns False
+        (e.g. if the internal buffer of the component is full).
+
         """
         if len(data.shape) != 1:
             raise ValueError("data parameter must have exactly one dimension")
@@ -333,14 +328,16 @@ class OpenSMILE(object):  # pragma: no cover
             self._check_smile_result(result)
 
     def external_source_set_eoi(self, component_name: str):
-        """
-        Signals the end of the input for the specified cExternalSource
-        component instance.
-        Attempts to write more data to the component after calling this
+        """Signals end of the input for cExternalSource.
+
+        Attempts to write more data to the component
+        after calling this
         method will fail.
 
-        Returns True if the end-of-input signal was set successfully,
-        otherwise False.
+        Returns ``True``
+        if the end-of-input signal was set successfully,
+        otherwise ``False``.
+
         """
         self._check_smile_result(
             smileapi.smile_extsource_set_external_eoi(self._smileobj,
@@ -349,15 +346,16 @@ class OpenSMILE(object):  # pragma: no cover
 
     def external_audio_source_write_data(self, component_name: str,
                                          data: bytes) -> bool:
-        """
-        Writes a data buffer to the specified instance of a
-        cExternalAudioSource component.
+        """Writes data buffer to cExternalAudioSource.
+
         The data must match the specified data format for the component
         (sample size, number of channels, etc.).
 
-        Returns True if the data was written successfully, otherwise
-        returns False
+        Returns ``True``
+        if the data was written successfully,
+        otherwise returns ``False``
         (e.g. if the internal buffer of the component is full).
+
         """
         result = smileapi.smile_extaudiosource_write_data(self._smileobj,
                                                           bytes(component_name,
@@ -371,14 +369,16 @@ class OpenSMILE(object):  # pragma: no cover
             self._check_smile_result(result)
 
     def external_audio_source_set_eoi(self, component_name: str):
-        """
-        Signals the end of the input for the specified cExternalAudioSource
-        component instance.
-        Attempts to write more data to the component after calling this method
+        """Signals end of input for cExternalAudioSource.
+
+        Attempts to write more data to the component
+        after calling this method
         will fail.
 
-        Returns True if the end-of-input signal was set successfully,
-        otherwise False.
+        Returns ``True``
+        if the end-of-input signal was set successfully,
+        otherwise ``False``.
+
         """
         self._check_smile_result(
             smileapi.smile_extaudiosource_set_external_eoi(self._smileobj,
@@ -388,11 +388,12 @@ class OpenSMILE(object):  # pragma: no cover
 
     def external_sink_set_callback(self, component_name: str,
                                    callback: Callable[[np.ndarray], None]):
-        """
-        Sets the callback function for the specified cExternalSink
-        component instance.
-        The function will get called whenever another openSMILE component
+        """Sets callback for cExternalSink.
+
+        The function will get called
+        whenever another openSMILE component
         writes data to the cExternalSink component.
+
         """
 
         def internal_callback(data, vector_size, param):
@@ -411,11 +412,12 @@ class OpenSMILE(object):  # pragma: no cover
 
     def external_sink_set_callback_ex(self, component_name: str,
                                       callback: Callable[[np.ndarray], None]):
-        """
-        Sets the extended callback function for the specified
-        cExternalSink component instance.
-        The function will get called whenever another openSMILE component
+        """Sets extended callback for cExternalSink.
+
+        The function will get called
+        whenever another openSMILE component
         writes data to the cExternalSink component.
+
         """
 
         def internal_callback_ex(data, nt, n, meta: POINTER(FrameMetaData), _):
@@ -455,10 +457,11 @@ class OpenSMILE(object):  # pragma: no cover
     def external_message_interface_set_callback(self, component_name: str,
                                                 callback: Callable[
                                                     [ComponentMessage], None]):
-        """
-        Sets the callback function for the specified cExternalMessageInterface
-        component instance.
-        The function will get called whenever the component receives a message.
+        """Sets callback for cExternalMessageInterface.
+
+        The function will get called
+        whenever the component receives a message.
+
         """
 
         # we need to keep a reference to any callback objects as otherwise
@@ -479,10 +482,11 @@ class OpenSMILE(object):  # pragma: no cover
     def external_message_interface_set_json_callback(self, component_name: str,
                                                      callback: Callable[
                                                          [Dict], None]):
-        """
-        Sets the callback function for the specified cExternalMessageInterface
-        component instance.
-        The function will get called whenever the component receives a message.
+        """Sets callback for cExternalMessageInterface.
+
+        The function will get called
+        whenever the component receives a message.
+
         """
 
         # we need to keep a reference to any callback objects as otherwise
@@ -498,34 +502,36 @@ class OpenSMILE(object):  # pragma: no cover
                 self._smileobj, bytes(component_name, "ascii"), cb, None))
 
     def run(self):
-        """
-        Starts processing and blocks until finished.
-        """
+        """Starts processing and blocks until finished."""
         self._check_smile_result(smileapi.smile_run(self._smileobj))
 
     def abort(self):
-        """
-        Requests abortion of the current run.
+        """Requests abortion of the current run.
 
         Note that openSMILE does not immediately stop after this function
         returns. It might continue to run for a short while until the run
         method returns.
+
         """
         self._check_smile_result(smileapi.smile_abort(self._smileobj))
 
     def reset(self):
-        """
-        Resets the internal state of openSMILE after a run has finished or
-        was aborted. After resetting, you may call 'run' again without the
-        need to call 'initialize' first. You must re-register any
-        cExternalSink/cExternalMessageInterface callbacks, though.
+        """Resets internal state of openSMILE.
+
+        The internal state is reset
+        after a run has finished or was aborted.
+        After resetting,
+        you may call 'run' again
+        without the need to call 'initialize' first.
+        You must re-register any
+        cExternalSink/cExternalMessageInterface callbacks,
+        though.
+
         """
         self._check_smile_result(smileapi.smile_reset(self._smileobj))
 
     def free(self):
-        """
-        Frees any internal resources allocated by openSMILE.
-        """
+        """Frees any internal resources allocated by openSMILE."""
         if self._smileobj is not None:
             smileapi.smile_free(self._smileobj)
             self._smileobj = None
@@ -542,9 +548,10 @@ class OpenSMILE(object):  # pragma: no cover
     def process(config_file: str, options: Dict[str, Any],
                 inputs: Dict[str, np.ndarray], outputs: List[str]) \
             -> Dict[str, np.ndarray]:
-        """
-        Runs the specified config file on a set of input data buffers and
-        returns the specified set of output buffers.
+        """Runs config on a set of input buffers.
+
+        Returns the specified set of output buffers.
+
         """
         opensmile = OpenSMILE()
         opensmile.initialize(config_file, options)

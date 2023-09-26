@@ -125,14 +125,14 @@ Please cite openSMILE in your publications by citing the following paper:
 .. |tests| image:: https://github.com/audeering/opensmile-python/workflows/Test/badge.svg
     :target: https://github.com/audeering/opensmile-python/actions?query=workflow%3ATest
     :alt: Test status
-.. |coverage| image:: https://codecov.io/gh/audeering/opensmile-python/branch/master/graph/badge.svg?token=PUA9P2UJW1
+.. |coverage| image:: https://codecov.io/gh/audeering/opensmile-python/branch/main/graph/badge.svg?token=PUA9P2UJW1
     :target: https://codecov.io/gh/audeering/opensmile-python
     :alt: code coverage
 .. |docs| image:: https://img.shields.io/pypi/v/opensmile?label=docs
     :target: https://audeering.github.io/opensmile-python/
     :alt: opensmile's documentation
 .. |license| image:: https://img.shields.io/badge/license-audEERING-red.svg
-    :target: https://github.com/audeering/opensmile-python/blob/master/LICENSE
+    :target: https://github.com/audeering/opensmile-python/blob/main/LICENSE
     :alt: opensmile's audEERING license
 .. |python-versions| image:: https://img.shields.io/pypi/pyversions/opensmile.svg
     :target: https://pypi.org/project/opensmile/

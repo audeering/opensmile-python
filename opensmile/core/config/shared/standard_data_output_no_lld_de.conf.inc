@@ -2,7 +2,7 @@
 ///////// > openSMILE configuration file for data output <           //////////////////
 /////////                                                            //////////////////
 ///////// (c) 2014-2016 audEERING,                                   //////////////////
-/////////     All rights reserverd. See file COPYING for details     //////////////////
+/////////     All rights reserved. See file COPYING for details      //////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -12,7 +12,7 @@
    for the batch extraction GUI, and supports LLD and Functionals (summaries)
    saving.
 
-   It requires the main extrator configuration file to provide the following
+   It requires the main extractor configuration file to provide the following
    data memory levels:  lld and func
  */
 
