@@ -10,17 +10,13 @@ import audeer
 import audinterface
 import audobject
 
-from opensmile.core.SMILEapi import (
-    OpenSMILE,
-    FrameMetaData,
-)
 from opensmile.core.config import config
-from opensmile.core.define import (
-    FeatureLevel,
-    FeatureLevelResolver,
-    FeatureSet,
-    FeatureSetResolver,
-)
+from opensmile.core.define import FeatureLevel
+from opensmile.core.define import FeatureLevelResolver
+from opensmile.core.define import FeatureSet
+from opensmile.core.define import FeatureSetResolver
+from opensmile.core.lib import FrameMetaData
+from opensmile.core.lib import OpenSMILE
 
 
 class Smile(audinterface.Feature, audobject.Object):
@@ -207,7 +203,6 @@ class Smile(audinterface.Feature, audobject.Object):
     @property
     def config_path(self) -> str:
         r"""Return file path of config file."""
-
         if type(self.feature_set) is FeatureSet:
             config_path = os.path.join(
                 self.default_config_root,
@@ -243,7 +238,7 @@ class Smile(audinterface.Feature, audobject.Object):
                 )
 
     def _check_deprecated(self):
-        r"""Check if feature set is deprecated"""
+        r"""Check if feature set is deprecated."""
         deprecated_feature_sets = {  # deprecated: recommended
             FeatureSet.GeMAPS: FeatureSet.GeMAPSv01b,
             FeatureSet.GeMAPSv01a: FeatureSet.GeMAPSv01b,
@@ -266,7 +261,6 @@ class Smile(audinterface.Feature, audobject.Object):
             sampling_rate: int,
     ) -> (pd.TimedeltaIndex, pd.TimedeltaIndex, np.ndarray):
         r"""Run feature extraction."""
-
         signal = signal.copy()
         signal *= 32768
         signal = signal.astype(np.int16)
@@ -370,10 +364,14 @@ class Smile(audinterface.Feature, audobject.Object):
             self,
             series: pd.Series,
     ) -> pd.DataFrame:
-        r"""Usually, we need to figure out start and end times from
-        ``win_dur`` and ``hop_dur``. But since openSMILE provides segment
-        times, we can skip this step and use them directly."""
+        r"""Convert series to frame.
 
+        Usually, we need to figure out start and end times
+        from ``win_dur`` and ``hop_dur``.
+        But since openSMILE provides segment times,
+        we can skip this step and use them directly.
+
+        """
         frames = [None] * len(series)
         if len(series.index.levels) == 3:
             for idx, ((file, start, end), values) in enumerate(series.items()):

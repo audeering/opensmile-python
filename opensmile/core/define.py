@@ -5,7 +5,7 @@ import audobject
 
 
 class FeatureSet(enum.Enum):
-    r""" Enumeration of standard feature sets.
+    r"""Enumeration of standard feature sets.
 
     The following feature sets are available:
 
@@ -63,7 +63,7 @@ class FeatureSetResolver(audobject.resolver.Base):
 
 
 class FeatureLevel(enum.Enum):
-    r""" Enumeration of standard feature levels.
+    r"""Enumeration of standard feature levels.
 
     * :attr:`LowLevelDescriptors` - low-level descriptors (LLD) calculated
       over a sliding window

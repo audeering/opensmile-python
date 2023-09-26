@@ -2,7 +2,7 @@
 ///////// > openSMILE configuration file for ComParE <               //////////////////
 /////////                                                            //////////////////
 ///////// (c) audEERING GmbH,                                        //////////////////
-/////////     All rights reserverd.                                  //////////////////
+/////////     All rights reserved.                                   //////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 
 [componentInstances:cComponentManager]
