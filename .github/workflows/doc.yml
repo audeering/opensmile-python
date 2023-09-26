@@ -35,4 +35,4 @@ jobs:
       run: python -m sphinx docs/ docs/_build/ -b html -W
 
     - name: Check links in documentation
-      run: # python -m sphinx docs/ docs/_build/ -b linkcheck -W
+      run: python -m sphinx docs/ docs/_build/ -b linkcheck -W
