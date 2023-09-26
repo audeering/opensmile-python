@@ -104,7 +104,7 @@ class Smile(audinterface.Feature, audobject.Object):
     0 days  0 days 00:00:01    0.0
     Name: audspec_lengthL1norm_sma_range, dtype: float32
 
-    .. _`hidden arguments`: http://tools.pp.audeering.com/audobject/usage.html#hidden-arguments
+    .. _`hidden arguments`: https://audeering.github.io/audobject/usage.html#hidden-arguments
 
     """  # noqa: E501
     @audobject.init_decorator(
