@@ -1,4 +1,5 @@
 audb
+ipykernel
 jupyter-sphinx
 sphinx
 sphinx-audeering-theme >=1.2.1
