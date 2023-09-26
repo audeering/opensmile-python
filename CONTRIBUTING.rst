@@ -29,7 +29,7 @@ This way,
 your installation always stays up-to-date,
 even if you pull new changes from the Github repository.
 
-.. _PyPI: https://pypi.org/project/opensmile-python/
+.. _PyPI: https://pypi.org/project/opensmile/
 .. _Github: https://github.com/audeering/opensmile-python/
 
 
