@@ -1,25 +1,84 @@
-from ctypes import cdll, Structure, c_char, c_char_p, c_int, c_long, \
-    c_void_p, c_float, c_double, CFUNCTYPE, POINTER, cast, byref
-from typing import Any, Callable, Dict, List, Optional
+from ctypes import byref
+from ctypes import c_char
+from ctypes import c_char_p
+from ctypes import c_double
+from ctypes import c_int
+from ctypes import c_float
+from ctypes import c_long
+from ctypes import c_void_p
+from ctypes import cast
+from ctypes import cdll
+from ctypes import CFUNCTYPE
+from ctypes import POINTER
+from ctypes import Structure
 import json
 import os
+import platform
+from typing import Any
+from typing import Callable
+from typing import Dict
+from typing import List
+from typing import Optional
+
 import numpy as np
-import sys
+
+
+def platform_name():
+    r"""Platform name used in pip tag.
+
+    Expected outcomes are:
+
+    ==================== ======================
+    Linux, 64-bit        manylinux_2_17_x86_64
+    Raspberry Pi, 32-bit manylinux_2_17_armv7l
+    Raspberry Pi, 64-bit manylinux_2_17_aarch64
+    Windows              win_amd64
+    MacOS Intel          macosx_10_4_x86_64
+    MacOS M1             macosx_11_0_arm64
+    ==================== ======================
+
+    Under Linux the manylinux version
+    can be extracted
+    by inspecting the wheel
+    with ``auditwheel``.
+
+    Too see all supported tags on your system run:
+
+    .. code-block:: bash
+
+        $ pip debug --verbose
+
+    """
+    system = platform.system()
+    machine = platform.machine().lower()
+
+    if system == 'Linux':  # pragma: no cover
+        system = 'manylinux_2_17'
+    elif system == 'Windows':  # pragma: no cover
+        system = 'win'
+    elif system == 'Darwin':  # pragma: no cover
+        if machine == 'x86_64':
+            system = 'macosx_10_4'
+        else:
+            system = 'macosx_11_0'
+    else:  # pragma: no cover
+        raise RuntimeError(f'Unsupported platform {system}')
+
+    return f'{system}_{machine}'
+
 
 root = os.path.dirname(os.path.realpath(__file__))
+bin_path = os.path.join(root, 'bin')
+plat_name = platform_name()
 
-if sys.platform == "win32":  # pragma: no cover
-    smileapi_path = os.path.join(
-        root, 'bin', 'win', 'SMILEapi.dll'
-    )
-elif sys.platform == "darwin":  # pragma: no cover
-    smileapi_path = os.path.join(
-        root, 'bin', 'osx', 'libSMILEapi.dylib'
-    )
-else:  # pragma: no cover
-    smileapi_path = os.path.join(
-        root, 'bin', 'linux', 'libSMILEapi.so',
-    )
+if 'linux' in plat_name:  # pragma: no cover
+    library = 'libSMILEapi.so'
+elif 'macos' in plat_name:  # pragma: no cover
+    library = 'libSMILEapi.dylib'
+elif 'win' in plat_name:  # pragma: no cover
+    library = 'SMILEapi.dll'
+
+smileapi_path = os.path.join(bin_path, plat_name, library)
 smileapi = cdll.LoadLibrary(smileapi_path)
 
 # definitions from smileComponent.hpp
