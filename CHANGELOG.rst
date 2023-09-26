@@ -32,7 +32,7 @@ Version 2.4.0 (2022-01-10)
 Version 2.3.0 (2021-12-16)
 --------------------------
 
-* Changed: udpate to ``audobject >0.6.1``
+* Changed: update to ``audobject >0.6.1``
 
 
 Version 2.2.0 (2021-07-23)
