@@ -13,6 +13,9 @@ jobs:
       matrix:
         platform:
         - macosx_10_4_x86_64
+        - macosx_11_0_arm64
+        - manylinux_2_17_aarch64
+        - manylinux_2_17_armv7l
         - manylinux_2_17_x86_64
         - win_amd64
 
