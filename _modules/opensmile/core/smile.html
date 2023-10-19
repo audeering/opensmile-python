@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                v2.4.2
+                v2.5.0
               </div>
             
           
@@ -151,17 +151,13 @@
 <span class="kn">import</span> <span class="nn">audinterface</span>
 <span class="kn">import</span> <span class="nn">audobject</span>
 
-<span class="kn">from</span> <span class="nn">opensmile.core.SMILEapi</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">OpenSMILE</span><span class="p">,</span>
-    <span class="n">FrameMetaData</span><span class="p">,</span>
-<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">opensmile.core.config</span> <span class="kn">import</span> <span class="n">config</span>
-<span class="kn">from</span> <span class="nn">opensmile.core.define</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">FeatureLevel</span><span class="p">,</span>
-    <span class="n">FeatureLevelResolver</span><span class="p">,</span>
-    <span class="n">FeatureSet</span><span class="p">,</span>
-    <span class="n">FeatureSetResolver</span><span class="p">,</span>
-<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">opensmile.core.define</span> <span class="kn">import</span> <span class="n">FeatureLevel</span>
+<span class="kn">from</span> <span class="nn">opensmile.core.define</span> <span class="kn">import</span> <span class="n">FeatureLevelResolver</span>
+<span class="kn">from</span> <span class="nn">opensmile.core.define</span> <span class="kn">import</span> <span class="n">FeatureSet</span>
+<span class="kn">from</span> <span class="nn">opensmile.core.define</span> <span class="kn">import</span> <span class="n">FeatureSetResolver</span>
+<span class="kn">from</span> <span class="nn">opensmile.core.lib</span> <span class="kn">import</span> <span class="n">FrameMetaData</span>
+<span class="kn">from</span> <span class="nn">opensmile.core.lib</span> <span class="kn">import</span> <span class="n">OpenSMILE</span>
 
 
 <div class="viewcode-block" id="Smile"><a class="viewcode-back" href="../../../api/opensmile.Smile.html#opensmile.Smile">[docs]</a><span class="k">class</span> <span class="nc">Smile</span><span class="p">(</span><span class="n">audinterface</span><span class="o">.</span><span class="n">Feature</span><span class="p">,</span> <span class="n">audobject</span><span class="o">.</span><span class="n">Object</span><span class="p">):</span>
@@ -245,7 +241,7 @@
 <span class="sd">    0 days  0 days 00:00:01    0.0</span>
 <span class="sd">    Name: audspec_lengthL1norm_sma_range, dtype: float32</span>
 
-<span class="sd">    .. _`hidden arguments`: http://tools.pp.audeering.com/audobject/usage.html#hidden-arguments</span>
+<span class="sd">    .. _`hidden arguments`: https://audeering.github.io/audobject/usage.html#hidden-arguments</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
     <span class="nd">@audobject</span><span class="o">.</span><span class="n">init_decorator</span><span class="p">(</span>
@@ -348,7 +344,6 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">config_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return file path of config file.&quot;&quot;&quot;</span>
-
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_set</span><span class="p">)</span> <span class="ow">is</span> <span class="n">FeatureSet</span><span class="p">:</span>
             <span class="n">config_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">default_config_root</span><span class="p">,</span>
@@ -384,7 +379,7 @@
                 <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_check_deprecated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Check if feature set is deprecated&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Check if feature set is deprecated.&quot;&quot;&quot;</span>
         <span class="n">deprecated_feature_sets</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># deprecated: recommended</span>
             <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPS</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01b</span><span class="p">,</span>
             <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01a</span><span class="p">:</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">GeMAPSv01b</span><span class="p">,</span>
@@ -407,7 +402,6 @@
             <span class="n">sampling_rate</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">TimedeltaIndex</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">TimedeltaIndex</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Run feature extraction.&quot;&quot;&quot;</span>
-
         <span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">signal</span> <span class="o">*=</span> <span class="mi">32768</span>
         <span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
@@ -511,10 +505,14 @@
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">series</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Usually, we need to figure out start and end times from</span>
-<span class="sd">        ``win_dur`` and ``hop_dur``. But since openSMILE provides segment</span>
-<span class="sd">        times, we can skip this step and use them directly.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert series to frame.</span>
 
+<span class="sd">        Usually, we need to figure out start and end times</span>
+<span class="sd">        from ``win_dur`` and ``hop_dur``.</span>
+<span class="sd">        But since openSMILE provides segment times,</span>
+<span class="sd">        we can skip this step and use them directly.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">frames</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">levels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">((</span><span class="n">file</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">),</span> <span class="n">values</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
@@ -631,7 +629,7 @@
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2023/01/03 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2023/10/19 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>

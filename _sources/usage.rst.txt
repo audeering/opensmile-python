@@ -322,4 +322,4 @@ to speed up the processing.
 
 .. _audformat: https://audeering.github.io/audformat/data-format.html
 .. _emodb: https://github.com/audeering/emodb
-.. _openSMILE: https://gitlab.audeering.com/tools/opensmile
+.. _openSMILE: https://github.com/audeering/opensmile
