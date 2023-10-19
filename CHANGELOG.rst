@@ -7,6 +7,20 @@ The format is based on `Keep a Changelog`_,
 and this project adheres to `Semantic Versioning`_.
 
 
+Version 2.5.0 (2023-10-19)
+--------------------------
+
+* Added: support for ``manylinux_2_17_armv7l`` aka Raspberry PI
+* Added: support for ``manylinux_2_17_aarch64``
+* Added: support for ``macosx_11_0_arm64`` aka M1
+* Added: support for Python 3.11
+* Added: support for Python 3.10
+* Changed: use binaries from ``opensmile`` v3.0.2
+* Changed: build platform dependent wheels
+  to reduce installation size
+* Removed: support for Python 3.7
+
+
 Version 2.4.2 (2023-01-03)
 --------------------------
 
