@@ -62,7 +62,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: artifact
-        path: dist
+        path: wheelhouse
 
     - name: Set up Python
       uses: actions/setup-python@v4
