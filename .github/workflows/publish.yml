@@ -117,7 +117,7 @@ jobs:
         CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
         CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
         echo "Got changelog: $CHANGELOG"
-        echo "::set-output name=body::$CHANGELOG"
+        echo "body=$CHANGELOG" >> $GITHUB_OUTPUT
 
     - name: Create release on Github
       id: create_release
