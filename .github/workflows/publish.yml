@@ -113,13 +113,14 @@ jobs:
       run: |
         # Get bullet points from last CHANGELOG entry
         CHANGELOG=$(git diff -U0 HEAD^ HEAD | grep '^[+][\* ]' | sed 's/\+//')
-        # Support for multiline, see
-        # https://github.com/actions/create-release/pull/11#issuecomment-640071918
-        CHANGELOG="${CHANGELOG//'%'/'%25'}"
-        CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
-        CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
         echo "Got changelog: $CHANGELOG"
-        echo "body=$CHANGELOG" >> $GITHUB_OUTPUT
+        # Support for multiline, see
+        # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+        {
+          echo 'body<<EOF'
+          echo "$CHANGELOG"
+          echo EOF
+        } >> "$GITHUB_OUTPUT"
 
     - name: Create release on Github
       id: create_release
