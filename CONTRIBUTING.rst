@@ -37,7 +37,7 @@ Coding Convention
 -----------------
 
 We follow the PEP8_ convention for Python code
-and check for correct syntax with ruff_.
+and use ruff_ as a linter and code formatter.
 In addition,
 we check for common spelling errors with codespell_.
 Both tools and possible exceptions
@@ -57,7 +57,8 @@ You can also install ruff_ and codespell_
 and call it directly::
 
     pip install ruff codespell  # consider system wide installation
-    ruff check .
+    ruff check --fix .  # lint all Python files, and fix any fixable errors
+    ruff format .  # format code of all Python files
     codespell
 
 It can be restricted to specific folders::

@@ -9,13 +9,15 @@
 #
 #
 default_language_version:
-  python: python3.8
+  python: python3.10
 
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.276
+    rev: v0.1.8
     hooks:
       - id: ruff
+        args: [ --fix ]
+      - id: ruff-format
   - repo: https://github.com/codespell-project/codespell
     rev: v2.2.4
     hooks:
