@@ -34,15 +34,16 @@ class FeatureSet(enum.Enum):
         https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf
 
     """
-    ComParE_2016 = 'compare/ComParE_2016'
-    GeMAPS = 'gemaps/v01a/GeMAPSv01a'  # legacy
-    GeMAPSv01a = 'gemaps/v01a/GeMAPSv01a'
-    GeMAPSv01b = 'gemaps/v01b/GeMAPSv01b'
-    eGeMAPS = 'egemaps/v01a/eGeMAPSv01a'   # legacy
-    eGeMAPSv01a = 'egemaps/v01a/eGeMAPSv01a'
-    eGeMAPSv01b = 'egemaps/v01b/eGeMAPSv01b'
-    eGeMAPSv02 = 'egemaps/v02/eGeMAPSv02'
-    emobase = 'emobase/emobase'
+
+    ComParE_2016 = "compare/ComParE_2016"
+    GeMAPS = "gemaps/v01a/GeMAPSv01a"  # legacy
+    GeMAPSv01a = "gemaps/v01a/GeMAPSv01a"
+    GeMAPSv01b = "gemaps/v01b/GeMAPSv01b"
+    eGeMAPS = "egemaps/v01a/eGeMAPSv01a"  # legacy
+    eGeMAPSv01a = "egemaps/v01a/eGeMAPSv01a"
+    eGeMAPSv01b = "egemaps/v01b/eGeMAPSv01b"
+    eGeMAPSv02 = "egemaps/v02/eGeMAPSv02"
+    emobase = "emobase/emobase"
 
 
 class FeatureSetResolver(audobject.resolver.Base):
@@ -55,7 +56,7 @@ class FeatureSetResolver(audobject.resolver.Base):
 
     def encode(self, value: typing.Union[str, FeatureSet]) -> str:
         if isinstance(value, FeatureSet):
-            value = str(value).split('.')[-1]
+            value = str(value).split(".")[-1]
         return value
 
     def encode_type(self):
@@ -74,9 +75,10 @@ class FeatureLevel(enum.Enum):
     For more information see https://mediatum.ub.tum.de/doc/1082431/1082431.pdf
 
     """
-    LowLevelDescriptors = 'lld'
-    LowLevelDescriptors_Deltas = 'lld_de'
-    Functionals = 'func'
+
+    LowLevelDescriptors = "lld"
+    LowLevelDescriptors_Deltas = "lld_de"
+    Functionals = "func"
 
 
 class FeatureLevelResolver(audobject.resolver.Base):
@@ -89,7 +91,7 @@ class FeatureLevelResolver(audobject.resolver.Base):
 
     def encode(self, value: typing.Union[str, FeatureLevel]) -> str:
         if isinstance(value, FeatureLevel):
-            value = str(value).split('.')[-1]
+            value = str(value).split(".")[-1]
         return value
 
     def encode_type(self):

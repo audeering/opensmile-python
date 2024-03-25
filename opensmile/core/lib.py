@@ -52,31 +52,31 @@ def platform_name():
     system = platform.system()
     machine = platform.machine().lower()
 
-    if system == 'Linux':  # pragma: no cover
-        system = 'manylinux_2_17'
-    elif system == 'Windows':  # pragma: no cover
-        system = 'win'
-    elif system == 'Darwin':  # pragma: no cover
-        if machine == 'x86_64':
-            system = 'macosx_10_4'
+    if system == "Linux":  # pragma: no cover
+        system = "manylinux_2_17"
+    elif system == "Windows":  # pragma: no cover
+        system = "win"
+    elif system == "Darwin":  # pragma: no cover
+        if machine == "x86_64":
+            system = "macosx_10_4"
         else:
-            system = 'macosx_11_0'
+            system = "macosx_11_0"
     else:  # pragma: no cover
-        raise RuntimeError(f'Unsupported platform {system}')
+        raise RuntimeError(f"Unsupported platform {system}")
 
-    return f'{system}_{machine}'
+    return f"{system}_{machine}"
 
 
 root = os.path.dirname(os.path.realpath(__file__))
-bin_path = os.path.join(root, 'bin')
+bin_path = os.path.join(root, "bin")
 plat_name = platform_name()
 
-if 'linux' in plat_name:  # pragma: no cover
-    library = 'libSMILEapi.so'
-elif 'macos' in plat_name:  # pragma: no cover
-    library = 'libSMILEapi.dylib'
-elif 'win' in plat_name:  # pragma: no cover
-    library = 'SMILEapi.dll'
+if "linux" in plat_name:  # pragma: no cover
+    library = "libSMILEapi.so"
+elif "macos" in plat_name:  # pragma: no cover
+    library = "libSMILEapi.dylib"
+elif "win" in plat_name:  # pragma: no cover
+    library = "SMILEapi.dll"
 
 smileapi_path = os.path.join(bin_path, plat_name, library)
 smileapi = cdll.LoadLibrary(smileapi_path)
@@ -110,7 +110,7 @@ class ComponentMessage(Structure):  # pragma: no cover
         ("custDataSize", c_int),
         ("custData2Size", c_int),
         ("custDataType", c_int),
-        ("custData2Type", c_int)
+        ("custData2Type", c_int),
     ]
 
     @property
@@ -148,10 +148,8 @@ class ComponentMessage(Structure):  # pragma: no cover
 
     def __str__(self):
         return "type: {}, name: {}, sender: {}, msgtext: {}".format(
-            self.msgtype,
-            self.msgname,
-            self.sender,
-            self.msgtext)
+            self.msgtype, self.msgname, self.sender, self.msgtext
+        )
 
 
 # Success and error return codes
@@ -180,30 +178,36 @@ class FrameMetaData(Structure):  # pragma: no cover
         ("vIdx", c_long),
         ("time", c_double),
         ("period", c_double),
-        ("lengthSec", c_double)
+        ("lengthSec", c_double),
     ]
 
     def __str__(self):
         return "vIdx: {}, time: {}, period: {}, lengthSec: {}".format(
-            self.vIdx,
-            self.time,
-            self.period,
-            self.lengthSec)
+            self.vIdx, self.time, self.period, self.lengthSec
+        )
 
 
 StateChangedCallback = CFUNCTYPE(c_void_p, c_int, c_void_p)
 # TODO: return type bool does not exist in C!
 ExternalSinkCallback = CFUNCTYPE(c_int, POINTER(c_float), c_long, c_void_p)
-ExternalSinkCallbackEx = CFUNCTYPE(c_int, POINTER(c_float), c_long, c_long,
-                                   POINTER(FrameMetaData), c_void_p)
-ExternalMessageInterfaceCallback = CFUNCTYPE(c_int, POINTER(ComponentMessage),
-                                             c_void_p)
+ExternalSinkCallbackEx = CFUNCTYPE(
+    c_int, POINTER(c_float), c_long, c_long, POINTER(FrameMetaData), c_void_p
+)
+ExternalMessageInterfaceCallback = CFUNCTYPE(c_int, POINTER(ComponentMessage), c_void_p)
 ExternalMessageInterfaceJsonCallback = CFUNCTYPE(c_int, c_char_p, c_void_p)
 
 smileapi.smile_new.argtypes = []
 smileapi.smile_new.restype = c_void_p
-smileapi.smile_initialize.argtypes = [c_void_p, c_char_p, c_int, c_void_p,
-                                      c_int, c_int, c_int, c_void_p]
+smileapi.smile_initialize.argtypes = [
+    c_void_p,
+    c_char_p,
+    c_int,
+    c_void_p,
+    c_int,
+    c_int,
+    c_int,
+    c_void_p,
+]
 smileapi.smile_initialize.restype = c_int
 smileapi.smile_run.argtypes = [c_void_p]
 smileapi.smile_run.restype = c_int
@@ -213,40 +217,64 @@ smileapi.smile_reset.argtypes = [c_void_p]
 smileapi.smile_reset.restype = c_int
 smileapi.smile_get_state.argtypes = [c_void_p]
 smileapi.smile_get_state.restype = c_int
-smileapi.smile_set_state_callback.argtypes = [c_void_p, StateChangedCallback,
-                                              c_void_p]
+smileapi.smile_set_state_callback.argtypes = [c_void_p, StateChangedCallback, c_void_p]
 smileapi.smile_set_state_callback.restype = c_int
 smileapi.smile_free.argtypes = [c_void_p]
 smileapi.smile_free.restype = None
-smileapi.smile_extsource_write_data.argtypes = [c_void_p, c_char_p,
-                                                POINTER(c_float), c_int]
+smileapi.smile_extsource_write_data.argtypes = [
+    c_void_p,
+    c_char_p,
+    POINTER(c_float),
+    c_int,
+]
 smileapi.smile_extsource_write_data.restype = c_int
 smileapi.smile_extsource_set_external_eoi.argtypes = [c_void_p, c_char_p]
 smileapi.smile_extsource_set_external_eoi.restype = c_int
-smileapi.smile_extaudiosource_write_data.argtypes = [c_void_p, c_char_p,
-                                                     c_void_p, c_int]
+smileapi.smile_extaudiosource_write_data.argtypes = [
+    c_void_p,
+    c_char_p,
+    c_void_p,
+    c_int,
+]
 smileapi.smile_extaudiosource_write_data.restype = c_int
 smileapi.smile_extaudiosource_set_external_eoi.argtypes = [c_void_p, c_char_p]
 smileapi.smile_extaudiosource_set_external_eoi.restype = c_int
-smileapi.smile_extsink_set_data_callback.argtypes = [c_void_p, c_char_p,
-                                                     ExternalSinkCallback,
-                                                     c_void_p]
+smileapi.smile_extsink_set_data_callback.argtypes = [
+    c_void_p,
+    c_char_p,
+    ExternalSinkCallback,
+    c_void_p,
+]
 smileapi.smile_extsink_set_data_callback.restype = c_int
-smileapi.smile_extsink_set_data_callback_ex.argtypes = [c_void_p, c_char_p,
-                                                        ExternalSinkCallbackEx,
-                                                        c_void_p]
+smileapi.smile_extsink_set_data_callback_ex.argtypes = [
+    c_void_p,
+    c_char_p,
+    ExternalSinkCallbackEx,
+    c_void_p,
+]
 smileapi.smile_extsink_set_data_callback_ex.restype = c_int
-smileapi.smile_extsink_get_num_elements.argtypes = [c_void_p, c_char_p,
-                                                    POINTER(c_long)]
+smileapi.smile_extsink_get_num_elements.argtypes = [c_void_p, c_char_p, POINTER(c_long)]
 smileapi.smile_extsink_get_num_elements.restype = c_int
-smileapi.smile_extsink_get_element_name.argtypes = [c_void_p, c_char_p, c_long,
-                                                    POINTER(c_char_p)]
+smileapi.smile_extsink_get_element_name.argtypes = [
+    c_void_p,
+    c_char_p,
+    c_long,
+    POINTER(c_char_p),
+]
 smileapi.smile_extsink_get_element_name.restype = c_int
-smileapi.smile_extmsginterface_set_msg_callback.argtypes = \
-    [c_void_p, c_char_p, ExternalMessageInterfaceCallback, c_void_p]
+smileapi.smile_extmsginterface_set_msg_callback.argtypes = [
+    c_void_p,
+    c_char_p,
+    ExternalMessageInterfaceCallback,
+    c_void_p,
+]
 smileapi.smile_extmsginterface_set_msg_callback.restype = c_int
-smileapi.smile_extmsginterface_set_json_msg_callback.argtypes = \
-    [c_void_p, c_char_p, ExternalMessageInterfaceJsonCallback, c_void_p]
+smileapi.smile_extmsginterface_set_json_msg_callback.argtypes = [
+    c_void_p,
+    c_char_p,
+    ExternalMessageInterfaceJsonCallback,
+    c_void_p,
+]
 smileapi.smile_extmsginterface_set_json_msg_callback.restype = c_int
 smileapi.smile_error_msg.argtypes = [c_void_p]
 smileapi.smile_error_msg.restype = c_char_p
@@ -279,31 +307,39 @@ class OpenSMILE(object):  # pragma: no cover
     def __init__(self):
         self._smileobj = None
 
-    def initialize(self, config_file: str, options: Dict[str, Any] = None,
-                   loglevel: int = 2, debug: bool = False,
-                   console_output: bool = False, log_file: str = None):
+    def initialize(
+        self,
+        config_file: str,
+        options: Dict[str, Any] = None,
+        loglevel: int = 2,
+        debug: bool = False,
+        console_output: bool = False,
+        log_file: str = None,
+    ):
         """Initializes openSMILE with config file and CLI options."""
         self._smileobj = smileapi.smile_new()
         if self._smileobj is None:
-            raise OpenSmileException(SMILE_FAIL,
-                                     "could not create new SMILEapi object")
+            raise OpenSmileException(SMILE_FAIL, "could not create new SMILEapi object")
         options_flat = list(
-            map(lambda v: bytes(str(v), "ascii"), sum(options.items(), ())))
+            map(lambda v: bytes(str(v), "ascii"), sum(options.items(), ()))
+        )
         options_char_arr = c_char_p_arr(options_flat)
         log_file = bytes(log_file, "ascii") if log_file else int(0)
-        self._check_smile_result(smileapi.smile_initialize(self._smileobj,
-                                                           bytes(config_file,
-                                                                 "ascii"),
-                                                           len(options),
-                                                           options_char_arr,
-                                                           loglevel,
-                                                           int(debug),
-                                                           int(console_output),
-                                                           log_file))
+        self._check_smile_result(
+            smileapi.smile_initialize(
+                self._smileobj,
+                bytes(config_file, "ascii"),
+                len(options),
+                options_char_arr,
+                loglevel,
+                int(debug),
+                int(console_output),
+                log_file,
+            )
+        )
         self._callbacks = []
 
-    def external_source_write_data(self, component_name: str,
-                                   data: np.ndarray) -> bool:
+    def external_source_write_data(self, component_name: str, data: np.ndarray) -> bool:
         """Writes data buffer to instance of a cExternalSource.
 
         Returns True if the data was written successfully,
@@ -316,10 +352,9 @@ class OpenSMILE(object):  # pragma: no cover
         if data.dtype.name != "float32":
             raise ValueError("data parameter must have dtype float32")
         data_p = data.ctypes.data_as(POINTER(c_float))
-        result = smileapi.smile_extsource_write_data(self._smileobj,
-                                                     bytes(component_name,
-                                                           "ascii"), data_p,
-                                                     len(data))
+        result = smileapi.smile_extsource_write_data(
+            self._smileobj, bytes(component_name, "ascii"), data_p, len(data)
+        )
         if result == SMILE_SUCCESS:
             return True
         elif result == SMILE_NOT_WRITTEN:
@@ -340,12 +375,14 @@ class OpenSMILE(object):  # pragma: no cover
 
         """
         self._check_smile_result(
-            smileapi.smile_extsource_set_external_eoi(self._smileobj,
-                                                      bytes(component_name,
-                                                            "ascii")))
+            smileapi.smile_extsource_set_external_eoi(
+                self._smileobj, bytes(component_name, "ascii")
+            )
+        )
 
-    def external_audio_source_write_data(self, component_name: str,
-                                         data: bytes) -> bool:
+    def external_audio_source_write_data(
+        self, component_name: str, data: bytes
+    ) -> bool:
         """Writes data buffer to cExternalAudioSource.
 
         The data must match the specified data format for the component
@@ -357,10 +394,9 @@ class OpenSMILE(object):  # pragma: no cover
         (e.g. if the internal buffer of the component is full).
 
         """
-        result = smileapi.smile_extaudiosource_write_data(self._smileobj,
-                                                          bytes(component_name,
-                                                                "ascii"), data,
-                                                          len(data))
+        result = smileapi.smile_extaudiosource_write_data(
+            self._smileobj, bytes(component_name, "ascii"), data, len(data)
+        )
         if result == SMILE_SUCCESS:
             return True
         elif result == SMILE_NOT_WRITTEN:
@@ -381,13 +417,14 @@ class OpenSMILE(object):  # pragma: no cover
 
         """
         self._check_smile_result(
-            smileapi.smile_extaudiosource_set_external_eoi(self._smileobj,
-                                                           bytes(
-                                                               component_name,
-                                                               "ascii")))
+            smileapi.smile_extaudiosource_set_external_eoi(
+                self._smileobj, bytes(component_name, "ascii")
+            )
+        )
 
-    def external_sink_set_callback(self, component_name: str,
-                                   callback: Callable[[np.ndarray], None]):
+    def external_sink_set_callback(
+        self, component_name: str, callback: Callable[[np.ndarray], None]
+    ):
         """Sets callback for cExternalSink.
 
         The function will get called
@@ -406,12 +443,14 @@ class OpenSMILE(object):  # pragma: no cover
         # they may get garbage-collected
         self._callbacks.append(cb)
         self._check_smile_result(
-            smileapi.smile_extsink_set_data_callback(self._smileobj,
-                                                     bytes(component_name,
-                                                           "ascii"), cb, None))
+            smileapi.smile_extsink_set_data_callback(
+                self._smileobj, bytes(component_name, "ascii"), cb, None
+            )
+        )
 
-    def external_sink_set_callback_ex(self, component_name: str,
-                                      callback: Callable[[np.ndarray], None]):
+    def external_sink_set_callback_ex(
+        self, component_name: str, callback: Callable[[np.ndarray], None]
+    ):
         """Sets extended callback for cExternalSink.
 
         The function will get called
@@ -430,33 +469,32 @@ class OpenSMILE(object):  # pragma: no cover
         # they may get garbage-collected
         self._callbacks.append(cb)
         self._check_smile_result(
-            smileapi.smile_extsink_set_data_callback_ex(self._smileobj,
-                                                        bytes(component_name,
-                                                              "ascii"), cb,
-                                                        None))
+            smileapi.smile_extsink_set_data_callback_ex(
+                self._smileobj, bytes(component_name, "ascii"), cb, None
+            )
+        )
 
     def external_sink_get_num_elements(self, component_name: str) -> int:
         num_elements = c_long()
         self._check_smile_result(
-            smileapi.smile_extsink_get_num_elements(self._smileobj,
-                                                    bytes(component_name,
-                                                          "ascii"),
-                                                    byref(num_elements)))
+            smileapi.smile_extsink_get_num_elements(
+                self._smileobj, bytes(component_name, "ascii"), byref(num_elements)
+            )
+        )
         return num_elements.value
 
-    def external_sink_get_element_name(self, component_name: str,
-                                       idx: int) -> str:
+    def external_sink_get_element_name(self, component_name: str, idx: int) -> str:
         element_name = c_char_p()
         self._check_smile_result(
-            smileapi.smile_extsink_get_element_name(self._smileobj,
-                                                    bytes(component_name,
-                                                          "ascii"), idx,
-                                                    byref(element_name)))
+            smileapi.smile_extsink_get_element_name(
+                self._smileobj, bytes(component_name, "ascii"), idx, byref(element_name)
+            )
+        )
         return element_name.value.decode("ascii")
 
-    def external_message_interface_set_callback(self, component_name: str,
-                                                callback: Callable[
-                                                    [ComponentMessage], None]):
+    def external_message_interface_set_callback(
+        self, component_name: str, callback: Callable[[ComponentMessage], None]
+    ):
         """Sets callback for cExternalMessageInterface.
 
         The function will get called
@@ -473,15 +511,14 @@ class OpenSMILE(object):  # pragma: no cover
         cb = ExternalMessageInterfaceCallback(internal_callback)
         self._callbacks.append(cb)
         self._check_smile_result(
-            smileapi.smile_extmsginterface_set_msg_callback(self._smileobj,
-                                                            bytes(
-                                                                component_name,
-                                                                "ascii"), cb,
-                                                            None))
+            smileapi.smile_extmsginterface_set_msg_callback(
+                self._smileobj, bytes(component_name, "ascii"), cb, None
+            )
+        )
 
-    def external_message_interface_set_json_callback(self, component_name: str,
-                                                     callback: Callable[
-                                                         [Dict], None]):
+    def external_message_interface_set_json_callback(
+        self, component_name: str, callback: Callable[[Dict], None]
+    ):
         """Sets callback for cExternalMessageInterface.
 
         The function will get called
@@ -499,7 +536,9 @@ class OpenSMILE(object):  # pragma: no cover
         self._callbacks.append(cb)
         self._check_smile_result(
             smileapi.smile_extmsginterface_set_json_msg_callback(
-                self._smileobj, bytes(component_name, "ascii"), cb, None))
+                self._smileobj, bytes(component_name, "ascii"), cb, None
+            )
+        )
 
     def run(self):
         """Starts processing and blocks until finished."""
@@ -545,9 +584,12 @@ class OpenSMILE(object):  # pragma: no cover
                 raise OpenSmileException(result, message.decode("ascii"))
 
     @staticmethod
-    def process(config_file: str, options: Dict[str, Any],
-                inputs: Dict[str, np.ndarray], outputs: List[str]) \
-            -> Dict[str, np.ndarray]:
+    def process(
+        config_file: str,
+        options: Dict[str, Any],
+        inputs: Dict[str, np.ndarray],
+        outputs: List[str],
+    ) -> Dict[str, np.ndarray]:
         """Runs config on a set of input buffers.
 
         Returns the specified set of output buffers.
@@ -556,22 +598,22 @@ class OpenSMILE(object):  # pragma: no cover
         opensmile = OpenSMILE()
         opensmile.initialize(config_file, options)
 
-        for (input, data) in inputs.items():
+        for input, data in inputs.items():
             if not opensmile.external_source_write_data(input, data):
                 raise Exception(
-                    "Could not write input data to component '{}'".format(
-                        input))
+                    "Could not write input data to component '{}'".format(input)
+                )
             opensmile.external_source_set_eoi(input)
 
         output_data = {}
 
         for output in outputs:
+
             def callback(data: np.ndarray):
                 if output not in output_data:
                     output_data[output] = np.copy(data)
                 else:
-                    output_data[output] = np.vstack(
-                        (output_data[output], data))
+                    output_data[output] = np.vstack((output_data[output], data))
 
             opensmile.external_sink_set_callback(output, callback)
 
