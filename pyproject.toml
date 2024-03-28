@@ -78,6 +78,12 @@ addopts = '''
 # ----- ruff --------------------------------------------------------------
 #
 [tool.ruff]
+cache-dir = '.cache/ruff'
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
 select = [
     'D',     # pydocstyle
     'E',     # pycodestyle errors
@@ -94,11 +100,8 @@ extend-ignore = [
     'D107',  # Missing docstring in `__init__`
 ]
 
-line-length = 79
 
-cache-dir = '.cache/ruff'
-
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 '__init__.py' = [
     'F401',  # * imported but unused
 ]
@@ -118,7 +121,7 @@ cache-dir = '.cache/ruff'
 #
 # Check correct order/syntax of import statements
 #
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 
 # All from imports have their own line, e.g.
 #
@@ -155,7 +158,7 @@ section-order = [
     'first-party',
     'local-folder',
 ]
-[tool.ruff.isort.sections]
+[tool.ruff.lint.isort.sections]
 'audeering' = [
     'audb',
     'audbackend',
@@ -180,7 +183,7 @@ section-order = [
 #
 # Check variable/class names follow PEP8 naming convention
 #
-[tool.ruff.pep8-naming]
+[tool.ruff.lint.pep8-naming]
 ignore-names = [
     'config',  # allow lowercase class name
     'test_*',  # allow uppercase name when testing a class
@@ -191,7 +194,7 @@ ignore-names = [
 #
 # Check docstrings follow selected convention
 #
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = 'google'
 
 

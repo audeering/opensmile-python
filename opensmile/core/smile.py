@@ -103,56 +103,52 @@ class Smile(audinterface.Feature, audobject.Object):
     .. _`hidden arguments`: https://audeering.github.io/audobject/usage.html#hidden-arguments
 
     """  # noqa: E501
+
     @audobject.init_decorator(
         borrow={
-            'sampling_rate': 'process',
-            'channels': 'process',
-            'mixdown': 'process',
-            'resample': 'process',
+            "sampling_rate": "process",
+            "channels": "process",
+            "mixdown": "process",
+            "resample": "process",
         },
         hide=[
-            'keep_nat',
-            'logfile',
-            'loglevel',
-            'num_workers',
-            'multiprocessing',
-            'segment',
-            'verbose',
+            "keep_nat",
+            "logfile",
+            "loglevel",
+            "num_workers",
+            "multiprocessing",
+            "segment",
+            "verbose",
         ],
         resolvers={
-            'feature_set': FeatureSetResolver,
-            'feature_level': FeatureLevelResolver,
-        }
+            "feature_set": FeatureSetResolver,
+            "feature_level": FeatureLevelResolver,
+        },
     )
     @audeer.deprecated_keyword_argument(
-        deprecated_argument='num_channels',
-        removal_version='0.13.0',
-        new_argument='channels',
+        deprecated_argument="num_channels",
+        removal_version="0.13.0",
+        new_argument="channels",
         mapping=lambda x: range(x),
     )
     def __init__(
-            self,
-            feature_set: typing.Union[
-                str, FeatureSet
-            ] = FeatureSet.ComParE_2016,
-            feature_level: typing.Union[
-                str, FeatureLevel
-            ] = FeatureLevel.Functionals,
-            *,
-            options: dict = None,
-            loglevel: int = 2,
-            logfile: str = None,
-            sampling_rate: int = None,
-            channels: typing.Union[int, typing.Sequence[int]] = 0,
-            mixdown: bool = False,
-            resample: bool = False,
-            segment: audinterface.Segment = None,
-            keep_nat: bool = False,
-            num_workers: typing.Optional[int] = 1,
-            multiprocessing: bool = False,
-            verbose: bool = False,
+        self,
+        feature_set: typing.Union[str, FeatureSet] = FeatureSet.ComParE_2016,
+        feature_level: typing.Union[str, FeatureLevel] = FeatureLevel.Functionals,
+        *,
+        options: dict = None,
+        loglevel: int = 2,
+        logfile: str = None,
+        sampling_rate: int = None,
+        channels: typing.Union[int, typing.Sequence[int]] = 0,
+        mixdown: bool = False,
+        resample: bool = False,
+        segment: audinterface.Segment = None,
+        keep_nat: bool = False,
+        num_workers: typing.Optional[int] = 1,
+        multiprocessing: bool = False,
+        verbose: bool = False,
     ):
-
         self.feature_level = feature_level
         r"""Standard feature level or sink level in custom config file."""
         self.feature_set = feature_set
@@ -169,7 +165,7 @@ class Smile(audinterface.Feature, audobject.Object):
 
         super().__init__(
             self._feature_names(),
-            name='smile',
+            name="smile",
             params=None,
             process_func=self._extract,
             num_workers=num_workers,
@@ -246,8 +242,10 @@ class Smile(audinterface.Feature, audobject.Object):
             FeatureSet.eGeMAPSv01a: FeatureSet.eGeMAPSv02,
             FeatureSet.eGeMAPSv01b: FeatureSet.eGeMAPSv02,
         }
-        if type(self.feature_set) is FeatureSet and \
-                self.feature_set in deprecated_feature_sets:
+        if (
+            type(self.feature_set) is FeatureSet
+            and self.feature_set in deprecated_feature_sets
+        ):
             warnings.warn(
                 f"Feature set '{self.feature_set}' is "
                 f"deprecated, consider switching to "
@@ -256,9 +254,9 @@ class Smile(audinterface.Feature, audobject.Object):
             )
 
     def _extract(
-            self,
-            signal: np.ndarray,
-            sampling_rate: int,
+        self,
+        signal: np.ndarray,
+        sampling_rate: int,
     ) -> (pd.TimedeltaIndex, pd.TimedeltaIndex, np.ndarray):
         r"""Run feature extraction."""
         signal = signal.copy()
@@ -270,37 +268,30 @@ class Smile(audinterface.Feature, audobject.Object):
         ends = []
 
         for x in signal:
-
             y = []
             starts = []
             ends = []
 
             options = self._options()
-            options['source'] = os.path.join(
-                self.default_config_root,
-                config.EXTERNAL_INPUT_CONFIG
+            options["source"] = os.path.join(
+                self.default_config_root, config.EXTERNAL_INPUT_CONFIG
             )
-            options['sampleRate'] = sampling_rate
-            options['nBits'] = 16
+            options["sampleRate"] = sampling_rate
+            options["nBits"] = 16
 
             smile = self._smile(options=options)
             smile.external_sink_set_callback_ex(
-                config.EXTERNAL_OUTPUT_COMPONENT,
-                Smile._sink_callback(y, starts, ends)
+                config.EXTERNAL_OUTPUT_COMPONENT, Smile._sink_callback(y, starts, ends)
             )
             smile.external_audio_source_write_data(
                 config.EXTERNAL_SOURCE_COMPONENT, bytes(x)
             )
-            smile.external_audio_source_set_eoi(
-                config.EXTERNAL_SOURCE_COMPONENT
-            )
+            smile.external_audio_source_set_eoi(config.EXTERNAL_SOURCE_COMPONENT)
             smile.run()
             smile.free()
 
             if not y:
-                warnings.warn(
-                    UserWarning("Segment too short, filling with NaN.")
-                )
+                warnings.warn(UserWarning("Segment too short, filling with NaN."))
                 y.append(np.ones(self.num_features) * np.nan)
                 starts.append(0)
                 ends.append(signal.size / sampling_rate)
@@ -308,11 +299,11 @@ class Smile(audinterface.Feature, audobject.Object):
             starts = np.vstack(starts).squeeze()
             ends = np.vstack(ends).squeeze()
             if starts.shape:
-                starts = pd.to_timedelta(starts, 's')
-                ends = pd.to_timedelta(ends, 's')
+                starts = pd.to_timedelta(starts, "s")
+                ends = pd.to_timedelta(ends, "s")
             else:
-                starts = pd.TimedeltaIndex([pd.to_timedelta(starts, 's')])
-                ends = pd.TimedeltaIndex([pd.to_timedelta(ends, 's')])
+                starts = pd.TimedeltaIndex([pd.to_timedelta(starts, "s")])
+                ends = pd.TimedeltaIndex([pd.to_timedelta(ends, "s")])
 
             y = np.vstack(y)
             ys.append(y)
@@ -322,18 +313,16 @@ class Smile(audinterface.Feature, audobject.Object):
     def _feature_names(self) -> typing.List[str]:
         r"""Read feature names from config file."""
         options = self._options()
-        options['source'] = os.path.join(
-            self.default_config_root,
-            config.EXTERNAL_INPUT_CONFIG
+        options["source"] = os.path.join(
+            self.default_config_root, config.EXTERNAL_INPUT_CONFIG
         )
         smile = self._smile(options=options)
         num_elements = smile.external_sink_get_num_elements(
             config.EXTERNAL_OUTPUT_COMPONENT
         )
         names = [
-            smile.external_sink_get_element_name(
-                config.EXTERNAL_OUTPUT_COMPONENT,
-                idx) for idx in range(num_elements)
+            smile.external_sink_get_element_name(config.EXTERNAL_OUTPUT_COMPONENT, idx)
+            for idx in range(num_elements)
         ]
         smile.free()
         return names
@@ -341,28 +330,25 @@ class Smile(audinterface.Feature, audobject.Object):
     def _options(self) -> dict:
         r"""Fill options dictionary."""
         options = self.options.copy()
-        options['sink'] = os.path.join(
-            self.default_config_root,
-            config.EXTERNAL_OUTPUT_SINGLE_CONFIG
+        options["sink"] = os.path.join(
+            self.default_config_root, config.EXTERNAL_OUTPUT_SINGLE_CONFIG
         )
         if type(self.feature_level) is FeatureLevel:
-            options['sinkLevel'] = self.feature_level.value
+            options["sinkLevel"] = self.feature_level.value
         else:
-            options['sinkLevel'] = self.feature_level
-        options['bufferModeRbConf'] = os.path.join(
-            self.default_config_root,
-            'shared/BufferModeRb.conf.inc'
+            options["sinkLevel"] = self.feature_level
+        options["bufferModeRbConf"] = os.path.join(
+            self.default_config_root, "shared/BufferModeRb.conf.inc"
         )
-        if 'frameModeFunctionalsConf' not in options:
-            options['frameModeFunctionalsConf'] = os.path.join(
-                self.default_config_root,
-                'shared/FrameModeFunctionals.conf.inc'
+        if "frameModeFunctionalsConf" not in options:
+            options["frameModeFunctionalsConf"] = os.path.join(
+                self.default_config_root, "shared/FrameModeFunctionals.conf.inc"
             )
         return options
 
     def _series_to_frame(
-            self,
-            series: pd.Series,
+        self,
+        series: pd.Series,
     ) -> pd.DataFrame:
         r"""Convert series to frame.
 
@@ -389,7 +375,7 @@ class Smile(audinterface.Feature, audobject.Object):
                         starts,
                         ends,
                     ],
-                    names=['file', 'start', 'end'],
+                    names=["file", "start", "end"],
                 )
                 frames[idx] = pd.DataFrame(
                     index=index,
@@ -409,14 +395,14 @@ class Smile(audinterface.Feature, audobject.Object):
                         starts,
                         ends,
                     ],
-                    names=['start', 'end'],
+                    names=["start", "end"],
                 )
                 frames[idx] = pd.DataFrame(
                     index=index,
                     data=values,
                     columns=self.column_names,
                 )
-        return pd.concat(frames, axis='index')
+        return pd.concat(frames, axis="index")
 
     def _smile(self, options: dict) -> OpenSMILE:
         r"""Set up smile instance."""
@@ -426,26 +412,27 @@ class Smile(audinterface.Feature, audobject.Object):
             options=options,
             loglevel=self.loglevel,
             log_file=self.logfile,
-            debug=self.verbose)
+            debug=self.verbose,
+        )
         return smile
 
     @staticmethod
     def _sink_callback(
-        y: typing.List[np.ndarray],
-        starts: typing.List[float],
-        ends: typing.List[float]
+        y: typing.List[np.ndarray], starts: typing.List[float], ends: typing.List[float]
     ) -> typing.Callable[[np.ndarray, FrameMetaData], None]:
         r"""Return callback where features are collected."""
+
         def callback(data: np.ndarray, meta: FrameMetaData):
             y.append(data.copy())
             starts.append(meta.time)
             ends.append(meta.time + meta.lengthSec)
+
         return callback
 
     def __call__(
-            self,
-            signal: np.ndarray,
-            sampling_rate: int,
+        self,
+        signal: np.ndarray,
+        sampling_rate: int,
     ) -> np.ndarray:
         r"""Apply processing to signal.
 
