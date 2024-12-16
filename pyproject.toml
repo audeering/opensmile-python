@@ -28,12 +28,13 @@ classifiers = [
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
     'Topic :: Scientific/Engineering',
 ]
 requires-python = '>=3.9'
 dependencies = [
-    'audobject >=0.6.1',
-    'audinterface >=0.7.0',
+    'audobject >=0.7.11',
+    'audinterface >=1.2.3',
 ]
 # Get version dynamically from git
 # (needs setuptools_scm tools config below)
