@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                v2.5.0
+                v2.5.1
               </div>
             
           
@@ -95,13 +95,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/opensmile.html">opensmile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
 </ul>
 
             
@@ -142,39 +145,36 @@
 <div class="viewcode-block" id="config"><a class="viewcode-back" href="../../../api/opensmile.config.html#opensmile.config">[docs]</a><span></span><span class="k">class</span> <span class="nc">config</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get/set defaults for the :mod:`opensmile` module.&quot;&quot;&quot;</span>
 
-    <span class="n">CONFIG_ROOT</span> <span class="o">=</span> <span class="s1">&#39;config&#39;</span>
+    <span class="n">CONFIG_ROOT</span> <span class="o">=</span> <span class="s2">&quot;config&quot;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Root directory of config files.&quot;&quot;&quot;</span>
 
-    <span class="n">CONFIG_EXT</span> <span class="o">=</span> <span class="s1">&#39;.conf&#39;</span>
+    <span class="n">CONFIG_EXT</span> <span class="o">=</span> <span class="s2">&quot;.conf&quot;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Extension of config files.&quot;&quot;&quot;</span>
 
-    <span class="n">EXTERNAL_SOURCE_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;extsource&#39;</span>
+    <span class="n">EXTERNAL_SOURCE_COMPONENT</span> <span class="o">=</span> <span class="s2">&quot;extsource&quot;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard component name for external input.&quot;&quot;&quot;</span>
 
-    <span class="n">EXTERNAL_OUTPUT_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;extsink&#39;</span>
+    <span class="n">EXTERNAL_OUTPUT_COMPONENT</span> <span class="o">=</span> <span class="s2">&quot;extsink&quot;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard component name for external data output.&quot;&quot;&quot;</span>
 
-    <span class="n">FILE_INPUT_CONFIG</span> <span class="o">=</span> <span class="s1">&#39;shared/standard_wave_input.conf.inc&#39;</span>
+    <span class="n">FILE_INPUT_CONFIG</span> <span class="o">=</span> <span class="s2">&quot;shared/standard_wave_input.conf.inc&quot;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for wave input from file.&quot;&quot;&quot;</span>
 
-    <span class="n">EXTERNAL_INPUT_CONFIG</span> <span class="o">=</span> \
-        <span class="s1">&#39;shared/standard_external_wave_input.conf.inc&#39;</span>
+    <span class="n">EXTERNAL_INPUT_CONFIG</span> <span class="o">=</span> <span class="s2">&quot;shared/standard_external_wave_input.conf.inc&quot;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for external wave input.&quot;&quot;&quot;</span>
 
-    <span class="n">EXTERNAL_OUTPUT_SINGLE_CONFIG</span> <span class="o">=</span> \
-        <span class="s1">&#39;shared/standard_external_data_output_single.conf.inc&#39;</span>
+    <span class="n">EXTERNAL_OUTPUT_SINGLE_CONFIG</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;shared/standard_external_data_output_single.conf.inc&quot;</span>
+    <span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for external data output from a single level.&quot;&quot;&quot;</span>
 
-    <span class="n">EXTERNAL_OUTPUT_MULTI_CONFIG</span> <span class="o">=</span> \
-        <span class="s1">&#39;shared/standard_external_data_output_multi.conf.inc&#39;</span>
+    <span class="n">EXTERNAL_OUTPUT_MULTI_CONFIG</span> <span class="o">=</span> <span class="s2">&quot;shared/standard_external_data_output_multi.conf.inc&quot;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for external data output from multiple levels.&quot;&quot;&quot;</span>
 
-    <span class="n">FILE_OUTPUT_CONFIG</span> <span class="o">=</span> \
-        <span class="s1">&#39;shared/standard_data_output.conf.inc&#39;</span>
+    <span class="n">FILE_OUTPUT_CONFIG</span> <span class="o">=</span> <span class="s2">&quot;shared/standard_data_output.conf.inc&quot;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for external data output.&quot;&quot;&quot;</span>
 
-    <span class="n">FILE_OUTPUT_CONFIG_NO_LLD_DE</span> <span class="o">=</span> \
-        <span class="s1">&#39;shared/standard_data_output_no_lld_de.conf.inc&#39;</span>
+    <span class="n">FILE_OUTPUT_CONFIG_NO_LLD_DE</span> <span class="o">=</span> <span class="s2">&quot;shared/standard_data_output_no_lld_de.conf.inc&quot;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Standard config name for external data output without lld_de level.&quot;&quot;&quot;</span></div>
 </pre></div>
 
@@ -191,7 +191,7 @@
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2023/10/19 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org">Sphinx</a> on 2024/12/16 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -199,7 +199,7 @@
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2023 audEERING GmbH
+      &copy; 2020-2024 audEERING GmbH
     </p>
   </div> 
 

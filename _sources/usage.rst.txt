@@ -14,9 +14,9 @@ but it's also possible to run custom config files.
 
     audb.config.REPOSITORIES = [
         audb.Repository(
-            name='data-public',
-            host='https://audeering.jfrog.io/artifactory',
-            backend='artifactory',
+            name="data-public",
+            host="https://audeering.jfrog.io/artifactory",
+            backend="artifactory",
         ),
     ]
 
@@ -43,12 +43,12 @@ emodb_ database.
 
 
     db = audb.load(
-        'emodb',
-        version='1.1.1',
-        format='wav',
+        "emodb",
+        version="1.1.1",
+        format="wav",
         mixdown=True,
         sampling_rate=16000,
-        media='wav/03a01.*',  # load subset
+        media="wav/03a01.*",  # load subset
         full_path=False,
         verbose=False,
     )
@@ -56,7 +56,7 @@ emodb_ database.
 .. jupyter-execute::
     :hide-code:
 
-    pd.set_option('display.max_columns', 4)
+    pd.set_option("display.max_columns", 4)
 
 Process signal
 --------------
@@ -128,13 +128,13 @@ we can create a log file.
         feature_set=opensmile.FeatureSet.eGeMAPSv02,
         feature_level=opensmile.FeatureLevel.Functionals,
         loglevel=2,
-        logfile='smile.log',
+        logfile="smile.log",
     )
     smile.process_signal(
         signal,
         sampling_rate
     )
-    with open('./smile.log', 'r') as fp:
+    with open("./smile.log", "r") as fp:
         log = fp.readlines()
     log
 
@@ -145,7 +145,7 @@ We can create a custom config.
 
 .. jupyter-execute::
 
-    config_str = '''
+    config_str = """
     [componentInstances:cComponentManager]
     instance[dataMemory].type=cDataMemory
 
@@ -201,24 +201,24 @@ We can create a custom config.
 
     \{\cm[sink{?}:include external sink]}
 
-    '''
+    """
 
 It's important to always set the
 ``source`` and ``sink`` as we did above.
 But we are free in choosing the levels.
 In the above we have added two
-levels ``'func'`` and ``'lld'``.
+levels ``"func"`` and ``"lld"``.
 Now, we simply pass the level
 we are interested in.
 
 .. jupyter-execute::
 
-    with open('my.conf', 'w') as fp:
+    with open("my.conf", "w") as fp:
         fp.write(config_str)
 
     smile = opensmile.Smile(
-        feature_set='my.conf',
-        feature_level='func',
+        feature_set="my.conf",
+        feature_level="func",
     )
     smile.process_signal(
         signal,
@@ -230,8 +230,8 @@ And...
 .. jupyter-execute::
 
     smile = opensmile.Smile(
-        feature_set='my.conf',
-        feature_level='lld',
+        feature_set="my.conf",
+        feature_level="lld",
     )
     smile.process_signal(
         signal,
@@ -294,7 +294,7 @@ the first ten seconds of the files
     )
     smile.process_files(
         files,
-        ends=['2s'] * len(files),
+        ends=["2s"] * len(files),
         root=db.root,
     )
 
@@ -308,7 +308,7 @@ to speed up the processing.
 
 .. jupyter-execute::
 
-    index = db['emotion'].index  # pick table index
+    index = db["emotion"].index  # pick table index
     smile = opensmile.Smile(
         feature_set=opensmile.FeatureSet.eGeMAPSv02,
         feature_level=opensmile.FeatureLevel.Functionals,

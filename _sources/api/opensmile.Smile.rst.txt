@@ -138,6 +138,10 @@ resolvers
 ---------
 .. autoattribute:: Smile.resolvers
     
+short\_id
+---------
+.. autoattribute:: Smile.short_id
+    
 to\_dict\(\)
 ------------
 .. automethod:: Smile.to_dict

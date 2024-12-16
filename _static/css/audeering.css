@@ -30,7 +30,7 @@ body {
     background: var(--white);
 }
 .wy-nav-content-wrap {
-    /* Ensure right part of scrren has same color as content */
+    /* Ensure right part of screen has same color as content */
     background: none;
 }
 .rst-content dl p, .rst-content dl table,
@@ -249,7 +249,7 @@ dl.property dt em {
     padding: 3px 6px;
     font-size: 90%;
 }
-/* Fix indention of example box */
+/* Fix indentation of example box */
 .rst-content dl.class div.highlight,
 .rst-content dl.function div.highlight,
 .rst-content dl.method div.highlight {
@@ -306,7 +306,6 @@ dl.property dt em {
 }
 .wy-table-responsive thead th {
     /* Fix border lines in table headers */
-    border: solid 1px var(--grey);
     border-bottom: solid 2px var(--grey);
 }
 .wy-table-responsive tbody tr th.stub {
@@ -341,6 +340,36 @@ dl.property dt em {
 /* Fix table row headers margin */
 .wy-table-responsive tbody tr th p {
     margin-bottom: 0 !important;
+}
+
+/***** TABLE PREVIEW in AUDBCARDS ****************************************/
+.rst-content table.docutils:not(.field-list) tr.clickable table.preview tr:nth-child(2n-1) td {
+    /* Don't style odd and even rows differently in preview table */
+    background-color: inherit;
+}
+.rst-content table.docutils:not(.field-list) tr.clickable table.preview td,
+.rst-content table.docutils:not(.field-list) tr.clickable table.preview th {
+    /* Reduce padding to vertically center cell content in preview table,
+     * and reduce height of table cells */
+    padding-bottom: 4px;
+}
+table.preview th p {
+    /* Adjust font size of header in preview table to table content */
+    font-size: 13px;
+}
+.rst-content table.docutils:not(.field-list) tr.clickable td.expanded-row-content {
+    /* Remove double border on left side of cell holding preview table */
+    border-left: none;
+}
+.rst-content table.docutils:not(.field-list) tr.clickable td table.preview td {
+    /* Remove complete border in preview table cells */
+    border-left: none;
+    border-bottom: none;
+}
+table.clickable tr.clicked td:not(.expanded-row-content):not(:first-child) {
+    /* Remove left border on clicked row when preview is shown,
+     * without changing position of the text */
+    border-left: 1px solid transparent;
 }
 
 /***** FIGURE AND TABLE CAPTIONS *****************************************/

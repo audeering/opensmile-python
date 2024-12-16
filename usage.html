@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="next" title="opensmile" href="api/opensmile.html" />
     <link rel="prev" title="Installation" href="install.html" />
     
       
@@ -71,7 +71,7 @@
             
             
               <div class="version">
-                v2.5.0
+                v2.5.1
               </div>
             
           
@@ -109,13 +109,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#audformat">audformat</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/opensmile.html">opensmile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
             
@@ -181,12 +184,12 @@ load some files from the
 
 
 <span class="n">db</span> <span class="o">=</span> <span class="n">audb</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
-    <span class="s1">&#39;emodb&#39;</span><span class="p">,</span>
-    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.1.1&#39;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;wav&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;emodb&quot;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1.1&quot;</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;wav&quot;</span><span class="p">,</span>
     <span class="n">mixdown</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">16000</span><span class="p">,</span>
-    <span class="n">media</span><span class="o">=</span><span class="s1">&#39;wav/03a01.*&#39;</span><span class="p">,</span>  <span class="c1"># load subset</span>
+    <span class="n">media</span><span class="o">=</span><span class="s2">&quot;wav/03a01.*&quot;</span><span class="p">,</span>  <span class="c1"># load subset</span>
     <span class="n">full_path</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
@@ -592,40 +595,40 @@ we can create a log file.</p>
     <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
     <span class="n">loglevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">logfile</span><span class="o">=</span><span class="s1">&#39;smile.log&#39;</span><span class="p">,</span>
+    <span class="n">logfile</span><span class="o">=</span><span class="s2">&quot;smile.log&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">smile</span><span class="o">.</span><span class="n">process_signal</span><span class="p">(</span>
     <span class="n">signal</span><span class="p">,</span>
     <span class="n">sampling_rate</span>
 <span class="p">)</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./smile.log&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./smile.log&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
     <span class="n">log</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">log</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;[ 19.10.2023 - 15:35:41 ]\n&#39;,
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;[ 16.12.2024 - 16:20:56 ]\n&#39;,
  &#39;    (MSG) [2] SMILEapi: openSMILE starting!\n&#39;,
- &#39;[ 19.10.2023 - 15:35:41 ]\n&#39;,
+ &#39;[ 16.12.2024 - 16:20:56 ]\n&#39;,
  &#39;    (MSG) [2] SMILEapi: config file is: /home/runner/work/opensmile-python/opensmile-python/opensmile/core/config/egemaps/v02/eGeMAPSv02.conf\n&#39;,
- &#39;[ 19.10.2023 - 15:35:41 ]\n&#39;,
+ &#39;[ 16.12.2024 - 16:20:56 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: successfully registered 102 component types.\n&#39;,
- &#39;[ 19.10.2023 - 15:35:41 ]\n&#39;,
+ &#39;[ 16.12.2024 - 16:20:56 ]\n&#39;,
  &quot;    (MSG) [2] instance &#39;gemapsv01b_logSpectral&#39;: logSpecFloor = -140.00  (specFloor = 1.000000e-14)\n&quot;,
- &#39;[ 19.10.2023 - 15:35:41 ]\n&#39;,
+ &#39;[ 16.12.2024 - 16:20:56 ]\n&#39;,
  &quot;    (MSG) [2] instance &#39;egemapsv02_logSpectral_flux&#39;: logSpecFloor = -140.00  (specFloor = 1.000000e-14)\n&quot;,
- &#39;[ 19.10.2023 - 15:35:41 ]\n&#39;,
+ &#39;[ 16.12.2024 - 16:20:56 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: successfully finished createInstances (73 component instances were finalised, 1 data memories were finalised)\n&#39;,
- &#39;[ 19.10.2023 - 15:35:41 ]\n&#39;,
+ &#39;[ 16.12.2024 - 16:20:56 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: starting single thread processing loop\n&#39;,
- &#39;[ 19.10.2023 - 15:35:41 ]\n&#39;,
+ &#39;[ 16.12.2024 - 16:20:56 ]\n&#39;,
  &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
- &#39;[ 19.10.2023 - 15:35:41 ]\n&#39;,
+ &#39;[ 16.12.2024 - 16:20:56 ]\n&#39;,
  &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
- &#39;[ 19.10.2023 - 15:35:41 ]\n&#39;,
+ &#39;[ 16.12.2024 - 16:20:56 ]\n&#39;,
  &#39;    (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: egemapsv02_smoE. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.\n&#39;,
- &#39;[ 19.10.2023 - 15:35:41 ]\n&#39;,
+ &#39;[ 16.12.2024 - 16:20:56 ]\n&#39;,
  &#39;    (MSG) [2] cComponentManager: Processing finished! System ran for 199 ticks.\n&#39;]
 </pre></div>
 </div>
@@ -637,63 +640,63 @@ we can create a log file.</p>
 <p>We can create a custom config.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">[componentInstances:cComponentManager]</span>
-<span class="s1">instance[dataMemory].type=cDataMemory</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">[componentInstances:cComponentManager]</span>
+<span class="s2">instance[dataMemory].type=cDataMemory</span>
 
-<span class="s1">;;; default source</span>
-<span class="s1">[componentInstances:cComponentManager]</span>
-<span class="s1">instance[dataMemory].type=cDataMemory</span>
+<span class="s2">;;; default source</span>
+<span class="s2">[componentInstances:cComponentManager]</span>
+<span class="s2">instance[dataMemory].type=cDataMemory</span>
 
-<span class="s1">;;; source</span>
+<span class="s2">;;; source</span>
 
-<span class="s1">\{\cm[source{?}:include external source]}</span>
+<span class="s2">\{\cm[source{?}:include external source]}</span>
 
-<span class="s1">;;; main section</span>
+<span class="s2">;;; main section</span>
 
-<span class="s1">[componentInstances:cComponentManager]</span>
-<span class="s1">instance[framer].type = cFramer</span>
-<span class="s1">instance[lld].type = cEnergy</span>
-<span class="s1">instance[func].type=cFunctionals</span>
+<span class="s2">[componentInstances:cComponentManager]</span>
+<span class="s2">instance[framer].type = cFramer</span>
+<span class="s2">instance[lld].type = cEnergy</span>
+<span class="s2">instance[func].type=cFunctionals</span>
 
-<span class="s1">[framer:cFramer]</span>
-<span class="s1">reader.dmLevel = wave</span>
-<span class="s1">writer.dmLevel = frames</span>
-<span class="s1">copyInputName = 1</span>
-<span class="s1">frameMode = fixed</span>
-<span class="s1">frameSize = 0.025000</span>
-<span class="s1">frameStep = 0.010000</span>
-<span class="s1">frameCenterSpecial = left</span>
-<span class="s1">noPostEOIprocessing = 1</span>
+<span class="s2">[framer:cFramer]</span>
+<span class="s2">reader.dmLevel = wave</span>
+<span class="s2">writer.dmLevel = frames</span>
+<span class="s2">copyInputName = 1</span>
+<span class="s2">frameMode = fixed</span>
+<span class="s2">frameSize = 0.025000</span>
+<span class="s2">frameStep = 0.010000</span>
+<span class="s2">frameCenterSpecial = left</span>
+<span class="s2">noPostEOIprocessing = 1</span>
 
-<span class="s1">[lld:cEnergy]</span>
-<span class="s1">reader.dmLevel = frames</span>
-<span class="s1">writer.dmLevel = lld</span>
-<span class="s1">\{\cm[bufferModeRbConf{?}:path to included config to set the buffer mode for the standard ringbuffer levels]}</span>
-<span class="s1">nameAppend = energy</span>
-<span class="s1">copyInputName = 1</span>
-<span class="s1">rms = 1</span>
-<span class="s1">log = 1</span>
+<span class="s2">[lld:cEnergy]</span>
+<span class="s2">reader.dmLevel = frames</span>
+<span class="s2">writer.dmLevel = lld</span>
+<span class="s2">\{\cm[bufferModeRbConf{?}:path to included config to set the buffer mode for the standard ringbuffer levels]}</span>
+<span class="s2">nameAppend = energy</span>
+<span class="s2">copyInputName = 1</span>
+<span class="s2">rms = 1</span>
+<span class="s2">log = 1</span>
 
-<span class="s1">[func:cFunctionals]</span>
-<span class="s1">reader.dmLevel=lld</span>
-<span class="s1">writer.dmLevel=func</span>
-<span class="s1">copyInputName = 1</span>
-<span class="s1">\{\cm[bufferModeRbConf]}</span>
-<span class="s1">\{\cm[frameModeFunctionalsConf{?}:path to included config to set frame mode for all functionals]}</span>
-<span class="s1">functionalsEnabled=Moments</span>
-<span class="s1">Moments.variance = 0</span>
-<span class="s1">Moments.stddev = 1</span>
-<span class="s1">Moments.skewness = 0</span>
-<span class="s1">Moments.kurtosis = 0</span>
-<span class="s1">Moments.amean = 1</span>
-<span class="s1">Moments.doRatioLimit = 0</span>
+<span class="s2">[func:cFunctionals]</span>
+<span class="s2">reader.dmLevel=lld</span>
+<span class="s2">writer.dmLevel=func</span>
+<span class="s2">copyInputName = 1</span>
+<span class="s2">\{\cm[bufferModeRbConf]}</span>
+<span class="s2">\{\cm[frameModeFunctionalsConf{?}:path to included config to set frame mode for all functionals]}</span>
+<span class="s2">functionalsEnabled=Moments</span>
+<span class="s2">Moments.variance = 0</span>
+<span class="s2">Moments.stddev = 1</span>
+<span class="s2">Moments.skewness = 0</span>
+<span class="s2">Moments.kurtosis = 0</span>
+<span class="s2">Moments.amean = 1</span>
+<span class="s2">Moments.doRatioLimit = 0</span>
 
-<span class="s1">;;; sink</span>
+<span class="s2">;;; sink</span>
 
-<span class="s1">\{\cm[sink{?}:include external sink]}</span>
+<span class="s2">\{\cm[sink{?}:include external sink]}</span>
 
-<span class="s1">&#39;&#39;&#39;</span>
+<span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -704,17 +707,17 @@ we can create a log file.</p>
 <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">sink</span></code> as we did above.
 But we are free in choosing the levels.
 In the above we have added two
-levels <code class="docutils literal notranslate"><span class="pre">'func'</span></code> and <code class="docutils literal notranslate"><span class="pre">'lld'</span></code>.
+levels <code class="docutils literal notranslate"><span class="pre">&quot;func&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;lld&quot;</span></code>.
 Now, we simply pass the level
 we are interested in.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;my.conf&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;my.conf&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
     <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">config_str</span><span class="p">)</span>
 
 <span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
-    <span class="n">feature_set</span><span class="o">=</span><span class="s1">&#39;my.conf&#39;</span><span class="p">,</span>
-    <span class="n">feature_level</span><span class="o">=</span><span class="s1">&#39;func&#39;</span><span class="p">,</span>
+    <span class="n">feature_set</span><span class="o">=</span><span class="s2">&quot;my.conf&quot;</span><span class="p">,</span>
+    <span class="n">feature_level</span><span class="o">=</span><span class="s2">&quot;func&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">smile</span><span class="o">.</span><span class="n">process_signal</span><span class="p">(</span>
     <span class="n">signal</span><span class="p">,</span>
@@ -774,8 +777,8 @@ we are interested in.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
-    <span class="n">feature_set</span><span class="o">=</span><span class="s1">&#39;my.conf&#39;</span><span class="p">,</span>
-    <span class="n">feature_level</span><span class="o">=</span><span class="s1">&#39;lld&#39;</span><span class="p">,</span>
+    <span class="n">feature_set</span><span class="o">=</span><span class="s2">&quot;my.conf&quot;</span><span class="p">,</span>
+    <span class="n">feature_level</span><span class="o">=</span><span class="s2">&quot;lld&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">smile</span><span class="o">.</span><span class="n">process_signal</span><span class="p">(</span>
     <span class="n">signal</span><span class="p">,</span>
@@ -1025,7 +1028,7 @@ the first ten seconds of the files</p>
 <span class="p">)</span>
 <span class="n">smile</span><span class="o">.</span><span class="n">process_files</span><span class="p">(</span>
     <span class="n">files</span><span class="p">,</span>
-    <span class="n">ends</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2s&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">),</span>
+    <span class="n">ends</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2s&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">),</span>
     <span class="n">root</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">root</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1114,7 +1117,7 @@ Note that we set five workers
 to speed up the processing.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;emotion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>  <span class="c1"># pick table index</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s2">&quot;emotion&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>  <span class="c1"># pick table index</span>
 <span class="n">smile</span> <span class="o">=</span> <span class="n">opensmile</span><span class="o">.</span><span class="n">Smile</span><span class="p">(</span>
     <span class="n">feature_set</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureSet</span><span class="o">.</span><span class="n">eGeMAPSv02</span><span class="p">,</span>
     <span class="n">feature_level</span><span class="o">=</span><span class="n">opensmile</span><span class="o">.</span><span class="n">FeatureLevel</span><span class="o">.</span><span class="n">Functionals</span><span class="p">,</span>
@@ -1212,7 +1215,7 @@ to speed up the processing.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="api/opensmile.html" class="btn btn-neutral float-right" title="opensmile" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -1227,7 +1230,7 @@ to speed up the processing.</p>
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2023/10/19 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org">Sphinx</a> on 2024/12/16 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -1235,7 +1238,7 @@ to speed up the processing.</p>
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2023 audEERING GmbH
+      &copy; 2020-2024 audEERING GmbH
     </p>
   </div> 
 

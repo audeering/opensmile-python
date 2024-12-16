@@ -34,7 +34,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Changelog" href="changelog.html" />
-    <link rel="prev" title="Usage" href="usage.html" />
+    <link rel="prev" title="Index" href="genindex.html" />
     
       
     
@@ -69,7 +69,7 @@
             
             
               <div class="version">
-                v2.5.0
+                v2.5.1
               </div>
             
           
@@ -94,9 +94,17 @@
             
             
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/opensmile.html">opensmile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#development-installation">Development Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#coding-convention">Coding Convention</a></li>
@@ -106,11 +114,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api/opensmile.html">opensmile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 </ul>
 
             
@@ -173,7 +176,7 @@ even if you pull new changes from the Github repository.</p>
 <div class="section" id="coding-convention">
 <h2>Coding Convention<a class="headerlink" href="#coding-convention" title="Permalink to this heading">¶</a></h2>
 <p>We follow the <a class="reference external" href="http://www.python.org/dev/peps/pep-0008/">PEP8</a> convention for Python code
-and check for correct syntax with <a class="reference external" href="https://beta.ruff.rs">ruff</a>.
+and use <a class="reference external" href="https://beta.ruff.rs">ruff</a> as a linter and code formatter.
 In addition,
 we check for common spelling errors with <a class="reference external" href="https://github.com/codespell-project/codespell/">codespell</a>.
 Both tools and possible exceptions
@@ -190,7 +193,8 @@ every time you create a commit.</p>
 <p>You can also install <a class="reference external" href="https://beta.ruff.rs">ruff</a> and <a class="reference external" href="https://github.com/codespell-project/codespell/">codespell</a>
 and call it directly:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ruff</span> <span class="n">codespell</span>  <span class="c1"># consider system wide installation</span>
-<span class="n">ruff</span> <span class="n">check</span> <span class="o">.</span>
+<span class="n">ruff</span> <span class="n">check</span> <span class="o">--</span><span class="n">fix</span> <span class="o">.</span>  <span class="c1"># lint all Python files, and fix any fixable errors</span>
+<span class="n">ruff</span> <span class="nb">format</span> <span class="o">.</span>  <span class="c1"># format code of all Python files</span>
 <span class="n">codespell</span>
 </pre></div>
 </div>
@@ -254,7 +258,7 @@ It can be installed with:</p>
         <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="genindex.html" class="btn btn-neutral float-left" title="Index" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -266,7 +270,7 @@ It can be installed with:</p>
         
         
         
-          Built with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> on 2023/10/19 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org">Sphinx</a> on 2024/12/16 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -274,7 +278,7 @@ It can be installed with:</p>
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2023 audEERING GmbH
+      &copy; 2020-2024 audEERING GmbH
     </p>
   </div> 
 
