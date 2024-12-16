@@ -1,5 +1,6 @@
+from __future__ import annotations
+
 import enum
-import typing
 
 import audobject
 
@@ -49,12 +50,12 @@ class FeatureSet(enum.Enum):
 class FeatureSetResolver(audobject.resolver.Base):
     r"""Custom value resolver for :class:`opensmile.FeatureSet`."""
 
-    def decode(self, value: str) -> typing.Union[str, FeatureSet]:
+    def decode(self, value: str) -> str | FeatureSet:
         if value in FeatureSet.__members__:
             value = FeatureSet[value]
         return value
 
-    def encode(self, value: typing.Union[str, FeatureSet]) -> str:
+    def encode(self, value: str | FeatureSet) -> str:
         if isinstance(value, FeatureSet):
             value = str(value).split(".")[-1]
         return value
@@ -84,12 +85,12 @@ class FeatureLevel(enum.Enum):
 class FeatureLevelResolver(audobject.resolver.Base):
     r"""Custom value resolver for :class:`opensmile.FeatureLevel`."""
 
-    def decode(self, value: str) -> typing.Union[str, FeatureLevel]:
+    def decode(self, value: str) -> str | FeatureLevel:
         if value in FeatureLevel.__members__:
             value = FeatureLevel[value]
         return value
 
-    def encode(self, value: typing.Union[str, FeatureLevel]) -> str:
+    def encode(self, value: str | FeatureLevel) -> str:
         if isinstance(value, FeatureLevel):
             value = str(value).split(".")[-1]
         return value
