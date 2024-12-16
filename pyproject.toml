@@ -25,12 +25,12 @@ classifiers = [
     'Operating System :: OS Independent',
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.8',
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
     'Topic :: Scientific/Engineering',
 ]
+requires-python = '>=3.9'
 dependencies = [
     'audobject >=0.6.1',
     'audinterface >=0.7.0',

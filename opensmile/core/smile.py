@@ -1,6 +1,9 @@
+from __future__ import annotations
+
+from collections.abc import Callable
+from collections.abc import Sequence
 import errno
 import os
-import typing
 import warnings
 
 import numpy as np
@@ -133,19 +136,19 @@ class Smile(audinterface.Feature, audobject.Object):
     )
     def __init__(
         self,
-        feature_set: typing.Union[str, FeatureSet] = FeatureSet.ComParE_2016,
-        feature_level: typing.Union[str, FeatureLevel] = FeatureLevel.Functionals,
+        feature_set: str | FeatureSet = FeatureSet.ComParE_2016,
+        feature_level: str | FeatureLevel = FeatureLevel.Functionals,
         *,
         options: dict = None,
         loglevel: int = 2,
         logfile: str = None,
         sampling_rate: int = None,
-        channels: typing.Union[int, typing.Sequence[int]] = 0,
+        channels: int | Sequence[int] = 0,
         mixdown: bool = False,
         resample: bool = False,
         segment: audinterface.Segment = None,
         keep_nat: bool = False,
-        num_workers: typing.Optional[int] = 1,
+        num_workers: int | None = 1,
         multiprocessing: bool = False,
         verbose: bool = False,
     ):
@@ -310,7 +313,7 @@ class Smile(audinterface.Feature, audobject.Object):
 
         return starts, ends, np.concatenate(ys, axis=1)
 
-    def _feature_names(self) -> typing.List[str]:
+    def _feature_names(self) -> list[str]:
         r"""Read feature names from config file."""
         options = self._options()
         options["source"] = os.path.join(
@@ -418,8 +421,8 @@ class Smile(audinterface.Feature, audobject.Object):
 
     @staticmethod
     def _sink_callback(
-        y: typing.List[np.ndarray], starts: typing.List[float], ends: typing.List[float]
-    ) -> typing.Callable[[np.ndarray, FrameMetaData], None]:
+        y: list[np.ndarray], starts: list[float], ends: list[float]
+    ) -> Callable[[np.ndarray, FrameMetaData], None]:
         r"""Return callback where features are collected."""
 
         def callback(data: np.ndarray, meta: FrameMetaData):

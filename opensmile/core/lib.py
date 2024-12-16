@@ -1,3 +1,4 @@
+from collections.abc import Callable
 from ctypes import CFUNCTYPE
 from ctypes import POINTER
 from ctypes import Structure
@@ -14,11 +15,6 @@ from ctypes import cdll
 import json
 import os
 import platform
-from typing import Any
-from typing import Callable
-from typing import Dict
-from typing import List
-from typing import Optional
 
 import numpy as np
 
@@ -290,7 +286,7 @@ def c_char_p_arr(x):
 class OpenSmileException(Exception):  # pragma: no cover
     """Exception thrown for internal openSMILE errors."""
 
-    def __init__(self, code: int, message: Optional[str] = None):
+    def __init__(self, code: int, message: str = None):
         self.code = code
         self.message = message
 
@@ -310,7 +306,7 @@ class OpenSMILE(object):  # pragma: no cover
     def initialize(
         self,
         config_file: str,
-        options: Dict[str, Any] = None,
+        options: dict[str, object] = None,
         loglevel: int = 2,
         debug: bool = False,
         console_output: bool = False,
@@ -517,7 +513,7 @@ class OpenSMILE(object):  # pragma: no cover
         )
 
     def external_message_interface_set_json_callback(
-        self, component_name: str, callback: Callable[[Dict], None]
+        self, component_name: str, callback: Callable[[dict], None]
     ):
         """Sets callback for cExternalMessageInterface.
 
@@ -586,10 +582,10 @@ class OpenSMILE(object):  # pragma: no cover
     @staticmethod
     def process(
         config_file: str,
-        options: Dict[str, Any],
-        inputs: Dict[str, np.ndarray],
-        outputs: List[str],
-    ) -> Dict[str, np.ndarray]:
+        options: dict[str, object],
+        inputs: dict[str, np.ndarray],
+        outputs: list[str],
+    ) -> dict[str, np.ndarray]:
         """Runs config on a set of input buffers.
 
         Returns the specified set of output buffers.
