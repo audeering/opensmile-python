@@ -25,7 +25,12 @@ class FeatureSet(enum.Enum):
     * `ComParE 2016`_
     * GeMAPS_
     * eGeMAPS_
-    * emobase
+    * emobase_
+    * IS09_
+    * IS10_
+    * IS11_
+    * IS12_
+    * IS13_
 
     .. _ComParE 2016:
         http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf
@@ -33,6 +38,16 @@ class FeatureSet(enum.Enum):
         https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf
     .. _eGeMAPS:
         https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf
+    .. _IS09:
+        https://opus.bibliothek.uni-augsburg.de/opus4/files/66757/i09_0312.pdf
+    .. _IS10:
+        https://opus.bibliothek.uni-augsburg.de/opus4/files/66767/i10_2794.pdf
+    .. _IS11:
+        https://opus.bibliothek.uni-augsburg.de/opus4/files/66989/i11_3201.pdf
+    .. _IS12:
+        https://opus.bibliothek.uni-augsburg.de/opus4/files/66988/i12_0254.pdf
+    .. _IS13:
+        http://www5.informatik.uni-erlangen.de/Forschung/Publikationen/2013/Schuller13-TI2.pdf
 
     """
 
@@ -45,7 +60,11 @@ class FeatureSet(enum.Enum):
     eGeMAPSv01b = "egemaps/v01b/eGeMAPSv01b"
     eGeMAPSv02 = "egemaps/v02/eGeMAPSv02"
     emobase = "emobase/emobase"
-
+    IS09 = "is09-13/IS09_emotion"
+    IS10 = "is09-13/IS10_paraling_compat"
+    IS11 = "is09-13/IS11_speaker_state"
+    IS12 = "is09-13/IS12_speaker_trait_compat"
+    IS13 = "is09-13/IS13_ComParE"
 
 class FeatureSetResolver(audobject.resolver.Base):
     r"""Custom value resolver for :class:`opensmile.FeatureSet`."""
