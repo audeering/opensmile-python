@@ -19,6 +19,11 @@ class FeatureSet(enum.Enum):
     * :attr:`eGeMAPSv01b`
     * :attr:`eGeMAPSv02`
     * :attr:`emobase`
+    * :attr:`IS09`
+    * :attr:`IS10`
+    * :attr:`IS11`
+    * :attr:`IS12`
+    * :attr:`IS13`
 
     For references, see the papers on:
 
@@ -65,6 +70,7 @@ class FeatureSet(enum.Enum):
     IS11 = "is09-13/IS11_speaker_state"
     IS12 = "is09-13/IS12_speaker_trait_compat"
     IS13 = "is09-13/IS13_ComParE"
+
 
 class FeatureSetResolver(audobject.resolver.Base):
     r"""Custom value resolver for :class:`opensmile.FeatureSet`."""
