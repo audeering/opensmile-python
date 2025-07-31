@@ -76,6 +76,7 @@ setuptools.setup(
             "config/emobase/*",
             "config/gemaps/v01a/*",
             "config/gemaps/v01b/*",
+            "config/is09-13/*",
             "config/shared/*",
         ],
     },

@@ -60,7 +60,7 @@ build-backend = 'setuptools.build_meta'
 # ----- codespell ---------------------------------------------------------
 [tool.codespell]
 builtin = 'clear,rare,informal,usage,names'
-skip = './opensmile.egg-info,./build,./docs/api,./docs/_templates,./docs/examples'
+skip = './opensmile.egg-info,./build,./docs/api,./docs/_templates,./docs/examples,opensmile/core/config/is09-13/*.conf'
 
 
 # ----- pytest ------------------------------------------------------------
