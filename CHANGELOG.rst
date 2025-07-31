@@ -7,6 +7,16 @@ The format is based on `Keep a Changelog`_,
 and this project adheres to `Semantic Versioning`_.
 
 
+Version 2.6.0 (2025-07-31)
+--------------------------
+
+* Added: IS09 emotion config
+* Added: IS10 paralinguistics (compatibility and core) config
+* Added: IS11 speaker state config
+* Added: IS12 speaker trait compatibility config
+* Added: IS13 ComParE (core, functionals, vocalist) config
+
+
 Version 2.5.1 (2024-12-16)
 --------------------------
 
