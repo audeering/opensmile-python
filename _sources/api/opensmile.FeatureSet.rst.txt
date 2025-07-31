@@ -42,3 +42,23 @@ GeMAPSv01b
 ----------
 .. autoattribute:: FeatureSet.GeMAPSv01b
     
+IS09
+----
+.. autoattribute:: FeatureSet.IS09
+    
+IS10
+----
+.. autoattribute:: FeatureSet.IS10
+    
+IS11
+----
+.. autoattribute:: FeatureSet.IS11
+    
+IS12
+----
+.. autoattribute:: FeatureSet.IS12
+    
+IS13
+----
+.. autoattribute:: FeatureSet.IS13
+    

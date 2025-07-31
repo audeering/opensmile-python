@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                v2.5.1
+                v2.6.0
               </div>
             
           
@@ -142,14 +142,14 @@
            <div itemprop="articleBody">
             
   <h1>Source code for opensmile.core.define</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">import</span> <span class="nn">enum</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">enum</span>
 
-<span class="kn">import</span> <span class="nn">audobject</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">audobject</span>
 
 
-<div class="viewcode-block" id="FeatureSet"><a class="viewcode-back" href="../../../api/opensmile.FeatureSet.html#opensmile.FeatureSet">[docs]</a><span class="k">class</span> <span class="nc">FeatureSet</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="FeatureSet"><a class="viewcode-back" href="../../../api/opensmile.FeatureSet.html#opensmile.FeatureSet">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">FeatureSet</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Enumeration of standard feature sets.</span>
 
 <span class="sd">    The following feature sets are available:</span>
@@ -163,13 +163,23 @@
 <span class="sd">    * :attr:`eGeMAPSv01b`</span>
 <span class="sd">    * :attr:`eGeMAPSv02`</span>
 <span class="sd">    * :attr:`emobase`</span>
+<span class="sd">    * :attr:`IS09`</span>
+<span class="sd">    * :attr:`IS10`</span>
+<span class="sd">    * :attr:`IS11`</span>
+<span class="sd">    * :attr:`IS12`</span>
+<span class="sd">    * :attr:`IS13`</span>
 
 <span class="sd">    For references, see the papers on:</span>
 
 <span class="sd">    * `ComParE 2016`_</span>
 <span class="sd">    * GeMAPS_</span>
 <span class="sd">    * eGeMAPS_</span>
-<span class="sd">    * emobase</span>
+<span class="sd">    * emobase_</span>
+<span class="sd">    * IS09_</span>
+<span class="sd">    * IS10_</span>
+<span class="sd">    * IS11_</span>
+<span class="sd">    * IS12_</span>
+<span class="sd">    * IS13_</span>
 
 <span class="sd">    .. _ComParE 2016:</span>
 <span class="sd">        http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf</span>
@@ -177,6 +187,16 @@
 <span class="sd">        https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf</span>
 <span class="sd">    .. _eGeMAPS:</span>
 <span class="sd">        https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf</span>
+<span class="sd">    .. _IS09:</span>
+<span class="sd">        https://opus.bibliothek.uni-augsburg.de/opus4/files/66757/i09_0312.pdf</span>
+<span class="sd">    .. _IS10:</span>
+<span class="sd">        https://opus.bibliothek.uni-augsburg.de/opus4/files/66767/i10_2794.pdf</span>
+<span class="sd">    .. _IS11:</span>
+<span class="sd">        https://opus.bibliothek.uni-augsburg.de/opus4/files/66989/i11_3201.pdf</span>
+<span class="sd">    .. _IS12:</span>
+<span class="sd">        https://opus.bibliothek.uni-augsburg.de/opus4/files/66988/i12_0254.pdf</span>
+<span class="sd">    .. _IS13:</span>
+<span class="sd">        http://www5.informatik.uni-erlangen.de/Forschung/Publikationen/2013/Schuller13-TI2.pdf</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -188,27 +208,32 @@
     <span class="n">eGeMAPSv01a</span> <span class="o">=</span> <span class="s2">&quot;egemaps/v01a/eGeMAPSv01a&quot;</span>
     <span class="n">eGeMAPSv01b</span> <span class="o">=</span> <span class="s2">&quot;egemaps/v01b/eGeMAPSv01b&quot;</span>
     <span class="n">eGeMAPSv02</span> <span class="o">=</span> <span class="s2">&quot;egemaps/v02/eGeMAPSv02&quot;</span>
-    <span class="n">emobase</span> <span class="o">=</span> <span class="s2">&quot;emobase/emobase&quot;</span></div>
+    <span class="n">emobase</span> <span class="o">=</span> <span class="s2">&quot;emobase/emobase&quot;</span>
+    <span class="n">IS09</span> <span class="o">=</span> <span class="s2">&quot;is09-13/IS09_emotion&quot;</span>
+    <span class="n">IS10</span> <span class="o">=</span> <span class="s2">&quot;is09-13/IS10_paraling_compat&quot;</span>
+    <span class="n">IS11</span> <span class="o">=</span> <span class="s2">&quot;is09-13/IS11_speaker_state&quot;</span>
+    <span class="n">IS12</span> <span class="o">=</span> <span class="s2">&quot;is09-13/IS12_speaker_trait_compat&quot;</span>
+    <span class="n">IS13</span> <span class="o">=</span> <span class="s2">&quot;is09-13/IS13_ComParE&quot;</span></div>
 
 
-<span class="k">class</span> <span class="nc">FeatureSetResolver</span><span class="p">(</span><span class="n">audobject</span><span class="o">.</span><span class="n">resolver</span><span class="o">.</span><span class="n">Base</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FeatureSetResolver</span><span class="p">(</span><span class="n">audobject</span><span class="o">.</span><span class="n">resolver</span><span class="o">.</span><span class="n">Base</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Custom value resolver for :class:`opensmile.FeatureSet`.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">FeatureSet</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">FeatureSet</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">__members__</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">FeatureSet</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">FeatureSet</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">FeatureSet</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">FeatureSet</span><span class="p">):</span>
             <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="nf">encode_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">encode_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">str</span>
 
 
-<div class="viewcode-block" id="FeatureLevel"><a class="viewcode-back" href="../../../api/opensmile.FeatureLevel.html#opensmile.FeatureLevel">[docs]</a><span class="k">class</span> <span class="nc">FeatureLevel</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="FeatureLevel"><a class="viewcode-back" href="../../../api/opensmile.FeatureLevel.html#opensmile.FeatureLevel">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">FeatureLevel</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Enumeration of standard feature levels.</span>
 
 <span class="sd">    * :attr:`LowLevelDescriptors` - low-level descriptors (LLD) calculated</span>
@@ -226,20 +251,20 @@
     <span class="n">Functionals</span> <span class="o">=</span> <span class="s2">&quot;func&quot;</span></div>
 
 
-<span class="k">class</span> <span class="nc">FeatureLevelResolver</span><span class="p">(</span><span class="n">audobject</span><span class="o">.</span><span class="n">resolver</span><span class="o">.</span><span class="n">Base</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FeatureLevelResolver</span><span class="p">(</span><span class="n">audobject</span><span class="o">.</span><span class="n">resolver</span><span class="o">.</span><span class="n">Base</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Custom value resolver for :class:`opensmile.FeatureLevel`.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">FeatureLevel</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">FeatureLevel</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">FeatureLevel</span><span class="o">.</span><span class="n">__members__</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">FeatureLevel</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">FeatureLevel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">FeatureLevel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">FeatureLevel</span><span class="p">):</span>
             <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="nf">encode_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">encode_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">str</span>
 </pre></div>
 
@@ -256,7 +281,7 @@
         
         
         
-          Built with <a href="https://www.sphinx-doc.org">Sphinx</a> on 2024/12/16 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org">Sphinx</a> on 2025/07/31 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -264,7 +289,7 @@
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2024 audEERING GmbH
+      &copy; 2020-2025 audEERING GmbH
     </p>
   </div> 
 

@@ -69,7 +69,7 @@
             
             
               <div class="version">
-                v2.5.1
+                v2.6.0
               </div>
             
           
@@ -162,11 +162,8 @@ that need improvement, please create an <a class="reference external" href="http
 you should get the newest development version from <a class="reference external" href="https://github.com/audeering/opensmile-python/">Github</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">audeering</span><span class="o">/</span><span class="n">opensmile</span><span class="o">-</span><span class="n">python</span><span class="o">/</span>
 <span class="n">cd</span> <span class="n">opensmile</span><span class="o">-</span><span class="n">python</span>
-<span class="c1"># Create virtual environment for this project</span>
-<span class="c1"># e.g.</span>
-<span class="c1"># virtualenv --python=&quot;python3&quot;  $HOME/.envs/opensmile-python</span>
-<span class="c1"># source $HOME/.envs/opensmile-python/bin/activate</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="c1"># Install with development dependencies</span>
+<span class="n">uv</span> <span class="n">sync</span>
 </pre></div>
 </div>
 <p>This way,
@@ -183,55 +180,44 @@ Both tools and possible exceptions
 are defined in <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p>
 <p>The checks are executed in the CI using <a class="reference external" href="https://pre-commit.com">pre-commit</a>.
 You can enable those checks locally by executing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span>  <span class="c1"># consider system wide installation</span>
-<span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
-<span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="o">--</span><span class="nb">all</span><span class="o">-</span><span class="n">files</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uvx</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+<span class="n">uvx</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="o">--</span><span class="nb">all</span><span class="o">-</span><span class="n">files</span>
 </pre></div>
 </div>
 <p>Afterwards <a class="reference external" href="https://beta.ruff.rs">ruff</a> and <a class="reference external" href="https://github.com/codespell-project/codespell/">codespell</a> are executed
 every time you create a commit.</p>
-<p>You can also install <a class="reference external" href="https://beta.ruff.rs">ruff</a> and <a class="reference external" href="https://github.com/codespell-project/codespell/">codespell</a>
-and call it directly:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ruff</span> <span class="n">codespell</span>  <span class="c1"># consider system wide installation</span>
-<span class="n">ruff</span> <span class="n">check</span> <span class="o">--</span><span class="n">fix</span> <span class="o">.</span>  <span class="c1"># lint all Python files, and fix any fixable errors</span>
-<span class="n">ruff</span> <span class="nb">format</span> <span class="o">.</span>  <span class="c1"># format code of all Python files</span>
-<span class="n">codespell</span>
+<p>You can also call <a class="reference external" href="https://beta.ruff.rs">ruff</a> and <a class="reference external" href="https://github.com/codespell-project/codespell/">codespell</a> directly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uvx</span> <span class="n">ruff</span> <span class="n">check</span> <span class="o">--</span><span class="n">fix</span> <span class="o">.</span>  <span class="c1"># lint all Python files, and fix any fixable errors</span>
+<span class="n">uvx</span> <span class="n">ruff</span> <span class="nb">format</span> <span class="o">.</span>  <span class="c1"># format code of all Python files</span>
+<span class="n">uvx</span> <span class="n">codespell</span>
 </pre></div>
 </div>
 <p>It can be restricted to specific folders:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ruff</span> <span class="n">check</span> <span class="n">opensmile</span><span class="o">/</span> <span class="n">tests</span><span class="o">/</span>
-<span class="n">codespell</span> <span class="n">opensmile</span><span class="o">/</span> <span class="n">tests</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ uvx ruff check opensmile/ tests/
+$ uvx codespell opensmile/ tests/
 </pre></div>
 </div>
 </div>
 <div class="section" id="building-the-documentation">
 <h2>Building the Documentation<a class="headerlink" href="#building-the-documentation" title="Permalink to this heading">¶</a></h2>
 <p>If you make changes to the documentation,
-you can re-create the HTML pages using <a class="reference external" href="http://sphinx-doc.org">Sphinx</a>.
-You can install it and a few other necessary packages with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">docs</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
+you can re-create the HTML pages using <a class="reference external" href="http://sphinx-doc.org">Sphinx</a>.</p>
 <p>To create the HTML pages, use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">sphinx</span> <span class="n">docs</span><span class="o">/</span> <span class="n">build</span><span class="o">/</span><span class="n">sphinx</span><span class="o">/</span><span class="n">html</span> <span class="o">-</span><span class="n">b</span> <span class="n">html</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ uv run --python 3.12 sphinx-build docs/ build/sphinx/html -b html
 </pre></div>
 </div>
 <p>The generated files will be available
 in the directory <code class="file docutils literal notranslate"><span class="pre">build/sphinx/html/</span></code>.</p>
 <p>It is also possible to automatically check if all links are still valid:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">sphinx</span> <span class="n">docs</span><span class="o">/</span> <span class="n">build</span><span class="o">/</span><span class="n">sphinx</span><span class="o">/</span><span class="n">html</span> <span class="o">-</span><span class="n">b</span> <span class="n">linkcheck</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ uv run --python 3.12 sphinx-build docs/ build/sphinx/html -b linkcheck
 </pre></div>
 </div>
 </div>
 <div class="section" id="running-the-tests">
 <h2>Running the Tests<a class="headerlink" href="#running-the-tests" title="Permalink to this heading">¶</a></h2>
-<p>You’ll need <a class="reference external" href="https://pytest.org">pytest</a> for that.
-It can be installed with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">tests</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
+<p>You’ll need <a class="reference external" href="https://pytest.org">pytest</a> for that.</p>
 <p>To execute the tests, simply run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pytest</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ uv run pytest
 </pre></div>
 </div>
 </div>
@@ -270,7 +256,7 @@ It can be installed with:</p>
         
         
         
-          Built with <a href="https://www.sphinx-doc.org">Sphinx</a> on 2024/12/16 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
+          Built with <a href="https://www.sphinx-doc.org">Sphinx</a> on 2025/07/31 using the <a href="https://github.com/audeering/sphinx-audeering-theme/">audEERING theme</a>
         
     </p>
   </div>
@@ -278,7 +264,7 @@ It can be installed with:</p>
   <div role="contentinfo">
     <p>
         
-      &copy; 2020-2024 audEERING GmbH
+      &copy; 2020-2025 audEERING GmbH
     </p>
   </div> 
 
