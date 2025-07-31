@@ -46,6 +46,25 @@ repository = 'https://github.com/audeering/opensmile-python/'
 documentation = 'https://audeering.github.io/opensmile-python/'
 
 
+# ===== DEPENDENCY GROUPS =================================================
+[dependency-groups]
+dev = [
+    # Tests
+    'pytest',
+    'pytest-doctestplus',
+    'pytest-cov',
+    # Docs
+    'audb',
+    'ipykernel',
+    'jupyter-sphinx',
+    'sphinx',
+    'sphinx-audeering-theme >=1.2.1',
+    'sphinx-autodoc-typehints',
+    'sphinx-copybutton',
+    'toml',
+]
+
+
 # ===== BUILD-SYSTEM ======================================================
 #
 # Requirements for building the Python package
