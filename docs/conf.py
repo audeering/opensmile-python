@@ -82,6 +82,7 @@ html_title = title
 linkcheck_ignore = [
     "https://sail.usc.edu/",
     "http://sphinx-doc.org/",
+    "https://opus.bibliothek.uni-augsburg.de/",
 ]
 
 
