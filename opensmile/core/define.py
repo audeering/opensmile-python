@@ -38,7 +38,7 @@ class FeatureSet(enum.Enum):
     * IS13_
 
     .. _ComParE 2016:
-        http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf
+        https://livrepository.liverpool.ac.uk/3003234/1/is2016_compare.pdf
     .. _GeMAPS:
         https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf
     .. _eGeMAPS:
