@@ -116,7 +116,7 @@ Please cite openSMILE in your publications by citing the following paper:
 
 
 .. _openSMILE: https://github.com/audeering/opensmile
-.. _ComParE 2016: http://www.tangsoo.de/documents/Publications/Schuller16-TI2.pdf
+.. _ComParE 2016: https://livrepository.liverpool.ac.uk/3003234/1/is2016_compare.pdf
 .. _GeMAPS: https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf
 .. _eGeMAPS: https://sail.usc.edu/publications/files/eyben-preprinttaffc-2015.pdf
 .. _audformat: https://github.com/audeering/audformat
