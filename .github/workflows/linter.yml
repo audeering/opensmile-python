@@ -21,6 +21,8 @@ jobs:
 
     - name: Set up uv
       uses: astral-sh/setup-uv@v9.0.0
+      with:
+        save-cache: false
 
     - name: Install pre-commit hooks
       run: |
