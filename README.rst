@@ -105,7 +105,7 @@ Copyright © 2008-2013, Institute for Human-Machine Communication, Technische Un
 
 Copyright © 2013-2015, audEERING UG (haftungsbeschränkt)
 
-Copyright © 2016-2020, audEERING GmbH
+Copyright © 2016-present, audEERING GmbH
 
 Citing
 ------
