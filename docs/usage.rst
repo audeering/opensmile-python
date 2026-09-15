@@ -14,9 +14,9 @@ but it's also possible to run custom config files.
 
     audb.config.REPOSITORIES = [
         audb.Repository(
-            name="data-public",
-            host="https://audeering.jfrog.io/artifactory",
-            backend="artifactory",
+            name="audb-public",
+            host="s3.dualstack.eu-north-1.amazonaws.com",
+            backend="s3",
         ),
     ]
 
