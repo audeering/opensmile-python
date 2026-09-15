@@ -145,7 +145,7 @@ We can create a custom config.
 
 .. jupyter-execute::
 
-    config_str = """
+    config_str = r"""
     [componentInstances:cComponentManager]
     instance[dataMemory].type=cDataMemory
 
