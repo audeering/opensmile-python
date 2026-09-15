@@ -9,7 +9,7 @@
 #
 #
 default_language_version:
-  python: python3.10
+  python: python3.12
 
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
@@ -22,5 +22,3 @@ repos:
     rev: v2.3.0
     hooks:
       - id: codespell
-        additional_dependencies:
-          - tomli
